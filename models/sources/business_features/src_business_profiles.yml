@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: BUSINESS_FEATURES
+    description: ZENALYTICS Business features Schema
+    database: "{{ 'ZENALYTICS' if target.database == 'ZENPROD' else 'ZENDEV' }}"
+    tables:
+      - name: BUSINESS_FEATURES_DETAIL
+      - name: BUSINESS_FEATURES_LOCATION
+      - name: BUSINESS_FEATURES_TYPE

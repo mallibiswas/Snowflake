@@ -1,0 +1,15 @@
+SELECT $1:_id:"$oid"::STRING               AS REPMANAGEMENT_SETTINGS_ID,
+       $1:business_id:"$oid"::STRING       AS BUSINESS_ID,
+       $1:created:"$date"::DATETIME        AS CREATED,
+       $1:facebook_url_enabled::BOOLEAN    AS FACEBOOK_URL_ENABLED,
+       $1:facebook_url::STRING             AS FACEBOOK_URL,
+       $1:tripadvisor_url_enabled::BOOLEAN AS TRIPADVISOR_URL_ENABLED,
+       $1:tripadvisor_url::STRING          AS TRIPADVISOR_URL,
+       $1:yelp_url_enabled::BOOLEAN        AS YELP_URL_ENABLED,
+       $1:yelp_url::STRING                 AS YELP_URL,
+       $1:opentable_url_enabled::BOOLEAN   AS OPENTABLE_URL_ENABLED,
+       $1:opentable_url::STRING            AS OPENTABLE_URL,
+       $1:google_url_enabled::BOOLEAN      AS GOOGLE_URL_ENABLED,
+       $1:google_url::STRING               AS GOOGLE_URL,
+       current_date                AS ASOF_DATE
+FROM {{ most_recent_s3_file_name('_STAGE', 'S3_MONGO_STAGE', '.*/repmanagement_settings.json') }}

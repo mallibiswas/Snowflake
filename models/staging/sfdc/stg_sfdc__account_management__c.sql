@@ -1,0 +1,2 @@
+SELECT *
+FROM {{ source('SFDC', 'ACCOUNT_MANAGEMENT__C') }}

@@ -1,0 +1,1 @@
+SELECT * FROM {{ ref('src_crm__analytics_traffic') }}

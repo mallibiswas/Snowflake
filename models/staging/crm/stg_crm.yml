@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: stg_crm__analytics_customer
+    description: analytics customer
+    columns:
+      - name: CUSTOMER_ID
+        type: VARCHAR(16777216)
+      - name: BUSSINESS_ID
+        type: VARCHAR(16777216)
+      - name: PHONE
+        type: VARCHAR(16777216)
+      - name: AGE
+        type: VARCHAR(16777216)
+      - name: CITY
+        type: VARCHAR(16777216)
+      - name: CONTACT_ALLOWED
+        type: BOOL
+      - name: DEFAULT_PIC_URL
+        type: VARCHAR(16777216)
+      - name: EMAIL
+        type: VARCHAR(16777216)
+      - name: EMAIL_IS_VALID
+        type: BOOL
+      - name: EMAILS
+        type: ARRAY
+      - name: FULLNAME
+        type: VARCHAR(16777216)
+      - name: GENDER
+        type: VARCHAR(16777216)
+      - name: INCOME
+        type: VARCHAR(16777216)
+      - name: CREATED
+        type: TIMESTAMP
+      - name: FIRST_SEEN
+        type: TIMESTAMP
+      - name: LAST_SEEN
+        type: TIMESTAMP
+      - name: LAST_UPDATED
+        type: TIMESTAMP
+      - name: SERVER_LAST_SEEN
+        type: TIMESTAMP
+      - name: LOCATION
+        type: VARCHAR(16777216)
+      - name: STATE
+        type: VARCHAR(16777216)
+      - name: ZIP_CODE
+        type: VARCHAR(16777216)
+      - name: TAGS
+        type: ARRAY
+      - name: MACS
+        type: ARRAY
+      - name: FACEBOOK_APP_USER_IDS
+        type: ARRAY
+      - name: MESSAGES_SENT
+        type: NUMBER(38,0)
+      - name: BIRTHDAY_DAY
+        type: NUMBER(2,0)
+      - name: BIRTHDAY_MONTH
+        type: NUMBER(2,0)
+      - name: NON_CUSTOMER
+        type: BOOL
+      - name: OFFERS_REDEEMED
+        type: NUMBER(38,0)
+      - name: OFFERS_SENT
+        type: NUMBER(38,0)
+      - name: PURCHASE_COUNT
+        type: ARRAY
+      - name: VALIDATION_REASON
+        type: VARCHAR(16777216)
+      - name: VISIT_COUNT
+        type: NUMBER(38,0)
+      - name: ASOF_DATE
+        type: DATE
+        

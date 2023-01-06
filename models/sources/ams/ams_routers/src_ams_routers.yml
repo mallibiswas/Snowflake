@@ -1,0 +1,125 @@
+version: 2
+
+models:    
+  - name: src_ams_routers__logical_router
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: ROUTER_ID
+        type: VARCHAR(16777216)
+      - name: MAC
+        type: VARCHAR(16777216)
+        description: Mac id
+      - name: CREATED_IN_CRM
+        type: TIMESTAMP
+      - name: CREATED
+        type: TIEMSTAMP
+      - name: UPDATED
+        type: TIMESTAMP
+      - name: ASOF_DATE
+        type: DATE
+        description: Last updated date for table 
+  - name: src_ams_routers__logical_router_assignment
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: LOGICAL_ROUTER_ID
+        type: VARCHAR(16777216)
+      - name: ASSIGNED_IN_CRM
+        type: TIMESTAMP
+      - name: UNASSIGNED_IN_CRM
+        type: TIMESTAMP
+      - name: CREATED
+        type: TIMESTAMP
+      - name: UPDATED
+        type: TIMESTAMP
+      - name: ASOF_DATE
+        type: DATE
+        description: Last updated date for table 
+  - name: src_ams_routers__network_assignment
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: BUSINESS_ENTITY_ID
+        type: VARCHAR(16777216)
+      - name: CLOUD_NETWORK_ID
+        type: VARCHAR(16777216)
+      - name: MERAKI_NETWORK_ID
+        type: VARCHAR(16777216)
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_routers__router
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+      - name: MAC_START
+        type: VARCHAR(16777216)
+      - name: MAC_END
+        type: VARCHAR(16777216)
+      - name: ROUTER_TYPE
+        type: VARCHAR(16777216)
+      - name: CREATED
+        type: TIMESTAMP
+      - name: UPDATED
+        type: TIMESTAMP
+      - name: DELETED
+        type: TIMESTAMP
+      - name: NODE_ID
+        type: VARCHAR(16777216)
+      - name: SERIAL_NUMBER
+        type: VARCHAR(16777216)
+        description: Router serial number
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_routers__router_assignment
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: ROUTER_ID
+        type: VARCHAR(16777216)
+      - name: BUSINESS_ENTITY_ID
+        type: VARCHAR(16777216)
+      - name: DIRTY
+        type: BOOL
+      - name: CREATED
+        type: TIMESTAMP
+      - name: UPDATED
+        type: TIMESTAMP
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table entries
+      

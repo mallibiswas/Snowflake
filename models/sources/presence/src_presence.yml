@@ -1,0 +1,432 @@
+version: 2
+
+sources:    
+  - name: PRESENCE
+    description: This is a copy of data loaded through snowpipes
+    tables:
+      - name: LOCATION_BLIPS
+        description: All location blips served by the presence pipeline
+        freshness:
+          error_after:
+            count: 3
+            period: hour
+        loaded_at_field: SERVER_TIME
+        columns:
+          - name: CLIENT_MAC
+            type: text
+            description: The client MAC address
+          - name: SENSOR_MAC
+            type: text
+            description: The sensor MAC address
+          - name: SENSOR_TYPE
+            type: text
+            description: The client MAC address
+          - name: SERVER_TIME
+            type: NUMBER(38)
+            description: The timestamp in seconds Zenreach received the blip in the Presence pipeline
+          - name: TS
+            type: NUMBER(38)
+            description: the timestamp in seconds that the router created the blip
+          - name: VALUE
+            type: text
+            description: RSSI (Received Signal Strength Indicator) is used to measure the WiFi signal strength
+      - name: PORTAL_BLIPS
+        description: All portal blips served by the presence pipeline, portal blips are when someone accesses the portal.
+        freshness:
+          error_after:
+            count: 3
+            period: hour
+        loaded_at_field: SERVER_TIME
+        columns:
+          - name: CLIENT_MAC
+            type: text
+            description: The client MAC address
+          - name: SENSOR_MAC
+            type: text
+            description: The sensor MAC address
+          - name: SENSOR_TYPE
+            type: text
+            description: The client MAC address
+          - name: SERVER_TIME
+            type: NUMBER(38)
+            description: The timestamp in seconds Zenreach received the blip in the Presence pipeline
+          - name: TS
+            type: NUMBER(38)
+            description: the timestamp in seconds that the router created the blip
+          - name: VALUE
+            type: text
+            description: RSSI (Received Signal Strength Indicator) is used to measure the WiFi signal strength
+      - name: WIFI_CONSENTED_SIGHTINGS
+        description: Consented sightings to locations
+        freshness:
+          error_after:
+            count: 3
+            period: hour
+        loaded_at_field: END_TIME
+        columns:
+          - name: SIGHTING_ID
+            type: VARCHAR(16777216)
+            description: Indentifier of sighting 
+          - name: CLASSIFICATION
+            type: text
+            description: Sighting description (walkin, walkby, not human)
+          - name: START_TIME
+            type: timestampntz(9)
+            description: Timestamp of when sighting occured
+          - name: END_TIME
+            type: timestampntz(9)
+            description: Timestamp of when sighting ends
+          - name: BLIP_COUNT
+            type: number(38)
+            description: Count of blips recieved for sighting duration
+          - name: MAX_RSSI
+            type: number(38)
+            description: Max wifi signal strength 
+          - name: MIN_RSSI
+            type: number(38)
+            description: Min wifi signal strength 
+          - name: AVG_RSSI
+            type: double
+            description: Average wifi signal strength 
+          - name: ANONYMOUS_CLIENT_MAC_INFO
+            type: array
+            description: Anonymous Client Mac information and vendor prefix
+          - name: CONTACT_ID
+            type: text
+            description: Indentifier of contact
+          - name: CONTACT_INFO
+            type: text
+            description: Contact email 
+          - name: CONTACT_METHOD
+            type: text
+            description: Medium of contact (phone, email, social media, unknown)
+          - name: LOCATION_ID
+            type: text
+            description: Indentifier of location sighting occured
+          - name: ACCOUNT_ID
+            type: text
+            description: Indentifier of merchant account 
+          - name: KNOWN_TO_ZENREACH
+            type: bool
+            description: Contact known in Zenreach network
+          - name: KNOWN_TO_MERCHANT_ACCOUNT
+            type: bool
+            description: Contact known to merchant account
+          - name: KNOWN_TO_MERCHANT_LOCATION
+            type: bool
+            description: Contact known to specific location of sighting
+          - name: PRIVACY_VERSION
+            type: text
+            description: Privacy level accepted in portal
+          - name: TERMS_VERSION
+            type: text
+            description: Terms level accepted in portal
+          - name: BUNDLE_VERSION
+            type: text
+            description: Combination of Terms and Bundle version
+          - name: IS_EMPLOYEE
+            type: bool
+            description: Contact marked as employee on merchant account level 
+          - name: PORTAL_BLIP_COUNT
+            type: number(38)
+            description: Portal blip count for duration of sighting
+          - name: CLASSIFICATION_REASONS
+            type: array
+            description: Reason for classification
+      - name: WIFI_FINISHED_SIGHTINGS
+        description: Finished sightings to locations
+        freshness:
+          error_after:
+            count: 3
+            period: hour
+        loaded_at_field: END_TIME
+        columns:
+          - name: SIGHTING_ID
+            type: VARCHAR(16777216)
+            description: Indentifier of sighting
+          - name: CLASSIFICATION
+            type: VARCHAR(16777216)
+            description: Sighting description (walkin, walkby, not human)
+          - name: CLASSIFICATION_REASONS
+            type: ARRAY
+            description: Reason for classification
+          - name: START_TIME
+            type: TIMESTAMP
+            description: Timestamp of when sighting occured
+          - name: END_TIME
+            type: TIMESTAMP
+            description: Timestamp of when sighting ends
+          - name: BLIP_COUNT
+            type: NUMBER(38,0)
+            description: Count of blips recieved for sighting duration
+          - name: MAX_RSSI
+            type: INTEGER
+            description: Max wifi signal strength 
+          - name: MIN_RSSI
+            type: INTEGER
+            description: Min wifi signal strength 
+          - name: AVG_RSSI
+            type: FLOAT
+            description: Average wifi signal strength 
+          - name: CLIENT_MAC_INFO
+            type: ARRAY
+            description: Client Mac information, (mac anonymization and vendor info)
+          - name: CONTACT_ID
+            type: VARCHAR(16777216)
+            description: Indentifier of contact
+          - name: CONTACT_INFO
+            type: VARCHAR(16777216)
+            description: Contact email 
+          - name: CONTACT_METHOD
+            type: VARCHAR(16777216)
+            description: Medium of contact (phone, email, social media, unknown)
+          - name: LOCATION_ID
+            type: VARCHAR(16777216)
+            description: Indentifier of location sighting occured
+          - name: ACCOUNT_ID
+            type: VARCHAR(16777216)
+            description: Indentifier of merchant account 
+          - name: KNOWN_TO_ZENREACH
+            type: bool
+            description: Contact known in Zenreach network
+          - name: KNOWN_TO_MERCHANT_ACCOUNT
+            type: bool
+            description: Contact known to merchant account
+          - name: KNOWN_TO_MERCHANT_LOCATION
+            type: bool
+            description: Contact known to specific location of sighting
+          - name: PRIVACY_VERSION
+            type: VARCHAR(16777216)
+            description: Privacy level accepted in portal
+          - name: TERMS_VERSION
+            type: VARCHAR(16777216)
+            description: Terms level accepted in portal
+          - name: BUNDLE_VERSION
+            type: VARCHAR(16777216)
+            description: Combination of Terms and Bundle version
+          - name: IS_EMPLOYEE
+            type: bool
+            description: Contact marked as employee on merchant account level 
+          - name: PORTAL_BLIP_COUNT
+            type: NUMBER(38,0)
+            description: Portal blip count for duration of sighting 
+      - name: WIFI_ENRICHED_SIGHTINGS
+        description: Enriched sightings to locations
+        freshness:
+          error_after:
+            count: 3
+            period: hour
+        loaded_at_field: END_TIME
+        columns:
+          - name: SIGHTING_ID
+            type: VARCHAR(16777216)
+            description: Indentifier of sighting 
+          - name: STATUS
+            type: VARCHAR(16777216)
+            description: status of row entry (updated,deleted,finished,walkby)
+          - name: START_TIME
+            type: TIMESTAMP
+            description: Timestamp of when sighting occured
+          - name: END_TIME
+            type: TIMESTAMP
+            description: Timestamp of when sighting ends
+          - name: BLIP_COUNT
+            type: NUMBER(38,0)
+            description: Count of blips recieved for sighting duration
+          - name: MAX_RSSI
+            type: NUMBER(38,0)
+            description: Max wifi signal strength 
+          - name: MIN_RSSI
+            type: NUMBER(38,0)
+            description: Min wifi signal strength 
+          - name: AVG_RSSI
+            type: FLOAT
+            description: Average wifi signal strength for duration
+          - name: CLIENT_MAC_INFO
+            type: ARRAY
+            description: Client Mac information, (mac anonymization and vendor info)
+          - name: CONTACT_ID
+            type: VARCHAR(16777216)
+            description: Indentifier of contact
+          - name: CONTACT_INFO
+            type: VARCHAR(16777216)
+            description: Contact email 
+          - name: CONTACT_METHOD
+            type: VARCHAR(16777216)
+            description: Medium of contact (phone, email, social media, unknown)
+          - name: LOCATION_ID
+            type: VARCHAR(16777216)
+            description: Indentifier of location sighting occured
+          - name: ACCOUNT_ID
+            type: VARCHAR(16777216)
+            description: Indentifier of merchant account 
+          - name: KNOWN_TO_ZENREACH
+            type: bool
+            description: Contact known in Zenreach network
+          - name: KNOWN_TO_MERCHANT_ACCOUNT
+            type: bool
+            description: Contact known to merchant account 
+          - name: KNOWN_TO_MERCHANT_LOCATION
+            type: bool
+            description: Contact known to specific location of sighting
+          - name: PRIVACY_VERSION
+            type: VARCHAR(16777216)
+            description: Privacy level accepted in portal
+          - name: TERMS_VERSION
+            type: VARCHAR(16777216)
+            description: Terms level accepted in portal
+          - name: BUNDLE_VERSION
+            type: VARCHAR(16777216)
+            description: Combination of Terms and Bundle version
+          - name: IS_EMPLOYEE
+            type: bool
+            description: Contact marked as employee on merchant account level 
+          - name: PORTAL_BLIP_COUNT
+            type: NUMBER(38,0)
+            description: Portal blip count for duration of sighting
+      - name: ENRICHED_SIGHTINGS
+        description: Enriched sightings by client_mac
+        freshness:
+          error_after:
+            count: 3
+            period: hour
+        loaded_at_field: END_TIME
+        columns:
+          - name: CLIENT_MAC
+            type: VARCHAR(16777216)
+            description: The client MAC address
+          - name: CONTACT_CREATED_DATE
+            type: NUMBER(38,0)
+            description: contact created
+          - name: CONTACT_ID
+            type: VARCHAR(16777216)
+            description: Indentifier for contact
+          - name: CONTACT_INFO
+            type: VARCHAR(16777216)
+            description: Contact email 
+          - name: CONTACT_METHOD
+            type: VARCHAR(16777216)
+            description: Medium of contact (phone, email, social media, unknown)
+          - name: IN_BUSINESS_NETWORK
+            type: BOOL
+            description: Contact exists for merchant account
+          - name: BUSINESS_ID
+            type: VARCHAR(16777216)
+            description: Indentifier for business
+          - name: START_TIME
+            type: NUMBER(38,0)
+            description: Sighting occurance
+          - name: END_TIME
+            type: NUMBER(38,0)
+            description: Sighting end
+          - name: IS_WALK_IN
+            type: BOOLEAN
+            description: Sighting considered walk_in
+          - name: SOURCE
+            type: array
+            description: data source
+          - name: BLIP_COUNT
+            type: NUMBER(38,0)
+            description: Count of blips recieved for sighting duration 
+          - name: MAX_RSSI
+            type: INTEGER
+            description: Max wifi signal strength 
+          - name: MIN_RSSI
+            type: INTEGER
+            description: Min wifi signal strength 
+          - name: AVG_RSSI
+            type: FLOAT
+            description: Average wifi signal strength for duration
+          - name: STATUS
+            type: VARCHAR(16777216)
+            description: status of row entry (updated,raw,new)
+      - name: RECLASSIFIED_PRESENCE_SAMPLING_STATS_CORRECTED
+        description: This is an table that is not being updated anymore, it contains stats for data between '2019-09-25' - '2019-09-26' but the data is still relevant. It contains corrected stats.
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: REPORT_DATETIME
+            data_type: TIMESTAMP_NTZ
+          - name: OS
+            data_type: TEXT
+          - name: WALKIN_NETWORK
+            data_type: NUMBER(13, 0)
+          - name: WALKIN_MERCHANT
+            data_type: NUMBER(13, 0)
+          - name: WALKIN_UNIDENTIFIED
+            data_type: NUMBER(13, 0)
+          - name: WALKBY_NETWORK
+            data_type: NUMBER(13, 0)
+          - name: WALKBY_MERCHANT
+            data_type: NUMBER(13, 0)
+          - name: WALKBY_UNIDENTIFIED
+            data_type: NUMBER(13, 0)
+          - name: NOT_HUMAN
+            data_type: NUMBER(13, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: LOCATION_CLASSIFIER_CONFIG_THRESHOLDS
+        freshness:
+          error_after:
+            count: 36
+            period: hour
+        loaded_at_field: ASOF_DATE
+        columns:
+          - name: ID
+            data_type: TEXT
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: MIN_WALKIN_DWELL_TIME_SECONDS
+            data_type: NUMBER(38, 0)
+          - name: MAX_WALKIN_DWELL_TIME_SECONDS
+            data_type: NUMBER(38, 0)
+          - name: MAX_HUMAN_DWELL_TIME_SECONDS
+            data_type: NUMBER(38, 0)
+          - name: MIN_WALKIN_SIGNAL_STRENGTH
+            data_type: NUMBER(38, 0)
+          - name: TIME_ZONE
+            data_type: TEXT
+          - name: EFFECTIVE_AS_OF
+            data_type: TIMESTAMP_NTZ
+          - name: CREATED_AT
+            data_type: TIMESTAMP_NTZ
+          - name: MODIFIED_AT
+            data_type: TIMESTAMP_NTZ
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: MAC_PREFIX_TO_VENDOR_MAPPING
+        freshness:
+          error_after:
+            count: 36
+            period: hour
+        loaded_at_field: ASOF_DATE
+        columns:
+          - name: MAC_PREFIX
+            data_type: TEXT
+          - name: VENDOR_NAME
+            data_type: TEXT
+          - name: NOT_HUMAN
+            data_type: BOOLEAN
+          - name: CREATED_AT
+            data_type: TIMESTAMP_NTZ
+          - name: MODIFIED_AT
+            data_type: TIMESTAMP_NTZ
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: DEVICE_MANUFACTURER_WIRESHARK
+        database: "{{ 'ZENALYTICS' if target.database == 'ZENPROD' else 'ZENDEV' }}"
+        columns:
+          - name: ASSIGNMENT
+            data_type: TEXT
+          - name: OUI
+            data_type: TEXT
+          - name: VENDOR
+            data_type: TEXT
+          - name: VENDOR_NAME
+            data_type: TEXT
+          - name: ROUTER_BRAND
+            data_type: TEXT

@@ -1,0 +1,2 @@
+SELECT *
+FROM {{ source('SFDC_LOCATIONS', 'LOCATION__HISTORY') }}

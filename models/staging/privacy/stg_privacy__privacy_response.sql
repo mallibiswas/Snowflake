@@ -1,0 +1,1 @@
+SELECT * FROM {{ source('PRIVACY', 'PRIVACY_RESPONSE') }}

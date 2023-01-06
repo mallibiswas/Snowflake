@@ -1,0 +1,1627 @@
+  version: 2
+
+sources:
+  - name: AMS
+    schema: RAW_AMS
+    description: This is a copy of static AMS data.
+    tables:
+      - name: ACCOUNT
+        description: TODO
+        columns:
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: NAME
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: BUSINESSPROFILE_ID
+            data_type: TEXT
+          - name: ACCOUNT_STATE
+            data_type: TEXT
+          - name: DISQUALIFIED
+            data_type: BOOLEAN
+          - name: BILLING_MODE
+            data_type: TEXT
+          - name: PARTNER_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: IS_TEST
+            data_type: BOOLEAN
+          - name: V3_ACCOUNT_ID
+            data_type: TEXT
+          - name: MIGRATED_DATE
+            data_type: DATE
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: ACCOUNT_SNAPSHOT
+        description: TODO
+        columns:
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: NAME
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: BUSINESS_PROFILE_ID
+            data_type: TEXT
+          - name: ACCOUNT_STATE
+            data_type: TEXT
+          - name: DISQUALIFIED
+            data_type: BOOLEAN
+          - name: BILLING_MODE
+            data_type: TEXT
+          - name: PARTNER_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: IS_TEST
+            data_type: BOOLEAN
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_ACCOUNT_MANAGERS
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: ACCOUNT_MANAGER_EMAIL
+            data_type: TEXT
+          - name: ACCOUNT_MANAGER
+            data_type: TEXT
+          - name: ACCOUNT_MANAGER_MANAGER
+            data_type: TEXT
+          - name: LAST_ACTIVITY_DATE
+            data_type: DATE
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_BILLING_DATA
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: AMDASHBOARD_ACCOUNT_ID
+            data_type: TEXT
+          - name: NEXT_BILLING_DATE
+            data_type: DATE
+          - name: INVOICE_PAST_DUE_COUNT
+            data_type: NUMBER(38, 0)
+          - name: INVOICE_PAST_DUE_FIRST_DATE
+            data_type: DATE
+          - name: INVOICE_PAST_DUE_AMOUNT
+            data_type: NUMBER(38, 2)
+          - name: INVOICE_PAID_COUNT
+            data_type: NUMBER(38, 0)
+          - name: INVOICE_PAID_FIRST_DATE
+            data_type: DATE
+          - name: INVOICE_PAID_AMOUNT
+            data_type: NUMBER(38, 2)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_COLLECTIONSTATS
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: TOTAL_EMAILS_COLLECTED_ALL_TIME
+            data_type: NUMBER(38, 0)
+          - name: AVERAGE_EMAILS_COLLECTED_ALL_TIME
+            data_type: NUMBER(38, 0)
+          - name: TOTAL_EMAILS_COLLECTED_PAST_THIRTY
+            data_type: NUMBER(38, 0)
+          - name: AVERAGE_EMAILS_COLLECTED_PAST_THIRTY
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_DASHBOARD_LOGINS
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: DASHBOARD_DAYS_ACCESSED_COUNT
+            data_type: NUMBER(38, 0)
+          - name: DASHBOARD_FIRST_ACCESS_DATE
+            data_type: DATE
+          - name: DASHBOARD_LAST_ACCESS_DATE
+            data_type: DATE
+          - name: PARENT_BUSINESS_ID
+            data_type: TEXT
+          - name: PARENT_DAYS_ACCESSED_COUNT
+            data_type: NUMBER(38, 0)
+          - name: PARENT_FIRST_ACCESS_DATE
+            data_type: DATE
+          - name: PARENT_LAST_ACCESS_DATE
+            data_type: DATE
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_EMAIL_IMPORTS
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: CONTACT_LIST_IMPORT_FAILURE_COUNT
+            data_type: NUMBER(38, 0)
+          - name: CONTACT_LIST_IMPORT_SUCCESS_COUNT
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_EVENT_LOGS
+        description: TODO
+        columns:
+          - name: AMDASHBOARD_EVENT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: TYPE
+            data_type: TEXT
+          - name: DETAILS
+            data_type: VARIANT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_LAST_LOGGED_IN_USERS_SALESFORCE
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: LAST_LOGIN_EMAIL_LIST
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_LOCATIONS_WITH_CONTRACTS
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: ACCOUNT_NAME
+            data_type: TEXT
+          - name: EFFECTIVE_DATE
+            data_type: DATE
+          - name: EXPIRATION_DATE
+            data_type: DATE
+          - name: HARDWARE_FEE
+            data_type: NUMBER(38, 0)
+          - name: PAYMENT_METHOD
+            data_type: TEXT
+          - name: PAYMENT_TERM
+            data_type: TEXT
+          - name: PILOT_EXTENSION
+            data_type: NUMBER(38, 0)
+          - name: PILOT_LENGTH
+            data_type: NUMBER(38, 0)
+          - name: RENEWAL_TERM
+            data_type: TEXT
+          - name: SALES_REP
+            data_type: TEXT
+          - name: SERVICE_FEE
+            data_type: NUMBER(38, 0)
+          - name: SIGNED
+            data_type: TIMESTAMP_NTZ
+          - name: SIGNER_EMAIL
+            data_type: TEXT
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: LOCATION_STATE
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: LATITUDE
+            data_type: FLOAT
+          - name: LONGITUDE
+            data_type: FLOAT
+          - name: AMS_VERSION
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_REP_MANAGEMENT
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: REP_MGMT_RATINGS_COUNT
+            data_type: NUMBER(38, 0)
+          - name: REP_MGMT_TEMPLATE_COUNT
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_ROUTERDATA
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: ROUTER_LAST_PROBE_DATE
+            data_type: DATE
+          - name: ROUTER_INSTALL_DATE
+            data_type: DATE
+          - name: ROUTER_LAST_CRM_REQUEST_DATE
+            data_type: DATE
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_ROUTER_TYPES
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: ROUTER_TYPES
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_SMART_MESSAGES_CONFIG
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: SMART_MESSAGES_CONFIGURED_COUNT
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_SMART_MESSAGE_USAGE
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: TOTAL_SMART_MESSAGES_SENT_PAST_THIRTY
+            data_type: NUMBER(38, 0)
+          - name: TOTAL_BLAST_MESSAGES_SENT_PAST_THIRTY
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_TICKET_PRICE
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: WALKTHROUGH_TICKET_PRICE
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_WALKTHROUGHS
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: WALKTHROUGH_PAST_THIRTY
+            data_type: NUMBER(38, 0)
+          - name: WALKTHROUGH_TOTAL
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: AMDASHBOARD_YELP
+        description: TODO
+        columns:
+          - name: BUSINESS_ID
+            data_type: TEXT
+          - name: YELP_ADVERTISER
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: APIAUTHKEY
+        description: TODO
+        columns:
+          - name: APIAUTH_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: NAME
+            data_type: TEXT
+          - name: TOKEN
+            data_type: TEXT
+          - name: ALLOW_HTTP
+            data_type: TEXT
+          - name: REVOKED
+            data_type: TEXT
+          - name: REVOKE_REASON
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: BILLING_ACCOUNT
+        description: TODO
+        columns:
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: PROVIDER_ID
+            data_type: TEXT
+          - name: BA_STATE
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: PAYMENT_TYPE
+            data_type: TEXT
+          - name: LAST_FOUR
+            data_type: TEXT
+          - name: INFO_TYPE
+            data_type: TEXT
+          - name: HOLDER
+            data_type: TEXT
+          - name: EXPIRY
+            data_type: DATE
+          - name: ADDRESS_LINE1
+            data_type: TEXT
+          - name: ADDRESS_LINE2
+            data_type: TEXT
+          - name: ADDRESS_ZIP
+            data_type: TEXT
+          - name: ADDRESS_CITY
+            data_type: TEXT
+          - name: ADDRESS_STATE
+            data_type: TEXT
+          - name: ADDRESS_COUNTRY
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: BILLING_ACCOUNT_V2
+        description: TODO
+        columns:
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: PARTNER_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: EMAIL
+            data_type: TEXT
+          - name: PHONE_NUMBER
+            data_type: TEXT
+          - name: BILLING_ACCOUNT_STATE
+            data_type: TEXT
+          - name: PAYMENT_METHOD
+            data_type: TEXT
+          - name: ADDRESS_LINE1
+            data_type: TEXT
+          - name: ADDRESS_LINE2
+            data_type: TEXT
+          - name: ADDRESS_CITY
+            data_type: TEXT
+          - name: ADDRESS_STATE
+            data_type: TEXT
+          - name: ADDRESS_ZIP
+            data_type: TEXT
+          - name: ADDRESS_COUNTRY
+            data_type: TEXT
+          - name: RECURLY_ACCOUNT_ID
+            data_type: TEXT
+          - name: INFO_TYPE
+            data_type: TEXT
+          - name: EXPIRY
+            data_type: DATE
+          - name: HOLDER
+            data_type: TEXT
+          - name: LAST_FOUR
+            data_type: TEXT
+          - name: OLD_WORLD_BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: BILLING_ACCOUNT_V2_MIGRATION
+        description: TODO
+        columns:
+          - name: BILLING_ACCOUNT_MIGRATION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: BILLING_ACCOUNT_V1_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_V2_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: CONTRACT
+        description: TODO
+        columns:
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: SERVICE_FEE
+            data_type: NUMBER(38, 0)
+          - name: HARDWARE_FEE
+            data_type: NUMBER(38, 0)
+          - name: NUM_APS
+            data_type: TEXT
+          - name: PAYMENT_TERM
+            data_type: TEXT
+          - name: PAYMENT_METHOD
+            data_type: TEXT
+          - name: SIGNER_NAME
+            data_type: TEXT
+          - name: SIGNER_EMAIL
+            data_type: TEXT
+          - name: PILOT_LENGTH
+            data_type: NUMBER(38, 0)
+          - name: PILOT_TYPE
+            data_type: TEXT
+          - name: PILOT_EXTENSION
+            data_type: NUMBER(38, 0)
+          - name: EFFECTIVE_DATE
+            data_type: DATE
+          - name: EXPIRATION_DATE
+            data_type: DATE
+          - name: RENEWAL_TERM
+            data_type: TEXT
+          - name: SENT
+            data_type: TIMESTAMP_NTZ
+          - name: SIGNED
+            data_type: TIMESTAMP_NTZ
+          - name: CONTRACT_STATE
+            data_type: TEXT
+          - name: BETA
+            data_type: BOOLEAN
+          - name: SALES_REP
+            data_type: TEXT
+          - name: WAIT_PERIOD
+            data_type: NUMBER(38, 0)
+          - name: CATEGORY_ID
+            data_type: NUMBER(38, 0)
+          - name: BUSINESS_UNIT
+            data_type: TEXT
+          - name: USE_AMS_CONTRACT
+            data_type: BOOLEAN
+          - name: USE_AMS_BILLING
+            data_type: BOOLEAN
+          - name: AGREEMENT_VERSION
+            data_type: TEXT
+          - name: SALESFORCE_OPPORTUNITY_ID
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: CONTRACTSUBSCRIPTIONOPTIONLOG
+        description: TODO
+        columns:
+          - name: CONTRACTSUBSCRIPTIONOPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_OPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: ORIGINAL_PAYMENT_TERM
+            data_type: TEXT
+          - name: ORIGINAL_RENEWAL_TERM
+            data_type: TEXT
+          - name: NEW_PAYMENT_TERM
+            data_type: TEXT
+          - name: NEW_RENEWAL_TERM
+            data_type: TEXT
+          - name: DISCOUNT_PERCENT
+            data_type: TEXT
+          - name: ORIGINAL_SERVICE_FEE
+            data_type: NUMBER(38, 0)
+          - name: NEW_SERVICE_FEE
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: CONTRACT_CATEGORY
+        description: TODO
+        columns:
+          - name: CATEGORY_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: TITLE
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: CONTRACT_V2
+        description: TODO
+        columns:
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: CONTRACT_STATE
+            data_type: TEXT
+          - name: SALESFORCE_OPPORTUNITY_ID
+            data_type: TEXT
+          - name: SENT_DATE
+            data_type: TIMESTAMP_NTZ
+          - name: SIGNED_DATE
+            data_type: TIMESTAMP_NTZ
+          - name: DASHBOARD_HARDWARE_COUNT
+            data_type: NUMBER(38, 0)
+          - name: DASHBOARD_HARDWARE_FEE
+            data_type: NUMBER(38, 0)
+          - name: NETWORK_ADS_SOCIAL_MEDIA_ACCOUNTS
+            data_type: TEXT
+          - name: SIGNER_NAME
+            data_type: TEXT
+          - name: SIGNER_EMAIL
+            data_type: TEXT
+          - name: CONTRACT_HARD_COPY_URL
+            data_type: TEXT
+          - name: OLD_WORLD_CONTRACT_ID
+            data_type: TEXT
+          - name: INSTALLATION_FEE
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: EVENT
+        description: TODO
+        columns:
+          - name: EVENT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: EVENT_NAME
+            data_type: TEXT
+          - name: EVENT_TIME
+            data_type: TIMESTAMP_NTZ
+          - name: USER_ID
+            data_type: TEXT
+          - name: ENTITY_NAME
+            data_type: TEXT
+          - name: ENTITY_ID
+            data_type: NUMBER(38, 0)
+          - name: PAYLOAD
+            data_type: VARIANT
+          - name: STAFF_USER_ID
+            data_type: NUMBER(38, 0)
+          - name: ROLE_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: FEATURE
+        description: TODO
+        columns:
+          - name: FEATURE_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: FEATURE_CODE
+            data_type: TEXT
+          - name: FEATURE_NAME
+            data_type: TEXT
+          - name: FEATURE_DESCRIPTION
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: FEATUREFLAG
+        description: TODO
+        columns:
+          - name: FEATURE_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ENABLED
+            data_type: TEXT
+          - name: FEATURE_NAME
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: FEATUREFLAGUSER
+        description: TODO
+        columns:
+          - name: FEATUREFLAGUSER_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: EMAIL
+            data_type: TEXT
+          - name: FEATURE_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: KILLSWITCH
+        description: TODO
+        columns:
+          - name: KILLSWITCH_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: NAME
+            data_type: TEXT
+          - name: KILLED
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: LOCATION
+        description: TODO
+        columns:
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: NAME
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: LOCATION_STATE
+            data_type: TEXT
+          - name: ADDRESS_LINE1
+            data_type: TEXT
+          - name: ADDRESS_LINE2
+            data_type: TEXT
+          - name: ADDRESS_ZIP
+            data_type: TEXT
+          - name: ADDRESS_CITY
+            data_type: TEXT
+          - name: ADDRESS_STATE
+            data_type: TEXT
+          - name: ADDRESS_COUNTRY
+            data_type: TEXT
+          - name: BUSINESS_PROFILE_ID
+            data_type: TEXT
+          - name: LATITUDE
+            data_type: FLOAT
+          - name: LONGITUDE
+            data_type: FLOAT
+          - name: INSTALLED
+            data_type: TEXT
+          - name: DISQUALIFIED
+            data_type: BOOLEAN
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_V2_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: LOCATIONCONTRACT
+        description: TODO
+        columns:
+          - name: LOCATIONCONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: LOCATIONREFERRAL
+        description: TODO
+        columns:
+          - name: LOCATIONREFERRAL_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: REFERRER_ID
+            data_type: NUMBER(38, 0)
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: PAYMENT_PERCENTAGE
+            data_type: TEXT
+          - name: REFERRED_DATE
+            data_type: DATE
+          - name: DURATION_IN_MONTHS
+            data_type: NUMBER(38, 0)
+          - name: PAYMENT_START_DATE
+            data_type: DATE
+          - name: PAYMENT_END_DATE
+            data_type: DATE
+          - name: TERMINATION_DATE
+            data_type: DATE
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: LOCATIONSTAFFUSERROLE
+        description: TODO
+        columns:
+          - name: LOCATIONSTAFFUSERROLE_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: STAFF_USER_ID
+            data_type: NUMBER(38, 0)
+          - name: ROLE_ID
+            data_type: NUMBER(38, 0)
+          - name: ACTIVE
+            data_type: BOOLEAN
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: PACKAGE
+        description: TODO
+        columns:
+          - name: PACKAGE_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: PRODUCT_ID
+            data_type: NUMBER(38, 0)
+          - name: NAME
+            data_type: TEXT
+          - name: ACTIVE
+            data_type: BOOLEAN
+          - name: MONTHLY_LIST_PRICE
+            data_type: NUMBER(18, 2)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: PACKAGE_FEATURE_THROUGH
+        description: TODO
+        columns:
+          - name: PACKAGE_FEATURE_ID
+            data_type: NUMBER(38, 0)
+          - name: PACKAGE_ID
+            data_type: NUMBER(38, 0)
+          - name: FEATURE_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: PARTNER_ACCOUNT
+        description: TODO
+        columns:
+          - name: PARTNER_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: NAME
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: PARTNER_TYPE
+            data_type: TEXT
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: PLAN
+        description: TODO
+        columns:
+          - name: PLAN_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: PLAN_CODE
+            data_type: TEXT
+          - name: PRODUCT_CODE
+            data_type: TEXT
+          - name: PAYMENT_TERM
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: CONTRACT_TEMPLATE
+            data_type: TEXT
+          - name: HAS_TRIAL
+            data_type: BOOLEAN
+          - name: PRODUCT_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: PLANADDON
+        description: TODO
+        columns:
+          - name: PLANADDON_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: RECURLY_CODE
+            data_type: TEXT
+          - name: PLAN_ID
+            data_type: NUMBER(38, 0)
+          - name: NAME
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: PRODUCT
+        description: TODO
+        columns:
+          - name: PRODUCT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: CODE
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: REFERRALPAYMENT
+        description: TODO
+        columns:
+          - name: REFERRALPAYMENT_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: REFERRER_ID
+            data_type: NUMBER(38, 0)
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: SOURCE_INVOICE_ID
+            data_type: NUMBER(38, 0)
+          - name: AMOUNT_IN_CENTS
+            data_type: NUMBER(38, 0)
+          - name: PERCENTAGE
+            data_type: NUMBER(18, 2)
+          - name: PAYOUT_BILL_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: REFERRER
+        description: TODO
+        columns:
+          - name: REFERRER_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: NAME
+            data_type: TEXT
+          - name: EMAIL
+            data_type: TEXT
+          - name: PAYABLE_ACCOUNT
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: ROLE
+        description: TODO
+        columns:
+          - name: ROLE_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: TITLE
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: ROUTER
+        description: TODO
+        columns:
+          - name: ROUTER_SURROGATE_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: BUSINESS_PROFILE_ID
+            data_type: TEXT
+          - name: MAC
+            data_type: TEXT
+          - name: ROUTER_STATE
+            data_type: TEXT
+          - name: INSTALLED
+            data_type: DATE
+          - name: SHIPPED
+            data_type: TEXT
+          - name: DELIVERED
+            data_type: TEXT
+          - name: ROUTER_ID
+            data_type: TEXT
+          - name: TYPE
+            data_type: TEXT
+          - name: VENDOR_DATA
+            data_type: VARIANT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SALESFORCEINVOICEREFERENCE
+        description: TODO
+        columns:
+          - name: SALESFORCEINVOICE_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: INVOICE_ID
+            data_type: NUMBER(38, 0)
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SALESFORCETRANSACTIONREFERENCE
+        description: TODO
+        columns:
+          - name: SALESFORCETRANSACTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: TRANSACTION_ID
+            data_type: NUMBER(38, 0)
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: STAFFUSER
+        description: TODO
+        columns:
+          - name: STAFF_USER_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: EMAIL
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: START_DATE
+            data_type: DATE
+          - name: END_DATE
+            data_type: DATE
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: STAFFUSERROLE
+        description: TODO
+        columns:
+          - name: STAFFUSERROLE_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: STAFF_USER_ID
+            data_type: NUMBER(38, 0)
+          - name: ROLE_ID
+            data_type: NUMBER(38, 0)
+          - name: ACTIVE
+            data_type: BOOLEAN
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTION
+        description: TODO
+        columns:
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_SUBSCRIPTION_TOKEN
+            data_type: TEXT
+          - name: SUBSCRIPTION_STATE
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONADDON
+        description: TODO
+        columns:
+          - name: SUBSCRIPTIONADDON_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: PLAN_ADDON_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_ADDON_PRICE_ID
+            data_type: NUMBER(38, 0)
+          - name: QTY
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONADDONPRICE
+        description: TODO
+        columns:
+          - name: SUBSCRIPTIONADDONPRICE_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: PRICE_TYPE
+            data_type: TEXT
+          - name: PRICE
+            data_type: NUMBER(18, 2)
+          - name: PRICING_DATA
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONOPTION
+        description: TODO
+        columns:
+          - name: SUBSCRIPTIONOPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: TARGET_PAYMENT_TERM
+            data_type: TEXT
+          - name: TARGET_RENEWAL_TERM
+            data_type: TEXT
+          - name: SOURCE_PAYMENT_TERM
+            data_type: TEXT
+          - name: SOURCE_RENEWAL_TERM
+            data_type: TEXT
+          - name: FEE_DISCOUNT
+            data_type: NUMBER(38, 0)
+          - name: GROUP_CODE
+            data_type: TEXT
+          - name: TARGET_PLAN_ID
+            data_type: NUMBER(38, 0)
+          - name: SOURCE_PLAN_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONOPTIONUSER
+        description: TODO
+        columns:
+          - name: EMAIL
+            data_type: TEXT
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: GROUP_CODE
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONS_V2
+        description: TODO
+        columns:
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: PLAN_ID
+            data_type: NUMBER(38, 0)
+          - name: PREVIOUS_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_STATE
+            data_type: TEXT
+          - name: SERVICE_FEE
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_START_DATE
+            data_type: TIMESTAMP_NTZ
+          - name: TRIAL_LENGTH
+            data_type: NUMBER(38, 0)
+          - name: NUMBER_OF_BILLING_CYCLES
+            data_type: NUMBER(38, 0)
+          - name: WAIT_PERIOD
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_SUBSCRIPTION_ID
+            data_type: TEXT
+          - name: SALES_REP
+            data_type: TEXT
+          - name: NOTES
+            data_type: TEXT
+          - name: SALESFORCE_OPPORTUNITY_ID
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: OLD_WORLD_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: RENEWAL_TERM_MONTHS
+            data_type: NUMBER(38, 0)
+          - name: PACKAGE_ID
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_COUPON_ID
+            data_type: TEXT
+          - name: ABSOLUTE_TRIAL_END_DATE
+            data_type: DATE
+          - name: CONTRACT_EXPIRY_PIVOT
+            data_type: TEXT
+          - name: PAYMENT_DATE_PIVOT
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONS_V2_20190930
+        description: TODO
+        columns:
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: PLAN_ID
+            data_type: NUMBER(38, 0)
+          - name: PREVIOUS_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_STATE
+            data_type: TEXT
+          - name: SERVICE_FEE
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_START_DATE
+            data_type: DATE
+          - name: TRIAL_LENGTH
+            data_type: NUMBER(38, 0)
+          - name: NUMBER_OF_BILLING_CYCLES
+            data_type: NUMBER(38, 0)
+          - name: WAIT_PERIOD
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_SUBSCRIPTION_ID
+            data_type: TEXT
+          - name: SALES_REP
+            data_type: TEXT
+          - name: NOTES
+            data_type: TEXT
+          - name: SALESFORCE_OPPORTUNITY_ID
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: OLD_WORLD_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: RENEWAL_TERM_MONTHS
+            data_type: NUMBER(38, 0)
+          - name: PACKAGE_ID
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_COUPON_ID
+            data_type: TEXT
+          - name: ABSOLUTE_TRIAL_END_DATE
+            data_type: DATE
+          - name: CONTRACT_EXPIRY_PIVOT
+            data_type: TEXT
+          - name: PAYMENT_DATE_PIVOT
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONS_V2_20191022
+        description: TODO
+        columns:
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: PLAN_ID
+            data_type: NUMBER(38, 0)
+          - name: PREVIOUS_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_STATE
+            data_type: TEXT
+          - name: SERVICE_FEE
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_START_DATE
+            data_type: DATE
+          - name: TRIAL_LENGTH
+            data_type: NUMBER(38, 0)
+          - name: NUMBER_OF_BILLING_CYCLES
+            data_type: NUMBER(38, 0)
+          - name: WAIT_PERIOD
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_SUBSCRIPTION_ID
+            data_type: TEXT
+          - name: SALES_REP
+            data_type: TEXT
+          - name: NOTES
+            data_type: TEXT
+          - name: SALESFORCE_OPPORTUNITY_ID
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: OLD_WORLD_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: RENEWAL_TERM_MONTHS
+            data_type: NUMBER(38, 0)
+          - name: PACKAGE_ID
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_COUPON_ID
+            data_type: TEXT
+          - name: ABSOLUTE_TRIAL_END_DATE
+            data_type: DATE
+          - name: CONTRACT_EXPIRY_PIVOT
+            data_type: TEXT
+          - name: PAYMENT_DATE_PIVOT
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONS_V2_LOCATION_THROUGH
+        description: TODO
+        columns:
+          - name: SUBSCRIPTIONS_LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONS_V2_LOCATION_THROUGH_SNAPSHOT
+        description: TODO
+        columns:
+          - name: SUBSCRIPTIONS_LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: LOCATION_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONS_V2_POST_MIGRATION
+        description: TODO
+        columns:
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: PLAN_ID
+            data_type: NUMBER(38, 0)
+          - name: PREVIOUS_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_STATE
+            data_type: TEXT
+          - name: SERVICE_FEE
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_START_DATE
+            data_type: TIMESTAMP_NTZ
+          - name: TRIAL_LENGTH
+            data_type: NUMBER(38, 0)
+          - name: NUMBER_OF_BILLING_CYCLES
+            data_type: NUMBER(38, 0)
+          - name: WAIT_PERIOD
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_SUBSCRIPTION_ID
+            data_type: TEXT
+          - name: SALES_REP
+            data_type: TEXT
+          - name: NOTES
+            data_type: TEXT
+          - name: SALESFORCE_OPPORTUNITY_ID
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: OLD_WORLD_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: RENEWAL_TERM_MONTHS
+            data_type: NUMBER(38, 0)
+          - name: PACKAGE_ID
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_COUPON_ID
+            data_type: TEXT
+          - name: ABSOLUTE_TRIAL_END_DATE
+            data_type: DATE
+          - name: CONTRACT_EXPIRY_PIVOT
+            data_type: TEXT
+          - name: PAYMENT_DATE_PIVOT
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+          - name: V3_ACCOUNT_ID
+            data_type: TEXT
+          - name: MIGRATED_DATE
+            data_type: DATE
+          - name: SUBSCRIPTION_REACTIVATED_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONS_V2_PRE_MIGRATION
+        description: TODO
+        columns:
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: PLAN_ID
+            data_type: NUMBER(38, 0)
+          - name: PREVIOUS_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_STATE
+            data_type: TEXT
+          - name: SERVICE_FEE
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_START_DATE
+            data_type: TIMESTAMP_NTZ
+          - name: TRIAL_LENGTH
+            data_type: NUMBER(38, 0)
+          - name: NUMBER_OF_BILLING_CYCLES
+            data_type: NUMBER(38, 0)
+          - name: WAIT_PERIOD
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_SUBSCRIPTION_ID
+            data_type: TEXT
+          - name: SALES_REP
+            data_type: TEXT
+          - name: NOTES
+            data_type: TEXT
+          - name: SALESFORCE_OPPORTUNITY_ID
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: OLD_WORLD_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: RENEWAL_TERM_MONTHS
+            data_type: NUMBER(38, 0)
+          - name: PACKAGE_ID
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_COUPON_ID
+            data_type: TEXT
+          - name: ABSOLUTE_TRIAL_END_DATE
+            data_type: DATE
+          - name: CONTRACT_EXPIRY_PIVOT
+            data_type: TEXT
+          - name: PAYMENT_DATE_PIVOT
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+          - name: MIGRATED_DATE
+            data_type: DATE
+      - name: SUBSCRIPTIONS_V2_SNAPSHOT
+        description: TODO
+        columns:
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: PLAN_ID
+            data_type: NUMBER(38, 0)
+          - name: PREVIOUS_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_STATE
+            data_type: TEXT
+          - name: SERVICE_FEE
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_START_DATE
+            data_type: TIMESTAMP_NTZ
+          - name: TRIAL_LENGTH
+            data_type: NUMBER(38, 0)
+          - name: NUMBER_OF_BILLING_CYCLES
+            data_type: NUMBER(38, 0)
+          - name: WAIT_PERIOD
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_SUBSCRIPTION_ID
+            data_type: TEXT
+          - name: SALES_REP
+            data_type: TEXT
+          - name: NOTES
+            data_type: TEXT
+          - name: SALESFORCE_OPPORTUNITY_ID
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: OLD_WORLD_SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: RENEWAL_TERM_MONTHS
+            data_type: NUMBER(38, 0)
+          - name: PACKAGE_ID
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_COUPON_ID
+            data_type: TEXT
+          - name: ABSOLUTE_TRIAL_END_DATE
+            data_type: DATE
+          - name: CONTRACT_EXPIRY_PIVOT
+            data_type: TEXT
+          - name: PAYMENT_DATE_PIVOT
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: SUBSCRIPTION_V2_MIGRATION
+        description: TODO
+        columns:
+          - name: SUBSCRIPTION_MIGRATION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: CONTRACT_V1_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: TRANSACTION
+        description: TODO
+        columns:
+          - name: TRANSACTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: INVOICE_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: PROVIDER_ID
+            data_type: TEXT
+          - name: DATE
+            data_type: DATE
+          - name: ACTION
+            data_type: TEXT
+          - name: AMOUNT_IN_CENTS
+            data_type: NUMBER(38, 0)
+          - name: STATUS
+            data_type: TEXT
+          - name: SALESFORCE_ID
+            data_type: TEXT
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: USAGEBILLINGINFO
+        description: TODO
+        columns:
+          - name: USAGEBILLING_ID
+            data_type: NUMBER(38, 0)
+          - name: CREATED
+            data_type: TIMESTAMP_NTZ
+          - name: UPDATED
+            data_type: TIMESTAMP_NTZ
+          - name: USAGE_TYPE
+            data_type: TEXT
+          - name: SOFT_LIMIT
+            data_type: NUMBER(18, 2)
+          - name: HARD_LIMIT
+            data_type: NUMBER(18, 2)
+          - name: UNIT_COST_OVER_LIMIT
+            data_type: NUMBER(18, 2)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: USAGEBILLINGINFO_ACCOUNT_THROUGH
+        description: TODO
+        columns:
+          - name: USAGEBILLINGINFO_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: USAGEBILLINGINFO_ID
+            data_type: NUMBER(38, 0)
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: USAGEBILLINGINFO_PACKAGE_THROUGH
+        description: TODO
+        columns:
+          - name: USAGEBILLINGINFO_PACKAGE_ID
+            data_type: NUMBER(38, 0)
+          - name: USAGEBILLINGINFO_ID
+            data_type: NUMBER(38, 0)
+          - name: PACKAGE_ID
+            data_type: NUMBER(38, 0)
+          - name: ASOF_DATE
+            data_type: DATE
+      - name: V2_TO_V3_MIGRATED_SUBSCRIPTIONS
+        description: TODO
+        columns:
+          - name: ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: BILLING_ACCOUNT_ID
+            data_type: NUMBER(38, 0)
+          - name: SUBSCRIPTION_ID
+            data_type: NUMBER(38, 0)
+          - name: CONTRACT_ID
+            data_type: NUMBER(38, 0)
+          - name: SALESFORCE_OPPORTUNITY_ID
+            data_type: TEXT
+          - name: SUBSCRIPTION_STATE
+            data_type: TEXT
+          - name: SERVICE_FEE
+            data_type: NUMBER(38, 0)
+          - name: RECURLY_SUBSCRIPTION_ID_V2
+            data_type: TEXT
+          - name: RECURLY_SUBSCRIPTION_ID_V3
+            data_type: TEXT
+          - name: MIGRATED_DATE
+            data_type: DATE

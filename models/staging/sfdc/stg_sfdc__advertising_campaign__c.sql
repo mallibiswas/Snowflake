@@ -1,0 +1,2 @@
+SELECT *
+FROM {{ source('SFDC', 'ADVERTISING_CAMPAIGN__C') }}

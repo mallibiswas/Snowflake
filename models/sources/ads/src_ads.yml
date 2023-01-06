@@ -1,0 +1,297 @@
+version: 2
+
+models:
+  - name: src_ads__accounts
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__ads
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__adsbiz
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__ad_insights
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__ad_insight_custom_conversions
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__ams_campaigns
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__ams_campaign_credits
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__campaigns
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__creatives
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__custom_conversions
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__insights
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__insights_custom_conversions
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__liveramp_advertisers
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__liveramp_ad_groups
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__liveramp_campaigns
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__liveramp_creatives
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__liveramp_daily_walkthrough_impressions
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__liveramp_insight_creatives
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__liveramp_processed_exports
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__offline_event_sets
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__offline_event_set_conversions
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__pages
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__pages_hours
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__pages_instagram_accounts
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__pages_verticals
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__sample_rates
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__sets
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__set_insights
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__set_insights_custom_conversions
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__uploaded_sightings
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__uploaded_sightings_custom_data
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__uploaded_sightings_liveramp
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__zenreach_ad_accounts
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__zenreach_ad_account_campaigns
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__zenreach_ad_account_FB_configurations
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__zenreach_ad_account_locations
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__zenreach_ad_set_goals
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__zenreach_campaigns
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__zenreach_campaign_records
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__zenreach_campaign_record_locations
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__zenreach_campaign_record_margins
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_ads__zenreach_campaign_visibilities
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36

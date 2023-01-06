@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: BUSINESS_PROFILES
+    description: ZENALYTICS Business Profiles Schema
+    database: "{{ 'ZENALYTICS' if target.database == 'ZENPROD' else 'ZENDEV' }}"
+    tables:
+      - name: D_BUSINESS_GEOCODE
+        description: Geo coordinates for businesses

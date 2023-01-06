@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: stg_presence__finished_sightings
+    description: finished sightings
+    columns:
+      - name: CLASSIFICATION
+        type: VARCHAR(16777216)
+      - name: START_TIME
+        type: TIMESTAMP
+      - name: END_TIME
+        type: TIMESTAMP
+      - name: BLIP_COUNT
+        type: NUMBER(38,0)
+      - name: MAX_RSSI
+        type: INTEGER
+      - name: MIN_RSSI
+        type: INTEGER
+      - name: AVG_RSSI
+        type: FLOAT
+      - name: DWELL_TIME
+        type: FLOAT
+      - name: ANONYMOUS_CLIENT_MAC_INFO
+        type: ARRAY
+      - name: CLIENT_MAC_INFO
+        type: ARRAY
+      - name: CONTACT_ID
+        type: VARCHAR(16777216)
+      - name: CONTACT_INFO
+        type: VARCHAR(16777216)
+      - name: CONTACT_METHOD
+        type: VARCHAR(16777216)
+      - name: LOCATION_ID
+        type: VARCHAR(16777216)
+      - name: BUSINESS_ID
+        type: VARCHAR(16777216)
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+      - name: PARENT_ID
+        type: VARCHAR(16777216)
+      - name: KNOWN_TO_ZENREACH
+        type: bool
+      - name: KNOWN_TO_MERCHANT_ACCOUNT
+        type: bool
+      - name: KNOWN_TO_MERCHANT_LOCATION
+        type: bool
+      - name: PRIVACY_VERSION
+        type: VARCHAR(16777216)
+      - name: TERMS_VERSION
+        type: VARCHAR(16777216)
+      - name: BUNDLE_VERSION
+        type: VARCHAR(16777216)
+      - name: IS_EMPLOYEE
+        type: bool
+      - name: PORTAL_BLIP_COUNT
+        type: NUMBER(38,0)
+  - name: stg_presence__location_blips
+    description: location_blips
+    columns:
+      - name: ClIENT_MAC
+        type: VARCHAR(16777216)
+        tests:
+          - not_null:
+              severity: warn
+      - name: SENSOR_MAC
+        type: VARCHAR(16777216)
+      - name: SENSOR_TYPE
+        type: VARCHAR(16777216)
+      - name: SERVER_TIME
+        type: NUMBER(38,0)
+      - name: TS
+        type: NUMBER(38)
+      - name: VALUE
+        type: VARCHAR(16777216)
+  - name: stg_presence__portal_blips
+    description: portal_blips
+    columns:
+      - name: ClIENT_MAC
+        type: VARCHAR(16777216)
+      - name: SENSOR_MAC
+        type: VARCHAR(16777216)
+      - name: SENSOR_TYPE
+        type: VARCHAR(16777216)
+      - name: SERVER_TIME
+        type: NUMBER(38,0)
+      - name: TS
+        type: NUMBER(38)
+      - name: VALUE
+        type: VARCHAR(16777216)

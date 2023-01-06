@@ -1,0 +1,2721 @@
+version: 2
+
+sources:
+  - name: SFDC
+    database: "{{ 'ZENALYTICS' if target.database == 'ZENPROD' else 'ZENDEV' }}"
+    description: This is a copy of data loaded through stitch from SalesForce (https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/data_model.htm)
+    freshness:
+      error_after:
+        count: 36
+        period: hour
+    loaded_at_field: _SDC_RECEIVED_AT
+    tables:
+      - name: OPPORTUNITY
+        description: Represents an opportunity, which is a sale or pending deal.
+        columns:
+          - name: ACCOUNTID
+            data_type: TEXT
+          - name: ADDITIONAL_QUALIFYING_INFORMATION__C
+            data_type: TEXT
+          - name: ADJUSTED_REVENUE__C
+            data_type: FLOAT
+          - name: AMOUNT
+            data_type: FLOAT
+          - name: ASSIGNMENT__C
+            data_type: TEXT
+          - name: AVERAGE_GOOGLE_RATING__C
+            data_type: FLOAT
+          - name: AVERAGE_YELP_RATING__C
+            data_type: FLOAT
+          - name: CALENDLY__C
+            data_type: BOOLEAN
+          - name: CAMPAIGNID
+            data_type: TEXT
+          - name: CITY__C
+            data_type: TEXT
+          - name: CLOSEDATE
+            data_type: TIMESTAMP_TZ
+          - name: CONTACT_ROLE__C
+            data_type: TEXT
+          - name: CONTRACT_EFFECTIVE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: CONTRACT_SENT_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: CONTRACT_SIGNED_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: CREATED_BY_PARTNER__C
+            data_type: BOOLEAN
+          - name: CREATE_TIME__C
+            data_type: TEXT
+          - name: CURRENTLY_USING_FACEBOOK__C
+            data_type: TEXT
+          - name: CURRENT_MARKETING_PLATFORMS__C
+            data_type: TEXT
+          - name: DASHBOARD_WALKTHROUGH_STATUS__C
+            data_type: TEXT
+          - name: DATE_OF_CLOSED_WON_LOST__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_STAGE_1__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_STAGE_2__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_STAGE_3B__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_STAGE_3__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_STAGE_4__C
+            data_type: TIMESTAMP_TZ
+          - name: DAYS_IN_STAGE_0__C
+            data_type: FLOAT
+          - name: DAYS_IN_STAGE_1__C
+            data_type: FLOAT
+          - name: DAYS_IN_STAGE_2__C
+            data_type: FLOAT
+          - name: DAYS_IN_STAGE_3A__C
+            data_type: FLOAT
+          - name: DAYS_IN_STAGE_3B__C
+            data_type: FLOAT
+          - name: DAYS_IN_STAGE_3__C
+            data_type: FLOAT
+          - name: DAYS_IN_STAGE_4__C
+            data_type: FLOAT
+          - name: DAYS_OPEN__C
+            data_type: FLOAT
+          - name: DESCRIPTION
+            data_type: TEXT
+          - name: DESCRIPTION__C
+            data_type: TEXT
+          - name: DISCOUNT_OFFERED__C
+            data_type: BOOLEAN
+          - name: DISCOVERY_STATUS__C
+            data_type: TEXT
+          - name: DOES_PAID_ADVERTISING_TODAY__C
+            data_type: BOOLEAN
+          - name: EMAIL_COLLECTION_TYPE__C
+            data_type: TEXT
+          - name: EMAIL_MARKETING_PROVIDER__C
+            data_type: TEXT
+          - name: EMAIL_MARKETING__C
+            data_type: BOOLEAN
+          - name: END_PRICE__C
+            data_type: FLOAT
+          - name: EVALUATION_PERIOD__C
+            data_type: TEXT
+          - name: FIRST_DISCOVERY_CALL_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: FIRST_SCHEDULED_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: FIRST_SCHEDULED_PITCH_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: FISCAL
+            data_type: TEXT
+          - name: FISCALQUARTER
+            data_type: NUMBER(38, 0)
+          - name: FISCALYEAR
+            data_type: NUMBER(38, 0)
+          - name: FOLLOW_UP_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: FORECASTCATEGORY
+            data_type: TEXT
+          - name: FORECASTCATEGORYNAME
+            data_type: TEXT
+          - name: HARDWARE_FEE__C
+            data_type: FLOAT
+          - name: HASOPENACTIVITY
+            data_type: BOOLEAN
+          - name: HASOPPORTUNITYLINEITEM
+            data_type: BOOLEAN
+          - name: HASOVERDUETASK
+            data_type: BOOLEAN
+          - name: ID
+            data_type: TEXT
+          - name: INITIAL_PITCH_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: ISCLOSED
+            data_type: BOOLEAN
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: ISEXCLUDEDFROMTERRITORY2FILTER
+            data_type: BOOLEAN
+          - name: ISWON
+            data_type: BOOLEAN
+          - name: KICK_OFF_CALL_STATUS__C
+            data_type: TEXT
+          - name: LASTACTIVITYDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LAST_PITCH_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: LAST_WEBINAR_COMPLETED_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: LEADSOURCE
+            data_type: TEXT
+          - name: LOST_REASON__C
+            data_type: TEXT
+          - name: LOST_SUB_REASONS__C
+            data_type: TEXT
+          - name: MARKETING_LEAD__C
+            data_type: BOOLEAN
+          - name: MONTHLY_ADVERTISING_SPEND__C
+            data_type: FLOAT
+          - name: MOST_VALUABLE_REP_PLATFORM__C
+            data_type: TEXT
+          - name: MP_LIST__C
+            data_type: BOOLEAN
+          - name: MRR__C
+            data_type: FLOAT
+          - name: NAME
+            data_type: TEXT
+          - name: NEW_OPPORTUNITY_ID__C
+            data_type: TEXT
+          - name: NEXTSTEP
+            data_type: TEXT
+          - name: NO_OF_LOCATIONS__C
+            data_type: FLOAT
+          - name: OF_DASHBOARD_WALKTHROUGH_RESCHEDULES__C
+            data_type: FLOAT
+          - name: OF_DM_INVOLVED__C
+            data_type: FLOAT
+          - name: OF_DWT_COMPLETED__C
+            data_type: FLOAT
+          - name: OF_DWT_NO_SHOWS__C
+            data_type: FLOAT
+          - name: OF_EMAILS_COLLECTED__C
+            data_type: FLOAT
+          - name: OF_KICK_OFF_COMPLETED__C
+            data_type: FLOAT
+          - name: OF_KICK_OFF_NO_SHOWS__C
+            data_type: FLOAT
+          - name: OF_KICK_OFF_RESCHEDULES__C
+            data_type: FLOAT
+          - name: OF_OPPORTUNITY_LOCATIONS__C
+            data_type: FLOAT
+          - name: OF_PITCHES_COMPLETED__C
+            data_type: FLOAT
+          - name: OF_PITCHES_NO_SHOWED__C
+            data_type: FLOAT
+          - name: OF_PITCHES_RESCHEDULED__C
+            data_type: FLOAT
+          - name: OF_POSTS_LAST_30_DAYS__C
+            data_type: FLOAT
+          - name: OF_PRODUCTS__C
+            data_type: FLOAT
+          - name: OF_WEBINAR_COMPLETED__C
+            data_type: FLOAT
+          - name: OF_WEBINAR_NO_SHOWS__C
+            data_type: FLOAT
+          - name: OF_WEBINAR_RESCHEDULED__C
+            data_type: FLOAT
+          - name: ONBOARDING_MANAGER__C
+            data_type: TEXT
+          - name: OPPORTUNITY_ID__C
+            data_type: TEXT
+          - name: OPPORTUNITY_NOTES__C
+            data_type: TEXT
+          - name: OPPORTUNITY_PHASE__C
+            data_type: TEXT
+          - name: OPP_PITCH_STATUS__C
+            data_type: TEXT
+          - name: OWNERID
+            data_type: TEXT
+          - name: OWNER_MANAGER__C
+            data_type: TEXT
+          - name: PARENT_OPPORTUNITY__C
+            data_type: TEXT
+          - name: PILOT_LENGTH__C
+            data_type: FLOAT
+          - name: PITCH_COMPLETED__C
+            data_type: BOOLEAN
+          - name: PITCH_STATUS__C
+            data_type: TEXT
+          - name: PROBABILITY
+            data_type: FLOAT
+          - name: PROSPECT_ROLE__C
+            data_type: TEXT
+          - name: REASON_FOR_DISCOUNT__C
+            data_type: TEXT
+          - name: REASON_FOR_TRIAL__C
+            data_type: TEXT
+          - name: RECORDTYPEID
+            data_type: TEXT
+          - name: ROLLUP_ALLLOST__C
+            data_type: FLOAT
+          - name: ROLLUP_ALLNOSHOWS__C
+            data_type: FLOAT
+          - name: ROLLUP_ALLPITCHED__C
+            data_type: FLOAT
+          - name: ROLLUP_ALLRESCHEDULED__C
+            data_type: FLOAT
+          - name: ROLLUP_ALLSCHEDULED__C
+            data_type: FLOAT
+          - name: ROUTERS__C
+            data_type: TEXT
+          - name: SERVICE_FEE_PER_LOCATION__C
+            data_type: FLOAT
+          - name: SIZE__C
+            data_type: TEXT
+          - name: SOCIAL_MEDIA_PLATFORMS__C
+            data_type: TEXT
+          - name: SOURCE__C
+            data_type: TEXT
+          - name: STAGENAME
+            data_type: TEXT
+          - name: STAGE_1_READY__C
+            data_type: BOOLEAN
+          - name: STAGE_1_REQUIRED_FIELDS__C
+            data_type: TEXT
+          - name: STAGE_2_READY__C
+            data_type: BOOLEAN
+          - name: STAGE_2_REQUIRED_FIELDS__C
+            data_type: TEXT
+          - name: STAGE_3A_READY__C
+            data_type: BOOLEAN
+          - name: STAGE_3A_REQUIRED_FIELDS__C
+            data_type: TEXT
+          - name: STAGE_3B_READY__C
+            data_type: BOOLEAN
+          - name: STAGE_4_READY__C
+            data_type: BOOLEAN
+          - name: STAGE_WHEN_LOST__C
+            data_type: TEXT
+          - name: START_PRICE__C
+            data_type: FLOAT
+          - name: STATE__C
+            data_type: TEXT
+          - name: SUB_OPPORTUNITY__C
+            data_type: BOOLEAN
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: TEST_OPP__C
+            data_type: TEXT
+          - name: TOTAL_ONLINE_AUDIENCE__C
+            data_type: FLOAT
+          - name: TOTAL_SERVICE_FEE__C
+            data_type: FLOAT
+          - name: TRIAL_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: TRIAL_OFFERED__C
+            data_type: BOOLEAN
+          - name: TYPE
+            data_type: TEXT
+          - name: TYPE_OF_PAID_ADVERTISING__C
+            data_type: TEXT
+          - name: WEBINAR_STATUS__C
+            data_type: TEXT
+          - name: WHO_RUNS_THE_ADVERTISING__C
+            data_type: TEXT
+          - name: YELP_IS_CLAIMED__C
+            data_type: TEXT
+          - name: YELP_STARS__C
+            data_type: TEXT
+          - name: ZRC_CONTRACT_LENGTH__C
+            data_type: FLOAT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: CONTRACT__C
+            data_type: TEXT
+          - name: CONFERENCE__C
+            data_type: TEXT
+          - name: ZR_SENT_BY__C
+            data_type: TEXT
+          - name: LAST_KICK_OFF_CALL_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: EFFECTIVE_DATE__C
+            data_type: TEXT
+          - name: CURRENTLY_USING_TWITTER__C
+            data_type: TEXT
+          - name: WI_FI_PROVIDER__C
+            data_type: TEXT
+          - name: PARTNER__C
+            data_type: TEXT
+          - name: FIRST_DASHBOARD_WALKTHROUGH_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: LICENSEE_ADDRESS__C
+            data_type: TEXT
+          - name: SUBSCRIPTION_TERM__C
+            data_type: TEXT
+          - name: NO_OF_TWITTER_FOLLOWERS__C
+            data_type: TEXT
+          - name: ADDITIONAL_INFORMATION__C
+            data_type: TEXT
+          - name: PILOT_SUCCESS_METRICS__C
+            data_type: TEXT
+          - name: REASON_FOR_DASHBOARD_WALKTHROUGH__C
+            data_type: TEXT
+          - name: SALES_CHANNEL__C
+            data_type: TEXT
+          - name: WHY_DO_THEY_NOT_ADVERTISE__C
+            data_type: TEXT
+          - name: SUBSCRIPTION_PLAN__C
+            data_type: TEXT
+          - name: FACEBOOK_URL__C
+            data_type: TEXT
+          - name: TRADE_SHOW__C
+            data_type: TEXT
+          - name: ZRC_SIGN_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: NO_OF_FACEBOOK_LIKES__C
+            data_type: TEXT
+          - name: YELP_REVIEWS__C
+            data_type: FLOAT
+          - name: FEES_PAYMENT_NUMBEROFLOCATIONS__C
+            data_type: TEXT
+          - name: CONTRACT_DURATION__C
+            data_type: FLOAT
+          - name: ACCOUNT_MANAGER__C
+            data_type: TEXT
+          - name: LASTREFERENCEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTVIEWEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: PRICEBOOK2ID
+            data_type: TEXT
+          - name: TOTALOPPORTUNITYQUANTITY
+            data_type: FLOAT
+          - name: SYNCEDQUOTEID
+            data_type: TEXT
+          - name: EXPECTEDREVENUE
+            data_type: FLOAT
+          - name: SALESLOFT1__PRIMARY_CONTACT__C
+            data_type: TEXT
+          - name: SALESLOFT1__MOST_RECENT_LAST_COMPLETED_STEP__C
+            data_type: FLOAT
+          - name: SALESLOFT1__MOST_RECENT_CADENCE_NAME__C
+            data_type: TEXT
+          - name: LOCATION_PRODUCTS__C
+            data_type: FLOAT
+          - name: PLATFORM_PRODUCTS__C
+            data_type: FLOAT
+          - name: ADS_PRODUCTS__C
+            data_type: FLOAT
+          - name: INSERTION_ORDER_MRR__C
+            data_type: FLOAT
+          - name: MONTHLY_SUBSCRIPTION_ADS_FEES__C
+            data_type: FLOAT
+          - name: PLATFORM_MRR__C
+            data_type: FLOAT
+          - name: TOTAL_MRR__C
+            data_type: FLOAT
+          - name: SUBSCRIPTION_ADS_MRR__C
+            data_type: FLOAT
+          - name: OWNER_ACTIVE__C
+            data_type: BOOLEAN
+          - name: OF_QUOTES__C
+            data_type: FLOAT
+      - name: OPPORTUNITYLINEITEM
+        description: Represents an opportunity line item, which is a member of the list of Product2 products associated with an Opportunity.
+        columns:
+          - name: BILLING_FREQUENCY__C
+            data_type: TEXT
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: DESCRIPTION
+            data_type: TEXT
+          - name: DISCOUNT
+            data_type: FLOAT
+          - name: ID
+            data_type: TEXT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LISTPRICE
+            data_type: FLOAT
+          - name: NAME
+            data_type: TEXT
+          - name: OPPORTUNITYID
+            data_type: TEXT
+          - name: ORDER_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: PRICEBOOKENTRYID
+            data_type: TEXT
+          - name: PRODUCT2ID
+            data_type: TEXT
+          - name: PRODUCTCODE
+            data_type: TEXT
+          - name: PRODUCT_CATEGORY__C
+            data_type: TEXT
+          - name: PRODUCT_FAMILY__C
+            data_type: TEXT
+          - name: PRODUCT_SKU__C
+            data_type: TEXT
+          - name: QUANTITY
+            data_type: FLOAT
+          - name: SERVICEDATE
+            data_type: TIMESTAMP_TZ
+          - name: SUBTOTAL
+            data_type: FLOAT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: TOTALPRICE
+            data_type: FLOAT
+          - name: UNITPRICE
+            data_type: FLOAT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: INSERTION_ORDER_MRR__C
+            data_type: FLOAT
+          - name: TEMP_UPDATE__C
+            data_type: BOOLEAN
+          - name: INTERNAL_DESCRIPTION__C
+            data_type: TEXT
+      - name: USER
+        description: Represents a user in your organization.
+        columns:
+          - name: ABOUTME
+            data_type: TEXT
+          - name: ACCUVITCONFEXT__CONCALL_NUMBER__C
+            data_type: TEXT
+          - name: ALIAS
+            data_type: TEXT
+          - name: AM_BACKUP_AM__C
+            data_type: TEXT
+          - name: BADGETEXT
+            data_type: TEXT
+          - name: BANNERPHOTOURL
+            data_type: TEXT
+          - name: CALLCENTERID
+            data_type: TEXT
+          - name: CITY
+            data_type: TEXT
+          - name: COMMUNITYNICKNAME
+            data_type: TEXT
+          - name: COMPANYNAME
+            data_type: TEXT
+          - name: COUNTRY
+            data_type: TEXT
+          - name: COUNTRYCODE
+            data_type: TEXT
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: DEFAULTGROUPNOTIFICATIONFREQUENCY
+            data_type: TEXT
+          - name: DELEGATEDAPPROVERID
+            data_type: TEXT
+          - name: DEPARTMENT
+            data_type: TEXT
+          - name: DIGESTFREQUENCY
+            data_type: TEXT
+          - name: DISTRIBUTION_MAX__C
+            data_type: FLOAT
+          - name: DISTRIBUTION_QUEUES__C
+            data_type: TEXT
+          - name: DIVISION
+            data_type: TEXT
+          - name: DSFS__DSPROSFMEMBERSHIPSTATUS__C
+            data_type: TEXT
+          - name: DSFS__DSPROSFUSERNAME__C
+            data_type: TEXT
+          - name: EMAIL
+            data_type: TEXT
+          - name: EMAILENCODINGKEY
+            data_type: TEXT
+          - name: EMAILPREFERENCESAUTOBCC
+            data_type: BOOLEAN
+          - name: EMAILPREFERENCESAUTOBCCSTAYINTOUCH
+            data_type: BOOLEAN
+          - name: EMAILPREFERENCESSTAYINTOUCHREMINDER
+            data_type: BOOLEAN
+          - name: EMPLOYEENUMBER
+            data_type: TEXT
+          - name: EXTENSION
+            data_type: TEXT
+          - name: FAX
+            data_type: TEXT
+          - name: FIRSTNAME
+            data_type: TEXT
+          - name: FORECASTENABLED
+            data_type: BOOLEAN
+          - name: FULLPHOTOURL
+            data_type: TEXT
+          - name: FULL_NAME__C
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: ISACTIVE
+            data_type: BOOLEAN
+          - name: ISEXTINDICATORVISIBLE
+            data_type: BOOLEAN
+          - name: ISPORTALENABLED
+            data_type: BOOLEAN
+          - name: ISPROFILEPHOTOACTIVE
+            data_type: BOOLEAN
+          - name: LANGUAGELOCALEKEY
+            data_type: TEXT
+          - name: LASTLOGINDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTNAME
+            data_type: TEXT
+          - name: LASTPASSWORDCHANGEDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTREFERENCEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTVIEWEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LOCALESIDKEY
+            data_type: TEXT
+          - name: MANAGERID
+            data_type: TEXT
+          - name: MEDIUMBANNERPHOTOURL
+            data_type: TEXT
+          - name: MEDIUMPHOTOURL
+            data_type: TEXT
+          - name: MOBILEPHONE
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: PHONE
+            data_type: TEXT
+          - name: POSTALCODE
+            data_type: TEXT
+          - name: PROFILEID
+            data_type: TEXT
+          - name: RECEIVESADMININFOEMAILS
+            data_type: BOOLEAN
+          - name: RECEIVESINFOEMAILS
+            data_type: BOOLEAN
+          - name: SALES_CHANNEL__C
+            data_type: TEXT
+          - name: SENDEREMAIL
+            data_type: TEXT
+          - name: SENDERNAME
+            data_type: TEXT
+          - name: SIGNATURE
+            data_type: TEXT
+          - name: SMALLBANNERPHOTOURL
+            data_type: TEXT
+          - name: SMALLPHOTOURL
+            data_type: TEXT
+          - name: START_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: STATE
+            data_type: TEXT
+          - name: STATECODE
+            data_type: TEXT
+          - name: STREET
+            data_type: TEXT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: TALKDESK__ISLICENSED__C
+            data_type: BOOLEAN
+          - name: TIMEZONESIDKEY
+            data_type: TEXT
+          - name: TITLE
+            data_type: TEXT
+          - name: USERNAME
+            data_type: TEXT
+          - name: USERPERMISSIONSAVANTGOUSER
+            data_type: BOOLEAN
+          - name: USERPERMISSIONSCALLCENTERAUTOLOGIN
+            data_type: BOOLEAN
+          - name: USERPERMISSIONSCHATTERANSWERSUSER
+            data_type: BOOLEAN
+          - name: USERPERMISSIONSINTERACTIONUSER
+            data_type: BOOLEAN
+          - name: USERPERMISSIONSKNOWLEDGEUSER
+            data_type: BOOLEAN
+          - name: USERPERMISSIONSMARKETINGUSER
+            data_type: BOOLEAN
+          - name: USERPERMISSIONSMOBILEUSER
+            data_type: BOOLEAN
+          - name: USERPERMISSIONSOFFLINEUSER
+            data_type: BOOLEAN
+          - name: USERPERMISSIONSSFCONTENTUSER
+            data_type: BOOLEAN
+          - name: USERPERMISSIONSSUPPORTUSER
+            data_type: BOOLEAN
+          - name: USERPREFERENCESACTIVITYREMINDERSPOPUP
+            data_type: BOOLEAN
+          - name: USERPREFERENCESAPEXPAGESDEVELOPERMODE
+            data_type: BOOLEAN
+          - name: USERPREFERENCESCACHEDIAGNOSTICS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESCREATELEXAPPSWTSHOWN
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLEALLFEEDSEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLEBOOKMARKEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLECHANGECOMMENTEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLEENDORSEMENTEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLEFILESHARENOTIFICATIONSFORAPI
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLEFOLLOWERSEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLELATERCOMMENTEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLELIKEEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLEMENTIONSPOSTEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLEMESSAGEEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLEPROFILEPOSTEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISABLESHAREPOSTEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISCOMMENTAFTERLIKEEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISMENTIONSCOMMENTEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESDISPROFPOSTCOMMENTEMAIL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESENABLEAUTOSUBFORFEEDS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESEVENTREMINDERSCHECKBOXDEFAULT
+            data_type: BOOLEAN
+          - name: USERPREFERENCESEXCLUDEMAILAPPATTACHMENTS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESFAVORITESSHOWTOPFAVORITES
+            data_type: BOOLEAN
+          - name: USERPREFERENCESFAVORITESWTSHOWN
+            data_type: BOOLEAN
+          - name: USERPREFERENCESGLOBALNAVBARWTSHOWN
+            data_type: BOOLEAN
+          - name: USERPREFERENCESGLOBALNAVGRIDMENUWTSHOWN
+            data_type: BOOLEAN
+          - name: USERPREFERENCESHIDEBIGGERPHOTOCALLOUT
+            data_type: BOOLEAN
+          - name: USERPREFERENCESHIDECHATTERONBOARDINGSPLASH
+            data_type: BOOLEAN
+          - name: USERPREFERENCESHIDECSNDESKTOPTASK
+            data_type: BOOLEAN
+          - name: USERPREFERENCESHIDECSNGETCHATTERMOBILETASK
+            data_type: BOOLEAN
+          - name: USERPREFERENCESHIDEENDUSERONBOARDINGASSISTANTMODAL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESHIDELIGHTNINGMIGRATIONMODAL
+            data_type: BOOLEAN
+          - name: USERPREFERENCESHIDES1BROWSERUI
+            data_type: BOOLEAN
+          - name: USERPREFERENCESHIDESECONDCHATTERONBOARDINGSPLASH
+            data_type: BOOLEAN
+          - name: USERPREFERENCESHIDESFXWELCOMEMAT
+            data_type: BOOLEAN
+          - name: USERPREFERENCESLIGHTNINGEXPERIENCEPREFERRED
+            data_type: BOOLEAN
+          - name: USERPREFERENCESPATHASSISTANTCOLLAPSED
+            data_type: BOOLEAN
+          - name: USERPREFERENCESRECORDHOMERESERVEDWTSHOWN
+            data_type: BOOLEAN
+          - name: USERPREFERENCESRECORDHOMESECTIONCOLLAPSEWTSHOWN
+            data_type: BOOLEAN
+          - name: USERPREFERENCESREMINDERSOUNDOFF
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWCITYTOEXTERNALUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWCITYTOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWCOUNTRYTOEXTERNALUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWCOUNTRYTOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWEMAILTOEXTERNALUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWEMAILTOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWFAXTOEXTERNALUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWFAXTOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWMANAGERTOEXTERNALUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWMANAGERTOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWMOBILEPHONETOEXTERNALUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWMOBILEPHONETOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWPOSTALCODETOEXTERNALUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWPOSTALCODETOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWPROFILEPICTOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWSTATETOEXTERNALUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWSTATETOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWSTREETADDRESSTOEXTERNALUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWSTREETADDRESSTOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWTITLETOEXTERNALUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWTITLETOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWWORKPHONETOEXTERNALUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSHOWWORKPHONETOGUESTUSERS
+            data_type: BOOLEAN
+          - name: USERPREFERENCESSORTFEEDBYCOMMENT
+            data_type: BOOLEAN
+          - name: USERPREFERENCESTASKREMINDERSCHECKBOXDEFAULT
+            data_type: BOOLEAN
+          - name: USERROLEID
+            data_type: TEXT
+          - name: USERTYPE
+            data_type: TEXT
+          - name: USER_S_MANAGER__C
+            data_type: TEXT
+          - name: ZINTERNALPRODUCTASSIGNMENT__C
+            data_type: TEXT
+          - name: ZPARTNERPRODUCTASSIGNMENT__C
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: CENTIFY__USERID__C
+            data_type: TEXT
+          - name: XVOYANT__FUNCTIONALGROUPID__C
+            data_type: TEXT
+          - name: XVOYANT__ISATMUSER__C
+            data_type: BOOLEAN
+          - name: PI__CAN_VIEW_NOT_ASSIGNED_PROSPECTS__C
+            data_type: BOOLEAN
+          - name: USERPREFERENCESPREVIEWLIGHTNING
+            data_type: BOOLEAN
+          - name: DASCOOPCOMPOSER__PROFILE_ID__C
+            data_type: TEXT
+          - name: DASCOOPCOMPOSER__IS_UNRESOLVED_ITEMS_AGENT__C
+            data_type: BOOLEAN
+      - name: ACCOUNT
+        description: Represents an individual account, which is an organization or person involved with your business (such as customers, competitors, and partners).
+        columns:
+          - name: ACCOUNTSOURCE
+            data_type: TEXT
+          - name: ACCOUNT_OWNER_ACTIVE__C
+            data_type: BOOLEAN
+          - name: ACCOUNT_RECORD_TYPE_CONVERSION__C
+            data_type: TEXT
+          - name: ACCOUNT_SOURCE__C
+            data_type: TEXT
+          - name: ACCOUNT_STATUS__C
+            data_type: TEXT
+          - name: ACCOUNT_VETTED__C
+            data_type: BOOLEAN
+          - name: ACTIVITY_HISTORY__C
+            data_type: TEXT
+          - name: ACTUAL_TRIAL_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: ADDRESS__C
+            data_type: TEXT
+          - name: ALCOHOL_TYPE__C
+            data_type: TEXT
+          - name: AMS_ACCOUNT_STATE__C
+            data_type: TEXT
+          - name: AMS_CLOSE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: AMS_EXPIRATION_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: AMS_ID__C
+            data_type: TEXT
+          - name: AMS_LOCATION_STATE__C
+            data_type: TEXT
+          - name: AMS_ORIGINAL_MONTHLY_SERVICE_FEE__C
+            data_type: FLOAT
+          - name: AMS_ORIGINAL_PILOT_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: AMS_ORIGINAL_TOTAL_HARDWARE__C
+            data_type: FLOAT
+          - name: AMS_PAYMENT_TERM__C
+            data_type: TEXT
+          - name: AMS_PILOT_LENGTH__C
+            data_type: FLOAT
+          - name: AM_MANAGER__C
+            data_type: TEXT
+          - name: AM_ON_BOARDING_INFORMATION__C
+            data_type: TEXT
+          - name: AM_PRIORITY_NOTES__C
+            data_type: TEXT
+          - name: APPEALING_BRAND__C
+            data_type: TEXT
+          - name: AP_LOCATION__C
+            data_type: TEXT
+          - name: ARCGATE_REMARKS__C
+            data_type: TEXT
+          - name: ASSIGNMENT__C
+            data_type: TEXT
+          - name: AUTH_METHODS__C
+            data_type: TEXT
+          - name: AUTO_EMAILS__C
+            data_type: FLOAT
+          - name: AVERAGE_EMAILS_PER_DAY__C
+            data_type: FLOAT
+          - name: AVERAGE_NUMBER_OF_SEATS__C
+            data_type: FLOAT
+          - name: AVERAGE_TICKET__C
+            data_type: FLOAT
+          - name: AVG_EMAILS_PER_DAY__C
+            data_type: FLOAT
+          - name: AVG_UNIT_VOLUME_SALES_IN_MILLIONS__C
+            data_type: FLOAT
+          - name: BILLINGADDRESS
+            data_type: VARIANT
+          - name: BILLINGCITY
+            data_type: TEXT
+          - name: BILLINGCOUNTRY
+            data_type: TEXT
+          - name: BILLINGCOUNTRYCODE
+            data_type: TEXT
+          - name: BILLINGGEOCODEACCURACY
+            data_type: TEXT
+          - name: BILLINGLATITUDE
+            data_type: FLOAT
+          - name: BILLINGLONGITUDE
+            data_type: FLOAT
+          - name: BILLINGPOSTALCODE
+            data_type: TEXT
+          - name: BILLINGSTATE
+            data_type: TEXT
+          - name: BILLINGSTATECODE
+            data_type: TEXT
+          - name: BILLINGSTREET
+            data_type: TEXT
+          - name: BILLING_STATUS__C
+            data_type: TEXT
+          - name: BLASTS_DELIVERED__C
+            data_type: FLOAT
+          - name: BLASTS_SENT__C
+            data_type: FLOAT
+          - name: BLAST_MESSAGES_SENT__C
+            data_type: FLOAT
+          - name: BRICK_AND_MORTAR_LOCATION__C
+            data_type: BOOLEAN
+          - name: BUSINESS_ID__C
+            data_type: TEXT
+          - name: BUSINESS_OWNER_NAME__C
+            data_type: TEXT
+          - name: BUSINESS_VERTICAL__C
+            data_type: TEXT
+          - name: CAMPAIGN__C
+            data_type: TEXT
+          - name: CHECK_AVERAGE__C
+            data_type: TEXT
+          - name: CHECK_AVG__C
+            data_type: TEXT
+          - name: CHURN_REASON_NOTES__C
+            data_type: TEXT
+          - name: CHURN_REASON__C
+            data_type: TEXT
+          - name: CITY__C
+            data_type: TEXT
+          - name: CLIENTS__C
+            data_type: TEXT
+          - name: CLOSE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: CLOUDINGOAGENT__BAS__C
+            data_type: FLOAT
+          - name: CLOUDINGOAGENT__SAS__C
+            data_type: FLOAT
+          - name: COMPETITOR_PRICE__C
+            data_type: FLOAT
+          - name: COMPETITOR__C
+            data_type: TEXT
+          - name: CONCEPTS__C
+            data_type: TEXT
+          - name: CONFERENCE__C
+            data_type: TEXT
+          - name: CONTRACT_EXPIRATION_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: CONTRACT_LOCATIONS__C
+            data_type: FLOAT
+          - name: CONTRACT_SIGNER_ROLE__C
+            data_type: TEXT
+          - name: CONTRACT__C
+            data_type: TEXT
+          - name: COORDINATES__C
+            data_type: TEXT
+          - name: CORE_VERTICAL__C
+            data_type: BOOLEAN
+          - name: CORPORATE_EMAIL_ADDRESS__C
+            data_type: TEXT
+          - name: COUNTER__C
+            data_type: FLOAT
+          - name: COUNTRY__C
+            data_type: TEXT
+          - name: COUNTY__C
+            data_type: TEXT
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: CREDIT_CARD_ON_FILE__C
+            data_type: BOOLEAN
+          - name: CUISINE1__C
+            data_type: TEXT
+          - name: CUISINE2__C
+            data_type: TEXT
+          - name: CUISINE3__C
+            data_type: TEXT
+          - name: CURRENTLY_USING_FACEBOOK__C
+            data_type: TEXT
+          - name: CURRENTLY_USING_TWITTER__C
+            data_type: TEXT
+          - name: CURRENT_MARKETING_PLATFORMS__C
+            data_type: TEXT
+          - name: CUSTOMER_FIT__C
+            data_type: TEXT
+          - name: CUSTOMER_PROFILE__C
+            data_type: TEXT
+          - name: CUSTOMER_TYPE__C
+            data_type: TEXT
+          - name: DASHBOARD_WALKTHROUGH__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_BASIC_SET_UP__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_CONTRACT_COMPLETE__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_EDUCATION_GOAL_SETTING__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_ENGAGEMENT__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_FAILED_ONBOARDING__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_HARDWARE_ORDER_COMPLETION__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_INSTALL_VIA_AM__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_INSTALL_VIA_SELF_SERVE__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_INTEGRATION_SET_UP_COMPLETE__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_ONBOARD_COMPLETE__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_SUCCESS_VALIDATION_1__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_OF_SUCCESS_VALIDATION_2__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_ROUTER_DELIVERED__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_ROUTER_SHIPPED__C
+            data_type: TIMESTAMP_TZ
+          - name: DAYS_DELIVERED__C
+            data_type: FLOAT
+          - name: DAYS_INSTALLED__C
+            data_type: FLOAT
+          - name: DAYS_INSTALL_DELAYED__C
+            data_type: FLOAT
+          - name: DAYS_TO_DELIVERY__C
+            data_type: FLOAT
+          - name: DAYS_TO_INSTALL__C
+            data_type: FLOAT
+          - name: DAYS_WITHOUT_ACTIVITY__C
+            data_type: FLOAT
+          - name: DEAD_ON_ARRIVAL__C
+            data_type: BOOLEAN
+          - name: DELIGHTED_NOTES__C
+            data_type: TEXT
+          - name: DELINQUENT__C
+            data_type: BOOLEAN
+          - name: DELIVERY_STATUS__C
+            data_type: TEXT
+          - name: DESCRIPTION
+            data_type: TEXT
+          - name: DILIGENCE__C
+            data_type: BOOLEAN
+          - name: DISQUALIFIED__C
+            data_type: BOOLEAN
+          - name: DISTRIBUTION_GROUP__C
+            data_type: TEXT
+          - name: DISTRIBUTION_SOURCE__C
+            data_type: TEXT
+          - name: DMA_CAMPAIGN__C
+            data_type: BOOLEAN
+          - name: DMA_NAME__C
+            data_type: TEXT
+          - name: DMA__C
+            data_type: FLOAT
+          - name: DO_NOT_CALL__C
+            data_type: BOOLEAN
+          - name: DO_NOT_DELETE__C
+            data_type: BOOLEAN
+          - name: DWT_PARTICIPATION__C
+            data_type: TEXT
+          - name: EFFECTIVE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: EMAILS__C
+            data_type: FLOAT
+          - name: EMAIL_MARKETING_PROVIDER__C
+            data_type: TEXT
+          - name: EMAIL_MARKETING__C
+            data_type: BOOLEAN
+          - name: EMAIL_MKTG_CAMPAIGN__C
+            data_type: TEXT
+          - name: EMAIL_TEST_COHORT__C
+            data_type: TEXT
+          - name: ENABLED_SMART_MESSAGES__C
+            data_type: BOOLEAN
+          - name: ESTIMATED_DELIVERY_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: EXISTING_NETWORK_PASSWORD_STATUS__C
+            data_type: TEXT
+          - name: EXPANSION_CUSTOMER__C
+            data_type: BOOLEAN
+          - name: EXPECTED_INSTALL_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: EXPERIMENT__C
+            data_type: TEXT
+          - name: FACEBOOK_CHECKINS__C
+            data_type: FLOAT
+          - name: FACEBOOK_ID__C
+            data_type: FLOAT
+          - name: FACEBOOK_LIKES__C
+            data_type: FLOAT
+          - name: FACEBOOK_URL__C
+            data_type: TEXT
+          - name: FAILED_PILOT_NOTES__C
+            data_type: TEXT
+          - name: FAILED_PILOT_REASON_DEL__C
+            data_type: TEXT
+          - name: FAX
+            data_type: TEXT
+          - name: FEATURE_REQUEST__C
+            data_type: TEXT
+          - name: FEEDBACK_AUTO_RESPONSE__C
+            data_type: BOOLEAN
+          - name: FEE_PER_LOCATION__C
+            data_type: FLOAT
+          - name: FEE_PER_ROUTER__C
+            data_type: FLOAT
+          - name: FIRST_PAYMENT_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: FIRST_PAYMENT_MONTH__C
+            data_type: TIMESTAMP_TZ
+          - name: FIRST_REFERRAL_PAYMENT__C
+            data_type: TIMESTAMP_TZ
+          - name: FIRST_SERVICE_INVOICE__C
+            data_type: FLOAT
+          - name: FIRST_SIGNED_CONTRACT__C
+            data_type: TEXT
+          - name: FIRST_TIME_CUSTOMER_SENT__C
+            data_type: FLOAT
+          - name: FIRST_TIME_CUSTOMER__C
+            data_type: BOOLEAN
+          - name: FIRST_WEEK_RESPONSIVENESS__C
+            data_type: TEXT
+          - name: FOLLOWS__C
+            data_type: FLOAT
+          - name: FRANCHISEE__C
+            data_type: TEXT
+          - name: FRANCHISE__C
+            data_type: TEXT
+          - name: FREEMIUM__C
+            data_type: BOOLEAN
+          - name: FREE_WIFI__C
+            data_type: TEXT
+          - name: GB_NEW__C
+            data_type: BOOLEAN
+          - name: GIFT_CERTIFICATES__C
+            data_type: TEXT
+          - name: HUBSPOT_FIRST_PAGE_SEEN__C
+            data_type: TEXT
+          - name: H_N_OPENED_DATE__C
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: IMPORTED_EMAILS__C
+            data_type: FLOAT
+          - name: IMPORTED__C
+            data_type: TEXT
+          - name: INBOUND_LEAD_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: INSTAGRAM_URL__C
+            data_type: TEXT
+          - name: INSTALLATION_DESCRIPTION__C
+            data_type: TEXT
+          - name: INSTALLATION_STATUS__C
+            data_type: TEXT
+          - name: INSTALLED__C
+            data_type: TIMESTAMP_TZ
+          - name: INSTALL_1__C
+            data_type: BOOLEAN
+          - name: INSTALL_2__C
+            data_type: BOOLEAN
+          - name: INSTALL_MONTH__C
+            data_type: FLOAT
+          - name: INSTALL_NOTES__C
+            data_type: TEXT
+          - name: INSTALL_STATUS__C
+            data_type: TEXT
+          - name: INTERNATIONAL_CODE__C
+            data_type: TEXT
+          - name: INTERNET_RESERVATIONS__C
+            data_type: TEXT
+          - name: INVALID_EMAILS__C
+            data_type: FLOAT
+          - name: INVOICE_TOTAL_SOFTWARE__C
+            data_type: FLOAT
+          - name: ISCUSTOMERPORTAL
+            data_type: BOOLEAN
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: ISPARTNER
+            data_type: BOOLEAN
+          - name: IS_RESTAURANT_GROUP__C
+            data_type: BOOLEAN
+          - name: IUSA_NUMBER__C
+            data_type: TEXT
+          - name: KEEP_ACCOUNT__C
+            data_type: BOOLEAN
+          - name: KEPT_ROUTER_AFTER_FAILED_PILOT__C
+            data_type: BOOLEAN
+          - name: LANGUAGE__C
+            data_type: TEXT
+          - name: LASTACTIVITYDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LAST_PAYMENT_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: LAST_PROBE_UPLOAD__C
+            data_type: TIMESTAMP_TZ
+          - name: LATEST_EFFECTIVE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: LATEST_SIGNED_CONTRACT__C
+            data_type: TEXT
+          - name: LEAD_DISTRI_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: LEAD_SOURCE__C
+            data_type: TEXT
+          - name: LEAD_VERTICAL__C
+            data_type: TEXT
+          - name: LEAD_VETTING__C
+            data_type: TEXT
+          - name: LIKES__C
+            data_type: FLOAT
+          - name: LOCAL_ADS_MANAGER__C
+            data_type: TEXT
+          - name: LOCAL_ADS_STATUS__C
+            data_type: TEXT
+          - name: LOCAL_MESSAGES_SENT__C
+            data_type: FLOAT
+          - name: LONG_ID__C
+            data_type: TEXT
+          - name: LOST_CUSTOMER_SENT__C
+            data_type: FLOAT
+          - name: LOST_CUSTOMER__C
+            data_type: BOOLEAN
+          - name: LOST_LOCATION_REASON_DETAIL__C
+            data_type: TEXT
+          - name: LOST_LOCATION_REASON__C
+            data_type: TEXT
+          - name: LOST_LOCATION_SUB_REASON__C
+            data_type: TEXT
+          - name: LOYALTY_VENDOR__C
+            data_type: TEXT
+          - name: LOYAL_CUSTOMER_SENT__C
+            data_type: FLOAT
+          - name: LOYAL_CUSTOMER__C
+            data_type: BOOLEAN
+          - name: MAIN_FRANCHISE_HQ__C
+            data_type: TEXT
+          - name: MANAGER__C
+            data_type: TEXT
+          - name: MARKETING_LEAD_CLASSIFICATION__C
+            data_type: TEXT
+          - name: MARKETING_LEAD__C
+            data_type: BOOLEAN
+          - name: MARKETS__C
+            data_type: TEXT
+          - name: MASTERRECORDID
+            data_type: TEXT
+          - name: MONTHLY_SERVICE_FEE__C
+            data_type: FLOAT
+          - name: MORE_BUSINESS_INFO__C
+            data_type: TEXT
+          - name: MP_LIST__C
+            data_type: BOOLEAN
+          - name: MT_UNIQUE__C
+            data_type: BOOLEAN
+          - name: MULIT_CONCEPT__C
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: NAME_OF_RESTAURANT_GROUP__C
+            data_type: TEXT
+          - name: NETWORK_COVERAGE__C
+            data_type: TEXT
+          - name: NOTES__C
+            data_type: TEXT
+          - name: NO_OF_INSTAGRAM_FOLLOWERS__C
+            data_type: FLOAT
+          - name: NO_OF_TWITTER_FOLLOWERS__C
+            data_type: FLOAT
+          - name: NO_SPAM__C
+            data_type: BOOLEAN
+          - name: NPS_SCORE__C
+            data_type: FLOAT
+          - name: NRA_TRANSFER__C
+            data_type: TEXT
+          - name: NUMBER_OF_EMPLOYEES__C
+            data_type: FLOAT
+          - name: NUMBER_OF_LOCATIONS__C
+            data_type: FLOAT
+          - name: NUMBER_OF_ROUTERS__C
+            data_type: FLOAT
+          - name: OF_CHURNED__C
+            data_type: FLOAT
+          - name: OF_LOCATIONS_INSTALLED__C
+            data_type: FLOAT
+          - name: OF_LOCATIONS__C
+            data_type: FLOAT
+          - name: OF_OPPS__C
+            data_type: FLOAT
+          - name: ONBOARDED__C
+            data_type: BOOLEAN
+          - name: ONBOARDING_STAGE__C
+            data_type: TEXT
+          - name: ONLINE_ORDERING__C
+            data_type: TEXT
+          - name: ON_TIME_INSTALL__C
+            data_type: BOOLEAN
+          - name: OPENTABLE_URL__C
+            data_type: TEXT
+          - name: OPENTABLE__C
+            data_type: BOOLEAN
+          - name: ORIGINAL_FEE_PER_ROUTER__C
+            data_type: FLOAT
+          - name: OTHER_SERVICES__C
+            data_type: TEXT
+          - name: OT_INTEGRATION_INTEREST__C
+            data_type: BOOLEAN
+          - name: OWNED_BY_PARTNER__C
+            data_type: BOOLEAN
+          - name: OWNERID
+            data_type: TEXT
+          - name: OWNERSHIP_EMAILS__C
+            data_type: TEXT
+          - name: OWNERSHIP_TYPE__C
+            data_type: TEXT
+          - name: OWNER_HIRE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: OWNER_ID__C
+            data_type: TEXT
+          - name: OWNER_MANAGER_ID__C
+            data_type: TEXT
+          - name: OWNER_MANAGER__C
+            data_type: TEXT
+          - name: PARENTID
+            data_type: TEXT
+          - name: PARENT_ACCOUNT__C
+            data_type: BOOLEAN
+          - name: PARTNER_ACCOUNT_OWNER__C
+            data_type: TEXT
+          - name: PARTNER_MARKETING_LEAD__C
+            data_type: BOOLEAN
+          - name: PARTNER_PORTAL_WALKTHROUGH_COMPLETE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: PARTNER_TYPE__C
+            data_type: TEXT
+          - name: PARTNER__C
+            data_type: BOOLEAN
+          - name: PART_OF_HOTEL__C
+            data_type: TEXT
+          - name: PAYMENT_TERM__C
+            data_type: TEXT
+          - name: PAYMENT_TYPE__C
+            data_type: TEXT
+          - name: PAYS_FOR_OPENTABLE__C
+            data_type: BOOLEAN
+          - name: PCT_FRANCHISED__C
+            data_type: TEXT
+          - name: PHONE
+            data_type: TEXT
+          - name: PHONE_ALTERNATE__C
+            data_type: TEXT
+          - name: PHONE_CLEAN__C
+            data_type: TEXT
+          - name: PHOTOURL
+            data_type: TEXT
+          - name: PILOT_CONVERSION_SCORE__C
+            data_type: FLOAT
+          - name: PILOT_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: PILOT_EXTENSION_NOTES__C
+            data_type: TEXT
+          - name: PILOT_FAILED_REQUEST_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: PILOT_SPECIALIST_NEW__C
+            data_type: TEXT
+          - name: PILOT_SPECIALIST__C
+            data_type: TEXT
+          - name: PILOT_START__C
+            data_type: TIMESTAMP_TZ
+          - name: POC_IS_DM__C
+            data_type: BOOLEAN
+          - name: POC_MOBILE_NUMBER__C
+            data_type: TEXT
+          - name: PORTAL_CONVERTS__C
+            data_type: FLOAT
+          - name: PORTAL_HITS__C
+            data_type: FLOAT
+          - name: POS_EQUIPMENT__C
+            data_type: TEXT
+          - name: POS_SYSTEM_EMAIL_COLLECTION__C
+            data_type: TEXT
+          - name: POS_SYSTEM_OTHER__C
+            data_type: TEXT
+          - name: POS_SYSTEM__C
+            data_type: TEXT
+          - name: POTENTIAL_RED_FLAGS__C
+            data_type: TEXT
+          - name: POWER_OF_1__C
+            data_type: FLOAT
+          - name: PRICE_RANGE__C
+            data_type: TEXT
+          - name: PRIORITY_ACCOUNT__C
+            data_type: BOOLEAN
+          - name: PRIOR_HARDWARE_TYPE__C
+            data_type: TEXT
+          - name: PUBLIC_EMAILS__C
+            data_type: TEXT
+          - name: PZ__C
+            data_type: BOOLEAN
+          - name: RD_ID__C
+            data_type: TEXT
+          - name: REASON_FOR_DELAYED_INSTALLATION__C
+            data_type: TEXT
+          - name: REASON_FOR_EXTENDED_PILOT__C
+            data_type: TEXT
+          - name: REASON_FOR_FAILED_PILOT__C
+            data_type: TEXT
+          - name: REASON_FOR_PILOT_EXTENSION__C
+            data_type: TEXT
+          - name: RECORDTYPEID
+            data_type: TEXT
+          - name: RED_FLAG_ACCOUNT__C
+            data_type: BOOLEAN
+          - name: REFERENCE_CUSTOMER__C
+            data_type: BOOLEAN
+          - name: REFERRAL_ACCOUNT__C
+            data_type: TEXT
+          - name: REFERRAL_MONTHS_SINCE_PAID__C
+            data_type: FLOAT
+          - name: REFERRAL_PARTNER_NEW__C
+            data_type: TEXT
+          - name: REFERRAL_PARTNER__C
+            data_type: TEXT
+          - name: REFERRAL_PAYMENT_AMOUNT__C
+            data_type: FLOAT
+          - name: REFERRAL__C
+            data_type: FLOAT
+          - name: REFERRING_PARTNER__C
+            data_type: TEXT
+          - name: REPEAT_CUSTOMER_SENT__C
+            data_type: FLOAT
+          - name: REPEAT_CUSTOMER__C
+            data_type: BOOLEAN
+          - name: REQUIRE_AUTH__C
+            data_type: BOOLEAN
+          - name: RESTAURANT_GROUP__C
+            data_type: TEXT
+          - name: RETENTION_ACCOUNT_MANAGER__C
+            data_type: TEXT
+          - name: RETURN_RECEIVED__C
+            data_type: TIMESTAMP_TZ
+          - name: RETURN_SENT__C
+            data_type: TIMESTAMP_TZ
+          - name: ROLLUP_TOTALEMAILS__C
+            data_type: FLOAT
+          - name: ROUTER_RETURNED__C
+            data_type: TIMESTAMP_TZ
+          - name: ROUTER_TYPE__C
+            data_type: TEXT
+          - name: SALES_CHANNEL__C
+            data_type: TEXT
+          - name: SALES_UNIT__C
+            data_type: FLOAT
+          - name: SENT_BY__C
+            data_type: TEXT
+          - name: SERVICE_TYPE__C
+            data_type: TEXT
+          - name: SFSSDUPECATCHER__OVERRIDE_DUPECATCHER__C
+            data_type: BOOLEAN
+          - name: SHIPPINGADDRESS
+            data_type: VARIANT
+          - name: SHIPPINGCITY
+            data_type: TEXT
+          - name: SHIPPINGCOUNTRY
+            data_type: TEXT
+          - name: SHIPPINGCOUNTRYCODE
+            data_type: TEXT
+          - name: SHIPPINGGEOCODEACCURACY
+            data_type: TEXT
+          - name: SHIPPINGLATITUDE
+            data_type: FLOAT
+          - name: SHIPPINGLONGITUDE
+            data_type: FLOAT
+          - name: SHIPPINGPOSTALCODE
+            data_type: TEXT
+          - name: SHIPPINGSTATE
+            data_type: TEXT
+          - name: SHIPPINGSTATECODE
+            data_type: TEXT
+          - name: SHIPPINGSTREET
+            data_type: TEXT
+          - name: SIGNED_CONTRACT_PAYMENT_METHOD__C
+            data_type: TEXT
+          - name: SIGNED_CONTRACT__C
+            data_type: TEXT
+          - name: SIGNED_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: SIZE__C
+            data_type: TEXT
+          - name: SMART_EMAILS_CUSTOMIZED__C
+            data_type: BOOLEAN
+          - name: SOCIAL_MEDIA__C
+            data_type: BOOLEAN
+          - name: SOCIAL_SERVICES__C
+            data_type: TEXT
+          - name: SOURCE__C
+            data_type: TEXT
+          - name: SPORT_LEVEL__C
+            data_type: TEXT
+          - name: SPORT__C
+            data_type: TEXT
+          - name: SPOTIO_STATUS__C
+            data_type: TEXT
+          - name: STADIUM__C
+            data_type: TEXT
+          - name: STANDARD_WI_FI__C
+            data_type: TEXT
+          - name: STATE__C
+            data_type: TEXT
+          - name: STATUS__C
+            data_type: TEXT
+          - name: SUBSCRIPTION_RENEWAL__C
+            data_type: TEXT
+          - name: SUB_VERTICAL__C
+            data_type: TEXT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: SYSTEM_SALES__C
+            data_type: FLOAT
+          - name: TARGET_ACCOUNT__C
+            data_type: TEXT
+          - name: TAXONOMY_COMMENTS__C
+            data_type: TEXT
+          - name: TAXONOMY_SUB_VERTICAL__C
+            data_type: TEXT
+          - name: TAXONOMY_VERTICAL__C
+            data_type: TEXT
+          - name: TCV__C
+            data_type: FLOAT
+          - name: TECHNICIAN_NOTES__C
+            data_type: TEXT
+          - name: TECHNICIAN_SENT__C
+            data_type: BOOLEAN
+          - name: TEMP_PARTNER_UPDATE__C
+            data_type: BOOLEAN
+          - name: TERRITORY_REGION__C
+            data_type: TEXT
+          - name: TERRITORY__C
+            data_type: TEXT
+          - name: TIMEZONE__C
+            data_type: TEXT
+          - name: TOTAL_CHARGED_SOFTWARE__C
+            data_type: FLOAT
+          - name: TOTAL_CHARGES__C
+            data_type: FLOAT
+          - name: TOTAL_COLLECTED_SOFTWARE__C
+            data_type: FLOAT
+          - name: TOTAL_CONVERSIONS__C
+            data_type: FLOAT
+          - name: TOTAL_FEEDBACK__C
+            data_type: FLOAT
+          - name: TOTAL_HARDWARE_FEE__C
+            data_type: FLOAT
+          - name: TOTAL_HARDWARE__C
+            data_type: FLOAT
+          - name: TOTAL_INVOICED_SOFTWARE__C
+            data_type: FLOAT
+          - name: TOTAL_LOGINS__C
+            data_type: FLOAT
+          - name: TOTAL_REDEEMS__C
+            data_type: FLOAT
+          - name: TOTAL_REFUNDED_SOFTWARE__C
+            data_type: FLOAT
+          - name: TOTAL_SERVICE__C
+            data_type: FLOAT
+          - name: TOTAL_VOIDED_SOFTWARE__C
+            data_type: FLOAT
+          - name: TRIAL_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: TRIAL_LENGTH__C
+            data_type: FLOAT
+          - name: TRIAL_WAR_EMAILS__C
+            data_type: FLOAT
+          - name: UNINSTALL_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: UNQUALIFIED_REASON__C
+            data_type: TEXT
+          - name: UNSUBSCRIBES__C
+            data_type: FLOAT
+          - name: UPDATED_TRIAL_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: UPS_TRACKING__C
+            data_type: TEXT
+          - name: USES_OPEN_TABLE__C
+            data_type: BOOLEAN
+          - name: USE_AMS_BILLING__C
+            data_type: BOOLEAN
+          - name: USE_AMS_CONTRACT__C
+            data_type: BOOLEAN
+          - name: USING_FEEDBACK__C
+            data_type: BOOLEAN
+          - name: VENUE_SUB_VERTICAL__C
+            data_type: TEXT
+          - name: VIEW_CONTRACT__C
+            data_type: TEXT
+          - name: VISITORS__C
+            data_type: FLOAT
+          - name: WEBINAR_ATTENDED__C
+            data_type: BOOLEAN
+          - name: WEBINAR_SCHEDULED_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: WEBSITE
+            data_type: TEXT
+          - name: WEBSITE_ADVERTISEMENT_TOOLS__C
+            data_type: TEXT
+          - name: WEBSITE_EMAIL_MARKETING_TOOLS__C
+            data_type: TEXT
+          - name: WEEKLY_CONVERSIONS__C
+            data_type: FLOAT
+          - name: WEEKLY_EMAILS_TREND__C
+            data_type: TEXT
+          - name: WEEKLY_EMAILS__C
+            data_type: FLOAT
+          - name: WEEKLY__C
+            data_type: FLOAT
+          - name: WIFI_STICKER_DISPLAYED__C
+            data_type: TEXT
+          - name: WI_FI_PROVIDER__C
+            data_type: TEXT
+          - name: WORKING_HOURS__C
+            data_type: TEXT
+          - name: X14_DAY_CHECK_IN__C
+            data_type: TIMESTAMP_TZ
+          - name: X7_DAY_CHECK_IN__C
+            data_type: TIMESTAMP_TZ
+          - name: YEAR_FOUNDED__C
+            data_type: TEXT
+          - name: YELP_ADVERTISER__C
+            data_type: TEXT
+          - name: YELP_GOOD_FOR__C
+            data_type: TEXT
+          - name: YELP_IS_CLAIMED__C
+            data_type: TEXT
+          - name: YELP_LISTING__C
+            data_type: TEXT
+          - name: YELP_PAYMENT_METHODS__C
+            data_type: TEXT
+          - name: YELP_REVIEWS__C
+            data_type: FLOAT
+          - name: YELP_STARS__C
+            data_type: FLOAT
+          - name: YELP_URL__C
+            data_type: TEXT
+          - name: ZENDESK__CREATEDUPDATEDFLAG__C
+            data_type: BOOLEAN
+          - name: ZENDESK__CREATE_IN_ZENDESK__C
+            data_type: BOOLEAN
+          - name: ZENDESK__LAST_SYNC_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: ZENDESK__LAST_SYNC_STATUS__C
+            data_type: TEXT
+          - name: ZENDESK__RESULT__C
+            data_type: TEXT
+          - name: ZENDESK__ZENDESK_ORGANIZATION_ID__C
+            data_type: TEXT
+          - name: ZENDESK__ZENDESK_ORGANIZATION__C
+            data_type: TEXT
+          - name: ZENDESK__ZENDESK_OUTOFSYNC__C
+            data_type: BOOLEAN
+          - name: ZENREACH_CONVERSATION_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: ZENREACH_PRIORITY_CLIENT__C
+            data_type: BOOLEAN
+          - name: ZENSTALLATION__C
+            data_type: BOOLEAN
+          - name: ZIP_CODE__C
+            data_type: TEXT
+          - name: ZUORA__NUMBEROFLOCATIONS__C
+            data_type: FLOAT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: STATUS_CHECK__C
+            data_type: TIMESTAMP_TZ
+          - name: ZUORA__ACTIVE__C
+            data_type: TEXT
+          - name: LASTREFERENCEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTVIEWEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: WILL_DO_CASE_STUDY__C
+            data_type: BOOLEAN
+          - name: WILL_DO_TESTIMONIAL__C
+            data_type: BOOLEAN
+          - name: ON_LOCAL_ADS__C
+            data_type: BOOLEAN
+          - name: LOCATIONS_AVAILABLE_FOR_EXPANSION__C
+            data_type: FLOAT
+          - name: LAST_DATE_OF_AM_LOCAL_ADS_PITCH__C
+            data_type: TIMESTAMP_TZ
+          - name: HAS_EXPANDED__C
+            data_type: BOOLEAN
+          - name: LAST_DATE_EXPANSION_DISCUSSED__C
+            data_type: TIMESTAMP_TZ
+          - name: TYPE
+            data_type: TEXT
+          - name: LAST_DATE_LOCATION_COUNT_VETTED__C
+            data_type: TIMESTAMP_TZ
+          - name: LAST_DATE_OF_QBR__C
+            data_type: TIMESTAMP_TZ
+          - name: DEL_REFERRAL_PARTNER_NEW__C
+            data_type: TEXT
+          - name: DEL_REFERRAL_PARTNER__C
+            data_type: TEXT
+          - name: ENABLED_SMART_MESSAGES_DEL__C
+            data_type: BOOLEAN
+          - name: FIRST_TIME_CUSTOMER_DEL__C
+            data_type: BOOLEAN
+          - name: CUSTOMER_TYPE_DEL__C
+            data_type: TEXT
+          - name: BLAST_MESSAGES_SENT_DEL__C
+            data_type: FLOAT
+          - name: FIRST_TIME_CUSTOMER_SENT_DEL__C
+            data_type: FLOAT
+          - name: BRAND__C
+            data_type: TEXT
+          - name: SALES_CHALLENGES__C
+            data_type: TEXT
+          - name: SALES_PLAN__C
+            data_type: TEXT
+          - name: BUSINESS_TYPE__C
+            data_type: TEXT
+          - name: BILLING_METHOD__C
+            data_type: TEXT
+          - name: GROWTH_MANAGER__C
+            data_type: TEXT
+          - name: PARENT_LONGID__C
+            data_type: TEXT
+          - name: SALESLOFT1__ACTIVE_ACCOUNT__C
+            data_type: FLOAT
+          - name: ANNUALREVENUE
+            data_type: FLOAT
+          - name: INDUSTRY
+            data_type: TEXT
+          - name: ACCOUNT_HEALTH_STATUS__C
+            data_type: TEXT
+          - name: CURRENT_SPEND_AT_RISK__C
+            data_type: FLOAT
+          - name: ACCOUNT_RISK_REASON__C
+            data_type: TEXT
+          - name: RISK_ASSESSMENT_DETAILS__C
+            data_type: TEXT
+          - name: MONTHLY_SPEND_AT_RISK__C
+            data_type: FLOAT
+          - name: DEL_WEBINAR_ATTENDED__C
+            data_type: BOOLEAN
+          - name: DEL_TEMP_PARTNER_UPDATE__C
+            data_type: BOOLEAN
+          - name: DEL_EMAIL_MARKETING_PROVIDER__C
+            data_type: TEXT
+          - name: LAST_SERVICE_CHARGE__C
+            data_type: FLOAT
+          - name: DEL_PARTNER_ACCOUNT_OWNER__C
+            data_type: TEXT
+          - name: DEL_DO_NOT_DELETE__C
+            data_type: BOOLEAN
+          - name: DEL_WEBINAR_SCHEDULED_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: DEL_EMAIL_MARKETING__C
+            data_type: BOOLEAN
+          - name: DEL_LEAD_VERTICAL__C
+            data_type: TEXT
+          - name: NUMBEROFEMPLOYEES
+            data_type: NUMBER(38, 0)
+          - name: DEL_USES_OPEN_TABLE__C
+            data_type: BOOLEAN
+          - name: DEL_YELP_OUTDOOR_SEATING__C
+            data_type: TEXT
+          - name: DEL_LOST_LOCATION_REASON_DETAIL__C
+            data_type: TEXT
+          - name: DEL_LOST_LOCATION_REASON__C
+            data_type: TEXT
+          - name: DEL_PILOT_SPECIALIST_NEW__C
+            data_type: TEXT
+          - name: DEL_PARTNER_MARKETING_LEAD__C
+            data_type: BOOLEAN
+          - name: DEL_OWNED_BY_PARTNER__C
+            data_type: BOOLEAN
+          - name: DEL_LOST_LOCATION_SUB_REASON__C
+            data_type: TEXT
+          - name: ISEXCLUDEDFROMREALIGN
+            data_type: BOOLEAN
+          - name: DEL_OPENTABLE_URL__C
+            data_type: TEXT
+          - name: DEL_YELP_URL__C
+            data_type: TEXT
+          - name: DEL_LEAD_DISTRI_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: DEL_LANGUAGE__C
+            data_type: TEXT
+          - name: DEL_NUMBER_OF_EMPLOYEES__C
+            data_type: FLOAT
+          - name: DEL_YEAR_FOUNDED__C
+            data_type: TEXT
+          - name: DEL_CURRENT_MARKETING_PLATFORMS__C
+            data_type: TEXT
+          - name: DEL_POS_SYSTEM_EMAIL_COLLECTION__C
+            data_type: TEXT
+      - name: ORDER
+        identifier: '"ORDER"'
+        description: Represents an order associated with a contract or an account.
+        columns:
+          - name: ACCOUNTID
+            data_type: TEXT
+          - name: ACTIVATEDBYID
+            data_type: TEXT
+          - name: ACTIVATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: BILLINGCITY
+            data_type: TEXT
+          - name: BILLINGCOUNTRY
+            data_type: TEXT
+          - name: BILLINGCOUNTRYCODE
+            data_type: TEXT
+          - name: BILLINGPOSTALCODE
+            data_type: TEXT
+          - name: BILLINGSTATE
+            data_type: TEXT
+          - name: BILLINGSTATECODE
+            data_type: TEXT
+          - name: BILLINGSTREET
+            data_type: TEXT
+          - name: BILLTOCONTACTID
+            data_type: TEXT
+          - name: CONTRACTID
+            data_type: TEXT
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: CUSTOMERAUTHORIZEDBYID
+            data_type: TEXT
+          - name: EFFECTIVEDATE
+            data_type: TIMESTAMP_TZ
+          - name: ID
+            data_type: TEXT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: ISREDUCTIONORDER
+            data_type: BOOLEAN
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: OPPORTUNITYID
+            data_type: TEXT
+          - name: ORDERNUMBER
+            data_type: TEXT
+          - name: OWNERID
+            data_type: TEXT
+          - name: PRICEBOOK2ID
+            data_type: TEXT
+          - name: QUOTEID
+            data_type: TEXT
+          - name: SHIPPINGCOUNTRY
+            data_type: TEXT
+          - name: SHIPPINGCOUNTRYCODE
+            data_type: TEXT
+          - name: STATUS
+            data_type: TEXT
+          - name: STATUSCODE
+            data_type: TEXT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: TOTALAMOUNT
+            data_type: FLOAT
+          - name: TYPE
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: LASTREFERENCEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTVIEWEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: ENDDATE
+            data_type: TIMESTAMP_TZ
+          - name: SIGNEDDATE__C
+            data_type: TIMESTAMP_TZ
+      - name: QUOTE
+        description: The Quote object represents a quote, which is a record showing proposed prices for products and services.
+        columns:
+          - name: ACCOUNTID
+            data_type: TEXT
+          - name: ADDITIONALCOUNTRY
+            data_type: TEXT
+          - name: ADDITIONALCOUNTRYCODE
+            data_type: TEXT
+          - name: AUTO_SIGN_CONTRACT__C
+            data_type: BOOLEAN
+          - name: BILLINGCITY
+            data_type: TEXT
+          - name: BILLINGCOUNTRY
+            data_type: TEXT
+          - name: BILLINGCOUNTRYCODE
+            data_type: TEXT
+          - name: BILLINGGEOCODEACCURACY
+            data_type: TEXT
+          - name: BILLINGLATITUDE
+            data_type: FLOAT
+          - name: BILLINGLONGITUDE
+            data_type: FLOAT
+          - name: BILLINGNAME
+            data_type: TEXT
+          - name: BILLINGPOSTALCODE
+            data_type: TEXT
+          - name: BILLINGSTATE
+            data_type: TEXT
+          - name: BILLINGSTATECODE
+            data_type: TEXT
+          - name: BILLINGSTREET
+            data_type: TEXT
+          - name: BILLING_METHOD__C
+            data_type: TEXT
+          - name: CANCREATEQUOTELINEITEMS
+            data_type: BOOLEAN
+          - name: CONTACTID
+            data_type: TEXT
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: DESCRIPTION
+            data_type: TEXT
+          - name: DISCOUNT
+            data_type: FLOAT
+          - name: EMAIL
+            data_type: TEXT
+          - name: FAX
+            data_type: TEXT
+          - name: GRANDTOTAL
+            data_type: FLOAT
+          - name: ID
+            data_type: TEXT
+          - name: INTERNALLY_REVIEWED__C
+            data_type: BOOLEAN
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: ISSYNCING
+            data_type: BOOLEAN
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LINEITEMCOUNT
+            data_type: NUMBER(38, 0)
+          - name: MONTHLY_ADS_FEES__C
+            data_type: FLOAT
+          - name: MONTHLY_SUBSCRIPTION_FEES__C
+            data_type: FLOAT
+          - name: NAME
+            data_type: TEXT
+          - name: NUMBER_OF_LINE_ITEMS__C
+            data_type: FLOAT
+          - name: ONE_TIME_FEES__C
+            data_type: FLOAT
+          - name: OPPORTUNITYID
+            data_type: TEXT
+          - name: OUT_OF_BOUNDS_LINEITEMS__C
+            data_type: FLOAT
+          - name: OWNERID
+            data_type: TEXT
+          - name: PHONE
+            data_type: TEXT
+          - name: PRICEBOOK2ID
+            data_type: TEXT
+          - name: QUOTENUMBER
+            data_type: TEXT
+          - name: QUOTETOCITY
+            data_type: TEXT
+          - name: QUOTETOCOUNTRY
+            data_type: TEXT
+          - name: QUOTETOCOUNTRYCODE
+            data_type: TEXT
+          - name: QUOTETONAME
+            data_type: TEXT
+          - name: QUOTETOPOSTALCODE
+            data_type: TEXT
+          - name: QUOTETOSTATE
+            data_type: TEXT
+          - name: QUOTETOSTATECODE
+            data_type: TEXT
+          - name: QUOTETOSTREET
+            data_type: TEXT
+          - name: SHIPPINGCITY
+            data_type: TEXT
+          - name: SHIPPINGCOUNTRY
+            data_type: TEXT
+          - name: SHIPPINGCOUNTRYCODE
+            data_type: TEXT
+          - name: SHIPPINGGEOCODEACCURACY
+            data_type: TEXT
+          - name: SHIPPINGLATITUDE
+            data_type: FLOAT
+          - name: SHIPPINGLONGITUDE
+            data_type: FLOAT
+          - name: SHIPPINGNAME
+            data_type: TEXT
+          - name: SHIPPINGPOSTALCODE
+            data_type: TEXT
+          - name: SHIPPINGSTATE
+            data_type: TEXT
+          - name: SHIPPINGSTATECODE
+            data_type: TEXT
+          - name: SHIPPINGSTREET
+            data_type: TEXT
+          - name: SOCIAL_MEDIA_ACCOUNT__C
+            data_type: TEXT
+          - name: STATUS
+            data_type: TEXT
+          - name: SUBTOTAL
+            data_type: FLOAT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: TOTALPRICE
+            data_type: FLOAT
+          - name: TYPE__C
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: LASTREFERENCEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTVIEWEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: CONTRACTID
+            data_type: TEXT
+          - name: LASTNAME__C
+            data_type: TEXT
+          - name: FIRSTNAME__C
+            data_type: TEXT
+          - name: RECORDTYPEID
+            data_type: TEXT
+      - name: CHURN_REQUEST__C
+        description: Custom SalesForce table used for churn requests
+        columns:
+          - name: ACCOUNT_LOCATIONS__C
+            data_type: FLOAT
+          - name: ACCOUNT_MANAGER_EMAIL__C
+            data_type: TEXT
+          - name: ACCOUNT_MRR__C
+            data_type: FLOAT
+          - name: ACCOUNT__C
+            data_type: TEXT
+          - name: AMS_LINK__C
+            data_type: TEXT
+          - name: AM_MANAGER_EMAIL__C
+            data_type: TEXT
+          - name: CHURN_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: CHURN_REASON_BUSINESS_SITUATION__C
+            data_type: TEXT
+          - name: CHURN_REASON_CONTRACT_BILLING__C
+            data_type: TEXT
+          - name: CHURN_REASON_DETAILS__C
+            data_type: TEXT
+          - name: CHURN_REASON_PRODUCT__C
+            data_type: TEXT
+          - name: CHURN_REASON_SERVICE__C
+            data_type: TEXT
+          - name: CHURN_REASON_TECHNICAL__C
+            data_type: TEXT
+          - name: CHURN_REASON__C
+            data_type: TEXT
+          - name: CHURN_STATUS__C
+            data_type: TEXT
+          - name: CONTACT_EMAIL_ADDRESS__C
+            data_type: TEXT
+          - name: CONTACT_PHONE_NUMBER__C
+            data_type: TEXT
+          - name: CONTRACT_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: CREATED_BY_ROLE__C
+            data_type: TEXT
+          - name: EARLY_TERMINATION__C
+            data_type: BOOLEAN
+          - name: ESCALATED__C
+            data_type: BOOLEAN
+          - name: ID
+            data_type: TEXT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: LASTACTIVITYDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LOCATION__C
+            data_type: TEXT
+          - name: MARKETING_PLATFORMS__C
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: NO_REASON_GIVEN__C
+            data_type: BOOLEAN
+          - name: NUMBER_OF_LOCATIONS__C
+            data_type: FLOAT
+          - name: OPEN_TO_REACTIVATION__C
+            data_type: BOOLEAN
+          - name: OPEN_TO_RE_ACTIVATION__C
+            data_type: BOOLEAN
+          - name: OPPORTUNITY__C
+            data_type: TEXT
+          - name: OTHER_MARKETING_PLATFORMS__C
+            data_type: TEXT
+          - name: PRIMARY_CONTACT__C
+            data_type: TEXT
+          - name: REASON_FOR_EARLY_TERMINATION__C
+            data_type: TEXT
+          - name: RECORDTYPEID
+            data_type: TEXT
+          - name: RETENTION_ACCOUNT_MANAGER__C
+            data_type: TEXT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: UNABLE_TO_REACH__C
+            data_type: BOOLEAN
+          - name: UNCOVERED_BY_LOCAL_ADS__C
+            data_type: BOOLEAN
+          - name: UNCOVERED_BY_PROGRAMMATIC_OUTREACH__C
+            data_type: BOOLEAN
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: LASTREFERENCEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTVIEWEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: CONTACT_ROLE__C
+            data_type: TEXT
+          - name: TEMP_UPDATE__C
+            data_type: TEXT
+          - name: SEASONAL__C
+            data_type: TEXT
+          - name: CORE_MRR_AMOUNT__C
+            data_type: FLOAT
+          - name: ADS_MRR_AMOUNT__C
+            data_type: FLOAT
+          - name: UNQUALIFIED__C
+            data_type: TEXT
+          - name: CHURN_SUMMARY__C
+            data_type: TEXT
+          - name: OTHER__C
+            data_type: TEXT
+          - name: COMPLETED__C
+            data_type: BOOLEAN
+          - name: HARDWARE_RETURN_REQUEST__C
+            data_type: BOOLEAN
+          - name: CHURN_SUB_REASON__C
+            data_type: TEXT
+          - name: COVID_PAUSE_GRANTED__C
+            data_type: BOOLEAN
+      - name: BUDGET__C
+        description: Custom table for budgets
+        columns:
+          - name: ACCOUNT__C
+            data_type: TEXT
+          - name: ACTIVE__C
+            data_type: BOOLEAN
+          - name: ADVERTISING_CAMPAIGN__C
+            data_type: TEXT
+          - name: AMR__C
+            data_type: TEXT
+          - name: BUDGET_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: BUDGET_PERIOD_DAYS__C
+            data_type: FLOAT
+          - name: BUDGET_START_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: BUDGET__C
+            data_type: FLOAT
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: EST_MRR__C
+            data_type: FLOAT
+          - name: ID
+            data_type: TEXT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: NAME
+            data_type: TEXT
+          - name: RECORDTYPEID
+            data_type: TEXT
+          - name: SPEND__C
+            data_type: FLOAT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: TODAY__C
+            data_type: BOOLEAN
+          - name: TYPE__C
+            data_type: TEXT
+          - name: YESTERDAY__C
+            data_type: BOOLEAN
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: LASTREFERENCEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTVIEWEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: EST_BUDGET_PRORATE__C
+            data_type: FLOAT
+          - name: ACCOUNT_ID__C
+            data_type: TEXT
+          - name: APEX_TEST__C
+            data_type: BOOLEAN
+      - name: ADVERTISING_CAMPAIGN__C
+        description: Custom salesforce table to store advertising campagins
+        columns:
+          - name: ACCOUNT_MANAGEMENT__C
+            data_type: TEXT
+          - name: ACCOUNT__C
+            data_type: TEXT
+          - name: AD_MESSAGE__C
+            data_type: TEXT
+          - name: AD_SPEND__C
+            data_type: FLOAT
+          - name: AD_TYPE__C
+            data_type: TEXT
+          - name: CAMPAIGN_END__C
+            data_type: TIMESTAMP_TZ
+          - name: CAMPAIGN_START__C
+            data_type: TIMESTAMP_TZ
+          - name: CAROUSEL_OR_OFFER__C
+            data_type: TEXT
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: CTA_BUTTON__C
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: IMPORTANT_NOTES__C
+            data_type: TEXT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LINK_DESCRIPTION__C
+            data_type: TEXT
+          - name: LINK_TITLE__C
+            data_type: TEXT
+          - name: MARGIN__C
+            data_type: FLOAT
+          - name: MONTH_CLASSIFICATION__C
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: OF_ADS__C
+            data_type: FLOAT
+          - name: PUBLISHING_TYPE__C
+            data_type: TEXT
+          - name: RETENTION_ACCOUNT_MANAGER__C
+            data_type: TEXT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: TOTAL_CLIENT_SPEND__C
+            data_type: FLOAT
+          - name: URL__C
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: LASTREFERENCEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTVIEWEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: CAMPAIGN_STATUS__C
+            data_type: TEXT
+          - name: CAMPAIGN_TYPE__C
+            data_type: TEXT
+          - name: DESIRED_CAMPAIGN_START_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: BUDGET_GROSS__C
+            data_type: FLOAT
+          - name: ACTUAL_CAMPAIGN_END__C
+            data_type: TIMESTAMP_TZ
+          - name: SPEND__C
+            data_type: FLOAT
+          - name: RECORDTYPEID
+            data_type: TEXT
+          - name: CAMPAIGN_GOAL__C
+            data_type: TEXT
+          - name: REMAINING_TOTAL_BUDGET__C
+            data_type: FLOAT
+          - name: ACTUAL_CAMPAIGN_START__C
+            data_type: TIMESTAMP_TZ
+          - name: ALL_TIME_BUDGET__C
+            data_type: FLOAT
+          - name: LOCATION_TARGETING__C
+            data_type: TEXT
+          - name: AMO__C
+            data_type: TEXT
+          - name: ALL_TIME_SPEND__C
+            data_type: FLOAT
+          - name: TRAFFICKING_FORM_LINK__C
+            data_type: TEXT
+          - name: DESTINATION_URL__C
+            data_type: TEXT
+          - name: TOTAL_EST_MRR__C
+            data_type: FLOAT
+          - name: FACEBOOK_AD_OBJECTIVE__C
+            data_type: TEXT
+          - name: KPI_GOAL__C
+            data_type: TEXT
+          - name: CUSTOMER_CREATIVE_NEEDS__C
+            data_type: TEXT
+          - name: DESIRED_CAMPAIGN_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: BUDGET_NET__C
+            data_type: FLOAT
+          - name: CAMPAIGN_TACTICS__C
+            data_type: TEXT
+          - name: CAMPAIGN_GOAL_TYPE__C
+            data_type: TEXT
+          - name: CONVERSION_TYPES__C
+            data_type: TEXT
+          - name: ADS_PERFORMANCE_KPI__C
+            data_type: TEXT
+          - name: USE_CASE_GOALS__C
+            data_type: TEXT
+          - name: PARENT_BID__C
+            data_type: TEXT
+          - name: NOTES__C
+            data_type: TEXT
+          - name: BILLING_EFFECTIVE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: PAUSE_DETAILS__C
+            data_type: TEXT
+          - name: PAUSE_REASON__C
+            data_type: TEXT
+          - name: NUMBER_OF_FIGHT_DAYS__C
+            data_type: FLOAT
+          - name: LASTACTIVITYDATE
+            data_type: TIMESTAMP_TZ
+          - name: ATTRIBUTION_WINDOW__C
+            data_type: TEXT
+          - name: TEST_CAMPAIGN__C
+            data_type: BOOLEAN
+      - name: ACCOUNT_MANAGEMENT__C
+        description: Custom SalesForce table for account management
+        columns:
+          - name: ACCEPTED_FB_PERMISSIONS__C
+            data_type: BOOLEAN
+          - name: ACCESS_POINT__C
+            data_type: TEXT
+          - name: ACCOUNT_DIRECTOR__C
+            data_type: TEXT
+          - name: ACCOUNT_HEALTH_STATUS__C
+            data_type: TEXT
+          - name: ACCOUNT_RISK_REASON__C
+            data_type: TEXT
+          - name: ACCOUNT_STATUS__C
+            data_type: TEXT
+          - name: ACCOUNT__C
+            data_type: TEXT
+          - name: ACTIVE_LOCATIONS__C
+            data_type: FLOAT
+          - name: ADS_PERFORMANCE_KPI__C
+            data_type: TEXT
+          - name: ADVERTISEMENT_CAMPAIGNS__C
+            data_type: FLOAT
+          - name: AGREEMENT_SIGNED_DUE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: AGREEMENT_SIGNED__C
+            data_type: TEXT
+          - name: AMS_LINK__C
+            data_type: TEXT
+          - name: APS_CONFIRMED_TRACKING_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: APS_CONFIRMED_TRACKING__C
+            data_type: TEXT
+          - name: AVERAGE_TICKET_PRICE__C
+            data_type: FLOAT
+          - name: BILLING_EFFECTIVE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: CAMPAIGN_GOAL__C
+            data_type: TEXT
+          - name: CAMPAIGN_LAUNCH_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: CAMPAIGN_LAUNCH_STATUS__C
+            data_type: TEXT
+          - name: CAMPAIGN_MANAGER__C
+            data_type: TEXT
+          - name: CAMPAIGN_NAME__C
+            data_type: TEXT
+          - name: CAMPAIGN_TACTICS__C
+            data_type: TEXT
+          - name: CONFIRM_PROBE_CRM__C
+            data_type: BOOLEAN
+          - name: CONVERSION__C
+            data_type: TEXT
+          - name: CORE_PRODUCT_USE__C
+            data_type: TEXT
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: CUSTOMER_CREATIVE_NEEDS__C
+            data_type: TEXT
+          - name: DAYS_IN_FLIGHT__C
+            data_type: FLOAT
+          - name: DAYS_NEEDED_LEGENS__C
+            data_type: TEXT
+          - name: DECISION_MAKER_EMAIL__C
+            data_type: TEXT
+          - name: DECISION_MAKER__C
+            data_type: TEXT
+          - name: DESIRED_LAUNCH_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: DESTINATION_URL__C
+            data_type: TEXT
+          - name: DISPLAY_SPEND_MARGIN__C
+            data_type: FLOAT
+          - name: DISPLAY_SPEND__C
+            data_type: FLOAT
+          - name: DOOR_COUNTER__C
+            data_type: FLOAT
+          - name: END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: FACEBOOK_AD_ACCOUNT_SETUP_DUE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: FACEBOOK_AD_ACCOUNT_SETUP__C
+            data_type: TEXT
+          - name: FACEBOOK_MARGIN__C
+            data_type: FLOAT
+          - name: FACEBOOK_PAGE__C
+            data_type: TEXT
+          - name: FACEBOOK_PERMISSIONS_GRANTED_DUE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: FACEBOOK_PERMISSIONS_GRANTED__C
+            data_type: TEXT
+          - name: FACEBOOK_SPEND__C
+            data_type: FLOAT
+          - name: FLIGHT_DATES__C
+            data_type: TEXT
+          - name: GOAL_KPI__C
+            data_type: FLOAT
+          - name: GOOGLE_ANALYTICS_DUE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: GOOGLE_ANALYTICS_IF_APPLICABLE__C
+            data_type: TEXT
+          - name: HARDWARE_INTEGRATION_COMPLETE__C
+            data_type: TEXT
+          - name: HARDWARE_SENT_DUE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: HARDWARE_SENT_TO_CLIENT__C
+            data_type: TEXT
+          - name: HEADQUARTERS__C
+            data_type: TEXT
+          - name: HOTSPOT_PORTAL_CONFIGURED__C
+            data_type: TEXT
+          - name: HQ_PHONE__C
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: INTEGRATION__C
+            data_type: BOOLEAN
+          - name: IN_STORE_CONVERSION_RATE__C
+            data_type: FLOAT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: KEY_ZIP_CODES__C
+            data_type: TEXT
+          - name: KICK_OFF_CALL__C
+            data_type: TEXT
+          - name: LAPSED_CUSTOMER_DEFINITION__C
+            data_type: TEXT
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LAUNCH_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: MANAGED__C
+            data_type: BOOLEAN
+          - name: MANUAL_APS_CONFIRMED_TRACKING_DUE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: MANUAL_HARDWARE_INTEGRATION_COMPLETE_DUE__C
+            data_type: TIMESTAMP_TZ
+          - name: MANUAL_HOTSPOT_PORTAL_CONFIGURED_DUE__C
+            data_type: TIMESTAMP_TZ
+          - name: MANUAL_KICK_OFF_CALL_DUE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: MERAKI_LICENSE_ASSIGNED__C
+            data_type: BOOLEAN
+          - name: MOCKUPS_APPROVED_DUE__C
+            data_type: TIMESTAMP_TZ
+          - name: MOCKUPS_APPROVED__C
+            data_type: TEXT
+          - name: MOCKUPS_CREATED_SENT_DUE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: MOCKUPS_CREATED_SENT__C
+            data_type: TEXT
+          - name: MONTHLY_BUDGET__C
+            data_type: FLOAT
+          - name: MONTHLY_SPEND_AT_RISK__C
+            data_type: FLOAT
+          - name: NAME
+            data_type: TEXT
+          - name: ONBOARDING_START_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: PAYMENT_TYPE__C
+            data_type: TEXT
+          - name: PIXELS_PLACED__C
+            data_type: TEXT
+          - name: PREVIOUS_PROVIDER__C
+            data_type: TEXT
+          - name: PRIMARY_CONTACT_EMAIL__C
+            data_type: TEXT
+          - name: PRIMARY_CONTACT__C
+            data_type: TEXT
+          - name: PRIMARY_OPPORTUNITY__C
+            data_type: TEXT
+          - name: RADIUS_FOR_RETARGETING_MILES__C
+            data_type: FLOAT
+          - name: RECORDTYPEID
+            data_type: TEXT
+          - name: REQUEST_FB__C
+            data_type: BOOLEAN
+          - name: RETENTION_AM__C
+            data_type: TEXT
+          - name: RISK_ASSESSMENT_DETAILS__C
+            data_type: TEXT
+          - name: SALES_AE__C
+            data_type: TEXT
+          - name: STATUS__C
+            data_type: TEXT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: TECHNICAL_CONTACT_EMAIL__C
+            data_type: TEXT
+          - name: TECHNICAL_CONTACT__C
+            data_type: TEXT
+          - name: TOTAL_LOCATIONS__C
+            data_type: FLOAT
+          - name: TOTAL_SPEND__C
+            data_type: FLOAT
+          - name: TRAFFICKING_FORM_ASSETS_SENT_TO_ZR__C
+            data_type: TEXT
+          - name: TRAFFIC_FORM_ASSETS_SENT_TO_ZR_DUE_DAT__C
+            data_type: TIMESTAMP_TZ
+          - name: USE_CASE_GOALS__C
+            data_type: TEXT
+          - name: UTM__C
+            data_type: TEXT
+          - name: WALK_IN_DATA_CALIBRATION_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: WALK_IN_DATA_CALIBRATION_DUE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: WALK_IN_DATA_CALIBRATION__C
+            data_type: TEXT
+          - name: WEBSITE__C
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: LASTREFERENCEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTVIEWEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: ADDITIONAL_TECHNICAL_NOTES__C
+            data_type: TEXT
+          - name: STRATEGIC_NOTES__C
+            data_type: TEXT
+          - name: NEXT_STEPS__C
+            data_type: TEXT
+          - name: PARENT_ACCOUNT__C
+            data_type: TEXT
+          - name: AMO_STATUS__C
+            data_type: TEXT
+          - name: CAMPAIGN_LAUNCH_STAGE__C
+            data_type: TEXT
+          - name: BILLING_TYPE__C
+            data_type: TEXT
+          - name: BILLING_CONTACT_EMAIL__C
+            data_type: TEXT
+          - name: AMO_DSP_BUDGET_NET__C
+            data_type: FLOAT
+          - name: BILLING_CONTACT__C
+            data_type: TEXT
+          - name: AMO_DSP_BUDGET_GROSS__C
+            data_type: FLOAT
+          - name: DAYS_UNTIL_START_DATE__C
+            data_type: FLOAT
+          - name: AMO_SOCIAL_BUDGET_GROSS__C
+            data_type: FLOAT
+          - name: WEIGHTED_MARGIN__C
+            data_type: FLOAT
+          - name: AMO_TOTAL_EST_ADS_MRR__C
+            data_type: FLOAT
+          - name: DAYS_SINCE_SIGNED__C
+            data_type: FLOAT
+          - name: AMO_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: AMO_TOXAL_BUDGET_GROSS__C
+            data_type: FLOAT
+          - name: AMO_TOTAL_BUDGET_NET__C
+            data_type: FLOAT
+          - name: AMO_SOCIAL_BUDGET_NET__C
+            data_type: FLOAT
+          - name: PAYMENT_METHOD__C
+            data_type: TEXT
+          - name: PARENT_BID__C
+            data_type: TEXT
+          - name: AMO_LAUNCH_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: ONLINE_AOV__C
+            data_type: FLOAT
+          - name: IO_END_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: BILLING_NOTES__C
+            data_type: TEXT
+          - name: NOTES__C
+            data_type: TEXT
+          - name: ONLINE_CONVERSION_RATE__C
+            data_type: FLOAT
+          - name: MONTHLY_UNIQUE_VISITORS_MUVS__C
+            data_type: FLOAT
+          - name: DATE_PIXEL_INSTALLED__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_PIXELS_PROVIDED__C
+            data_type: TIMESTAMP_TZ
+          - name: AMO_CAMPAIGNS__C
+            data_type: FLOAT
+          - name: DOWN_ROUTER_CONTACT_EMAIL__C
+            data_type: TEXT
+          - name: DOWN_ROUTER_CONTACT__C
+            data_type: TEXT
+          - name: PIXEL_S_SCRIPT__C
+            data_type: TEXT
+          - name: DB_REC_NOTES__C
+            data_type: TEXT
+          - name: LASTACTIVITYDATE
+            data_type: TIMESTAMP_TZ
+          - name: DAYS_SIGNED_TO_LAUNCH__C
+            data_type: FLOAT
+          - name: DOA_REASON__C
+            data_type: TEXT

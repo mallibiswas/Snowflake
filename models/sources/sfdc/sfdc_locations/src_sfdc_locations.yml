@@ -1,0 +1,448 @@
+version: 2
+
+sources:
+  - name: SFDC_LOCATIONS
+    database: "{{ 'ZENALYTICS' if target.database == 'ZENPROD' else 'ZENDEV' }}"
+    description: This is a copy of data loaded through stitch from SalesForce (https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/data_model.htm)
+    freshness:
+      error_after:
+        count: 36
+        period: hour
+    loaded_at_field: _SDC_RECEIVED_AT
+    tables:
+      - name: CHURN_REQUEST_LOCATIONS__C
+        description: TODO
+        columns:
+          - name: CHURN_REQUEST__C
+            data_type: TEXT
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: ID
+            data_type: TEXT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LOCATION__C
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+      - name: CHURN_REQUEST_LOCATIONS__HISTORY
+        description: TODO
+        columns:
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: FIELD
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: PARENTID
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+      - name: LOCATION__C
+        description: TODO
+        columns:
+          - name: ACCOUNT_MANAGEMENT_STATUS__C
+            data_type: TEXT
+          - name: ACCOUNT_MANAGER__C
+            data_type: TEXT
+          - name: ACCOUNT_ONBOARDING_STAGE__C
+            data_type: TEXT
+          - name: ACCOUNT__C
+            data_type: TEXT
+          - name: ACTIVITY_HISTORY__C
+            data_type: TEXT
+          - name: AMS_ACCOUNT_STATE__C
+            data_type: TEXT
+          - name: AMS_CLOSE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: AMS_FEE_PER_ROUTER__C
+            data_type: FLOAT
+          - name: AMS_LOCATION_STATE__C
+            data_type: TEXT
+          - name: AM_ON_BOARDING_INFORMATION__C
+            data_type: TEXT
+          - name: AP_LOCATION__C
+            data_type: TEXT
+          - name: AUDIENCE_CREATED__C
+            data_type: BOOLEAN
+          - name: AUTO_EMAILS__C
+            data_type: FLOAT
+          - name: AVERAGE_EMAILS_PER_DAY__C
+            data_type: FLOAT
+          - name: BLASTS_DELIVERED__C
+            data_type: FLOAT
+          - name: BLAST_MESSAGES_SENT__C
+            data_type: FLOAT
+          - name: BUSINESS_ID__C
+            data_type: TEXT
+          - name: BUSINESS_VERTICAL__C
+            data_type: TEXT
+          - name: CITY__C
+            data_type: TEXT
+          - name: CLOSE_TYPE__C
+            data_type: TEXT
+          - name: CONVERTED_LEAD__C
+            data_type: TEXT
+          - name: COUNTRY__C
+            data_type: TEXT
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: DASHBOARD_WALKTHROUGH__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_ROUTER_DELIVERED__C
+            data_type: TIMESTAMP_TZ
+          - name: DATE_ROUTER_SHIPPED__C
+            data_type: TIMESTAMP_TZ
+          - name: DAYS_INSTALLED__C
+            data_type: FLOAT
+          - name: DAYS_TO_INSTALL__C
+            data_type: FLOAT
+          - name: DEAD_ON_ARRIVAL__C
+            data_type: BOOLEAN
+          - name: EMAILS__C
+            data_type: FLOAT
+          - name: EMAIL_MARKETING_PROVIDER__C
+            data_type: TEXT
+          - name: ENABLED_SMART_MESSAGES__C
+            data_type: BOOLEAN
+          - name: FACEBOOK_PERMISSION_GRANTED__C
+            data_type: BOOLEAN
+          - name: FACEBOOK_URL__C
+            data_type: TEXT
+          - name: FIRST_SIGNED_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: HARDWARE_TYPE__C
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: INSTAGRAM_URL__C
+            data_type: TEXT
+          - name: INSTALLATION_STATUS__C
+            data_type: TEXT
+          - name: INSTALL_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: INSTALL_DELAY_DAYS__C
+            data_type: FLOAT
+          - name: INSTALL_NOTES__C
+            data_type: TEXT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: IS_RESTAURANT_GROUP__C
+            data_type: BOOLEAN
+          - name: IUSA_NUMBER__C
+            data_type: TEXT
+          - name: LASTACTIVITYDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LAST_EFFECTIVE_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: LAST_EXPIRATION_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: LAST_PROBE_UPLOAD__C
+            data_type: TIMESTAMP_TZ
+          - name: LAST_SIGNED_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: LAT__C
+            data_type: VARIANT
+          - name: LAT__LATITUDE__S
+            data_type: FLOAT
+          - name: LAT__LONGITUDE__S
+            data_type: FLOAT
+          - name: LOCAL_ADS_LAUNCHED__C
+            data_type: BOOLEAN
+          - name: LOCAL_ADS_MANAGER__C
+            data_type: TEXT
+          - name: LOCAL_ADS_STATUS__C
+            data_type: TEXT
+          - name: LOCATION_CONCEPT_NAME__C
+            data_type: TEXT
+          - name: LOCATION_NAME__C
+            data_type: TEXT
+          - name: LOCATION_NOTES__C
+            data_type: TEXT
+          - name: LOCATION_PHONE__C
+            data_type: TEXT
+          - name: LOCATION_QUALIFICATION_STATUS__C
+            data_type: TEXT
+          - name: LOCATION_STREET_ADDRESS_2__C
+            data_type: TEXT
+          - name: LOCATION_STREET_ADDRESS__C
+            data_type: TEXT
+          - name: LONG_ID__C
+            data_type: TEXT
+          - name: LONG__C
+            data_type: VARIANT
+          - name: LONG__LATITUDE__S
+            data_type: FLOAT
+          - name: LONG__LONGITUDE__S
+            data_type: FLOAT
+          - name: LOST_LOCATION_REASON_DETAIL__C
+            data_type: TEXT
+          - name: LOST_LOCATION_REASON__C
+            data_type: TEXT
+          - name: LOST_LOCATION_SUB_REASON__C
+            data_type: TEXT
+          - name: MARKETING_LEAD_CLASSIFICATION__C
+            data_type: TEXT
+          - name: MARKETING_LEAD__C
+            data_type: BOOLEAN
+          - name: NAME
+            data_type: TEXT
+          - name: NETWORK_COVERAGE__C
+            data_type: TEXT
+          - name: NOTES__C
+            data_type: TEXT
+          - name: NPS_DATE__C
+            data_type: TIMESTAMP_TZ
+          - name: NPS_SCORE__C
+            data_type: FLOAT
+          - name: ONBOARDING_SPECIALIST__C
+            data_type: TEXT
+          - name: OPEN_HOURS__C
+            data_type: TEXT
+          - name: OWNER_ID__C
+            data_type: TEXT
+          - name: PARENT_ACCOUNT_ID__C
+            data_type: TEXT
+          - name: PARENT_ACCOUNT_NAME__C
+            data_type: TEXT
+          - name: PILOT_EXTENSION_NOTES__C
+            data_type: TEXT
+          - name: POWER_OF_1__C
+            data_type: FLOAT
+          - name: REASON_FOR_DELAYED_INSTALLATION__C
+            data_type: TEXT
+          - name: REASON_FOR_PILOT_EXTENSION__C
+            data_type: TEXT
+          - name: ROLLUP_ACTIVE__C
+            data_type: FLOAT
+          - name: ROLLUP_CHURNED__C
+            data_type: FLOAT
+          - name: ROUTER_PLUGGED_INTO__C
+            data_type: TEXT
+          - name: SALES_CHANNEL__C
+            data_type: TEXT
+          - name: SG_ADVERTISING_EXPENSES__C
+            data_type: TEXT
+          - name: SG_CONTACTS__C
+            data_type: TEXT
+          - name: SG_COUNTY_DECRIPTION__C
+            data_type: TEXT
+          - name: SG_CREDIT_RATING__C
+            data_type: TEXT
+          - name: SG_METRO_AREA__C
+            data_type: TEXT
+          - name: SG_NEIGHBORHOOD__C
+            data_type: TEXT
+          - name: SG_OF_EMPLOIYEES__C
+            data_type: FLOAT
+          - name: SG_PAYROLL_AND_BENEFITS_EXPENSES__C
+            data_type: TEXT
+          - name: SG_RENT_EXPENSES__C
+            data_type: TEXT
+          - name: SG_SALES_VOLUME__C
+            data_type: TEXT
+          - name: SG_SQUARE_FOOTAGE__C
+            data_type: TEXT
+          - name: SG_YEAR_ESTABLISHED__C
+            data_type: FLOAT
+          - name: SG_YELLOWPAGES_AD_SIZE__C
+            data_type: TEXT
+          - name: SOURCE__C
+            data_type: TEXT
+          - name: STATE__C
+            data_type: TEXT
+          - name: STREET_ADDRESS__C
+            data_type: TEXT
+          - name: SUB_VERTICAL__C
+            data_type: TEXT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: TIMEZONE__C
+            data_type: TEXT
+          - name: TOTAL_CONVERSIONS__C
+            data_type: FLOAT
+          - name: TOTAL_LOGINS__C
+            data_type: FLOAT
+          - name: TOTAL_REDEEMS__C
+            data_type: FLOAT
+          - name: UNQUALIFIED_REASON__C
+            data_type: TEXT
+          - name: UNSUBSCRIBES__C
+            data_type: FLOAT
+          - name: UPS_TRACKING__C
+            data_type: TEXT
+          - name: X14_DAY_CHECK_IN__C
+            data_type: TIMESTAMP_TZ
+          - name: X7_DAY_CHECK_IN__C
+            data_type: TIMESTAMP_TZ
+          - name: YELP_LISTING__C
+            data_type: TEXT
+          - name: YELP_REVIEWS__C
+            data_type: FLOAT
+          - name: YELP_STARS__C
+            data_type: TEXT
+          - name: YELP_URL__C
+            data_type: TEXT
+          - name: ZIP_POSTAL_CODE__C
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: LASTREFERENCEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LASTVIEWEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LAT_DEL__C
+            data_type: VARIANT
+          - name: LAT_DEL__LATITUDE__S
+            data_type: FLOAT
+          - name: LAT_DEL__LONGITUDE__S
+            data_type: FLOAT
+          - name: REQUEST_FB_PERMISSIONS__C
+            data_type: BOOLEAN
+          - name: ACCEPTED_FB_PERMISSIONS__C
+            data_type: BOOLEAN
+      - name: LOCATION__HISTORY
+        description: TODO
+        columns:
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: FIELD
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: NEWVALUE
+            data_type: FLOAT
+          - name: OLDVALUE
+            data_type: FLOAT
+          - name: PARENTID
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+      - name: OPPORTUNITY_LOCATION__C
+        description: TODO
+        columns:
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: DM_CONTACT__C
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: LOCATION__C
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: OPPORTUNITY__C
+            data_type: TEXT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+      - name: OPPORTUNITYPARTNER
+        description: TODO
+        columns:
+          - name: ACCOUNTTOID
+            data_type: TEXT
+          - name: CREATEDBYID
+            data_type: TEXT
+          - name: CREATEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: ID
+            data_type: TEXT
+          - name: ISDELETED
+            data_type: BOOLEAN
+          - name: ISPRIMARY
+            data_type: BOOLEAN
+          - name: LASTMODIFIEDBYID
+            data_type: TEXT
+          - name: LASTMODIFIEDDATE
+            data_type: TIMESTAMP_TZ
+          - name: OPPORTUNITYID
+            data_type: TEXT
+          - name: REVERSEPARTNERID
+            data_type: TEXT
+          - name: ROLE
+            data_type: TEXT
+          - name: SYSTEMMODSTAMP
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_EXTRACTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)

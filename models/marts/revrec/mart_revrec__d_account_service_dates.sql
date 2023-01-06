@@ -1,0 +1,53 @@
+
+SELECT AMS_ACCOUNT_ID
+     , ACCOUNT_NAME
+     , ADJUSTMENT__PRODUCT_CATEGORY
+     , ADJUSTMENT__PRODUCT_FAMILY
+     , BILLING_TIMING
+     , MOVEMENT_DATE
+     , MIN(MOVEMENT_DATE) OVER (PARTITION BY AMS_ACCOUNT_ID, ADJUSTMENT__PRODUCT_CATEGORY) AS EARLIEST_START
+     , MAX(MOVEMENT_DATE) OVER (PARTITION BY AMS_ACCOUNT_ID, ADJUSTMENT__PRODUCT_CATEGORY) AS FINAL
+     , current_date                                                                       AS ASOF_DATE
+FROM (
+         SELECT AMS_ACCOUNT_ID
+              , ACCOUNT_NAME
+              , ADJUSTMENT__PRODUCT_CATEGORY
+              , ADJUSTMENT__PRODUCT_FAMILY
+              , BILLING_TIMING
+              , ADJUSTMENT__START_DATE MOVEMENT_DATE
+         FROM {{ ref('mart_revrec__recurly_invoices_to_subscriptions') }} ARRAY_SUBSET
+         WHERE AMS_ACCOUNT_ID IS NOT NULL
+         GROUP BY AMS_ACCOUNT_ID
+                , ACCOUNT_NAME
+                , ADJUSTMENT__PRODUCT_CATEGORY
+                , ADJUSTMENT__PRODUCT_FAMILY
+                , BILLING_TIMING
+                , ADJUSTMENT__START_DATE
+         UNION ALL
+         SELECT AMS_ACCOUNT_ID
+              , ACCOUNT_NAME
+              , ADJUSTMENT__PRODUCT_CATEGORY
+              , ADJUSTMENT__PRODUCT_FAMILY
+              , BILLING_TIMING
+              , ADJUSTMENT__END_DATE_ADJUSTED MOVEMENT_DATE
+         FROM {{ ref('mart_revrec__recurly_invoices_to_subscriptions') }} ARRAY_SUBSET
+         WHERE AMS_ACCOUNT_ID IS NOT NULL
+         GROUP BY AMS_ACCOUNT_ID
+                , ACCOUNT_NAME
+                , ADJUSTMENT__PRODUCT_CATEGORY
+                , ADJUSTMENT__PRODUCT_FAMILY
+                , BILLING_TIMING
+                , ADJUSTMENT__END_DATE_ADJUSTED
+     )
+GROUP BY AMS_ACCOUNT_ID
+       , ACCOUNT_NAME
+       , ADJUSTMENT__PRODUCT_CATEGORY
+       , ADJUSTMENT__PRODUCT_FAMILY
+       , BILLING_TIMING
+       , MOVEMENT_DATE
+ORDER BY ADJUSTMENT__PRODUCT_CATEGORY
+       , ADJUSTMENT__PRODUCT_FAMILY
+       , BILLING_TIMING
+       , AMS_ACCOUNT_ID
+       , ACCOUNT_NAME
+       , MOVEMENT_DATE

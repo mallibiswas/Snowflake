@@ -1,0 +1,1137 @@
+version: 2
+
+models:    
+  - name: src_ams_account__account
+    description: Merchant account information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: PAYMENT_INFO_ID
+        type: VARCHAR(16777216)
+        description: Payment indentificatoin
+      - name: SALESFORCE_ACCOUNT
+        type: VARCHAR(16777216)
+        description: Salesforce account id
+      - name: ACCOUNT_TYPE
+        type: VARCHAR(16777216)
+        description: Account type descripition (Merchant)
+      - name: ACTIVE 
+        type: BOOL
+        description: Is the account active or not
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of account
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of account
+      - name: ACCOUNT_OWNER
+        type: VARCHAR(16777216)
+        description: Owner of account
+      - name: ASOF_DATE
+        type: DATE
+        description: Last updated date for table
+  - name: src_ams_account__account_payment_infos
+    description: Merchant account payment information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: PAYMENT_INFO_ID
+        type: VARCHAR(16777216)
+        description: Payment indentificatoin
+      - name: ACCOUNT_ID
+        type: TIMESTAMP
+        description: merchant account id
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of account
+      - name: ASOF_DATE
+        type: DATE
+        description: Last updated date for table
+  - name: src_ams_account__ads_billing_api_requests
+    description: Billing information for ads api requests
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of request
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of request
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__ads_billing_log
+    description: Log of ADS billing
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: CAMPAIGN_ID
+        type: VARCHAR(16777216)
+        description: Indentifier of campaign
+      - name: START_DATE
+        type: DATE
+        description: Start of campaign
+      - name: END_DATE
+        type: DATE
+        description: End of campaign
+      - name: TOTAL_ADS_SPEND
+        type: NUMBER(38,0)
+        description: Total spent on ads
+      - name: TOTAL_BILLED_CENT
+        type: NUMBER(38,0)
+        description: Total billed for ads
+      - name: CHARGE_ID
+        type: VARCHAR(16777216)
+        description: Indentifier for charge
+      - name: ERROR
+        type: VARCHAR(16777216)
+        description: Log of error
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of entry
+      - name: TOTAL_SPEND_WITH_MARGIN_CENTS
+        type: NUMBER(38,0)
+        description: Total spent with margin
+      - name: TOTAL_BILLED_SPEND_BEFORE_CAP_CENTS
+        type: NUMBER(38,0)
+        description: Total spent before cap
+      - name: PREVIOUS_BILLED_CENTS
+        type: NUMBER(38,0)
+        description: Previous spend
+      - name: IO_BUDGET_CENTS
+        type: NUMBER(38,0)
+        description: Budget
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__ads_billing_log_credit_applied_cents
+    description: Billing information for credit
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ADS_BILLING_LOG_ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: CREDIT_ID
+        type: VARCHAR(16777216)
+        description: Indentifier for credit
+      - name: CENTS
+        type: NUMBER(38,0)
+        description: cents charge
+      - name: TOTAL_CREDIT_CENTS
+        type: NUMBER(38,0)
+        description: Total credit in cents
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table entries
+  - name: src_ams_account__ads_billing_log_spend
+    description: Log of ADS billing for spend
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ADS_BILLING_LOG_ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: SPEND_CENTS
+        type: NUMBER(38,0)
+        description: Spend in cents
+      - name: DATE
+        type: TIMESTAMP
+        description: Date spend occured
+      - name: MARGIN
+        type: FLOAT
+        description: Profit margin
+      - name: PLATFORM_CAMPAIGN_ID
+        type: VARCHAR(16777216)
+        description: indentifier of platform campaign
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__ads_billing_log_status
+    description: Status of ADS billing for spend
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ADS_BILLING_LOG_ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: STATUS
+        type: VARCHAR(16777216)
+        description: Status of ads bill (approved, manual)
+      - name: NOTE
+        type: VARCHAR(16777216)
+        description: Further description of ads billing
+      - name: USERNAME
+        type: VARCHAR(16777216)
+        description: Email of Zenreach contact
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__ads_billing_log_values
+    description: Current values status can take on
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: STATUS
+        type: VARCHAR(16777216)
+        description: Description of values for status for ads billed
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__ads_campaign_daily_spend
+    description: Ads campaign daily spend
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: CAMPAIGN_ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of campaign
+      - name: PLATFORM_CAMPAIGN_ID
+        type: VARCHAR(16777216)
+        description: indentifier of platform campaign
+      - name: DATE
+        type: TIMESTAMP
+        description: Date spend occured
+      - name: ADS_SPEND_CENT
+        type: NUMBER(38,0)
+        description: Total spent on ads daily
+      - name: ADS_SPEND_CENTS_AT_BILL_TIME
+        type: NUMBER(38,0)
+        description: Total spent on ads at bill time
+      - name: MARGIN
+        type: FLOAT
+        description: Profit margin
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__asset
+    description: Campaign with salesforce asset information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+        description: indentifier of account
+      - name: SALESFORCE_ASSET_ID
+        type: VARCHAR(16777216)
+        description: indentifier of salesforce asset
+      - name: SUBSCRIPTION_ID
+        type: VARCHAR(16777216)
+        description: indentifier subscription
+      - name: CHARGE_ID
+        type: VARCHAR(16777216)
+        description: indentifier of charge to account
+      - name: ITEM_TYPE
+        type: VARCHAR(16777216)
+        description: Type (subscripition, charge, campaign)
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: PAYMENT_INFO_ID
+        type: VARCHAR(16777216)
+        description: indentifier of payment info for account
+      - name: CAMPAIGN_ID
+        type: VARCHAR(16777216)
+        description: indentifier of campaign
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__campaign
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+      - name: START_DATE
+        type: DATE
+      - name: END_DATE
+        type: DATE
+      - name: TOTAL_PRICE_CENTS
+        type: NUMBER(38,0)
+      - name: MARGIN_PERCENT
+        type: NUMBER(38,0)
+      - name: MANUAL_INVOICE
+        type: BOOL
+      - name: OVERSPEND
+        type: BOOL
+      - name: DIRTY
+        type: BOOL
+      - name: CREATED
+        type: TIEMSTAMP
+      - name: INTERNAL_DESCRIPTION
+        type: VARCHAR(16777216)
+      - name: ASOF_DATE
+        type: TIMESTAMP
+  - name: src_ams_account__charge
+    description: Charge table
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+        description: indentifier of account
+      - name: CHARGE_ID
+        type: VARCHAR(16777216)
+        description: indentifier of account
+      - name: NAME
+        type: VARCHAR(16777216)
+        description: Description for charge
+      - name: QUANTITY
+        type: NUMBER(38,0)
+        description: Number of charges incurred
+      - name: UNIT_PRICE_CENTS
+        type: NUMBER(38,0)
+        description: unit price for charge
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__charge_log
+    description: Log for charge table
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+        description: indentifier of account
+      - name: SALESFORCE_QUOTE_LINE_ITEM
+        type: VARCHAR(16777216)
+        description: indentifier for salesforce line item
+      - name: CHARGE_ID
+        type: VARCHAR(16777216)
+        description: Indentifier for charge
+      - name: UNIT_AMOUNT_IN_CENTS
+        type: NUMBER(38,0)
+        description: Cents charge per unit
+      - name: QUANTITY
+        type: NUMBER(38,0)
+        description: Number of charges incurred
+      - name: DESCRIPTION
+        type: VARCHAR(16777216)
+        description: Description for fee
+      - name: ERROR
+        type: VARCHAR(16777216)
+        description: Log of Error
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__orders
+    description: orders to merchant accounts
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+        description: indentifier of account
+      - name: SALESFORCE_QUOTE_UUID
+        type: VARCHAR(16777216)
+        description: indentifier for salesforce UUID
+      - name: SALESFORCE_ORDER_ID
+        type: VARCHAR(16777216)
+        description: indentifier for salesforce order
+      - name: SIGNER_NAME
+        type: VARCHAR(16777216)
+        description: Name of signer
+      - name: SIGNED_DATE
+        type: TIMESTAMP
+        description: Date signed
+      - name: HARDCOPY_URL
+        type: VARCHAR(16777216)
+        description: S3 url to contract
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: CANCELLED
+        type: TIMESTAMP
+        description: Cacnelled date if exists
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__order_item
+    description: orders item information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: ORDER_ID
+        type: VARCHAR(16777216)
+        description: indentifier of order
+      - name: ASSET_ID
+        type: VARCHAR(16777216)
+        description: indentifier for asset
+      - name: SALESFORCE_ORDER_ITEM_ID
+        type: VARCHAR(16777216)
+        description: salesforce order item id
+      - name: SALESFORCE_QUOTE_LINE_ITEM_UUID
+        type: VARCHAR(16777216)
+        description: Salesforce line item id
+      - name: SALESFORCE_ASSET_SYNCED
+        type: BOOL
+        description: Salesforce asset synced confirmation
+      - name: DIRTY
+        type: BOOL
+        description: Clean or dirty
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__payment_info
+    description: Payment information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: PROVIDER_TYPE
+        type: VARCHAR(16777216)
+        description: Provider description
+      - name: RECULRY_PROVIDER_ID
+        type: VARCHAR(16777216)
+        description: indentifier recurly id if provider recurly
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: TYPE
+        type: VARCHAR
+        description: Merchant or partner
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__quote_line_item_info
+    description: Quote line item information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: PAYMENT_INFO_ID
+        type: VARCHAR(16777216)
+        description: indentifier of payment information
+      - name: ASSET_ID
+        type: VARCHAR(16777216)
+        description: indentifier for asset
+      - name: SALESFORCE_QUOTE_LINE_ITEM_ID
+        type: VARCHAR(16777216)
+        description: salesforce quote line item id
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__recurly_provider
+    description: Quote line item information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: RECURLY_ID
+        type: VARCHAR(16777216)
+        description: indentifier recurly
+      - name: NAME
+        type: VARCHAR(16777216)
+        description: Contact name
+      - name: EMAIL
+        type: VARCHAR(16777216)
+        description: Contact email
+      - name: URL
+        type: VARCHAR(16777216)
+        description: S3 url
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__recurly_subscription
+    description: Recurly subscription information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: RECURLY_SUBSCRIPTION_ID
+        type: VARCHAR(16777216)
+        description: indentifier recurly subscription
+      - name: START_DATE
+        type: TIMESTAMP
+        description: Start date of subscription
+      - name: UNIT_PRICE_CENTS
+        type: NUMBER(38,0)
+        description: Unit price in cents
+      - name: ACTIVE
+        type: BOOL
+        description: is active
+      - name: QUANTITIY
+        type: NUMBER(38,0)
+        description: Quantity
+      - name: COLLECTION_METHOD
+        type: VARCHAR(16777216)
+        description: Automatic or manual collection
+      - name: NOTES
+        type: VARCHAR(16777216)
+        description: Notes added for extra information
+      - name: URL
+        type: VARCHAR(16777216)
+        description: zenreach reculry subscription url
+      - name: PLAN_CODE
+        type: VARCHAR(16777216)
+        description: Plan code
+      - name: BILLING_FREQUENCY_MONTHS
+        type: NUMBER(38,0)
+        description: Frequency of monthly billing
+  - name: src_ams_account__recurly_subscription_snapshot
+    description: Recurly subscription information snapshot
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: RECURLY_SUBSCRIPTION_ID
+        type: VARCHAR(16777216)
+        description: indentifier recurly subscription
+      - name: START_DATE
+        type: TIMESTAMP
+        description: Start date of subscription
+      - name: UNIT_PRICE_CENTS
+        type: NUMBER(38,0)
+        description: Unit price in cents
+      - name: ACTIVE
+        type: BOOL
+        description: is active
+      - name: QUANTITIY
+        type: NUMBER(38,0)
+        description: Quantity
+      - name: COLLECTION_METHOD
+        type: VARCHAR(16777216)
+        description: Automatic or manual collection
+      - name: NOTES
+        type: VARCHAR(16777216)
+        description: Notes added for extra information
+      - name: URL
+        type: VARCHAR(16777216)
+        description: zenreach reculry subscription url
+      - name: PLAN_CODE
+        type: VARCHAR(16777216)
+        description: Plan code
+      - name: BILLING_FREQUENCY_MONTHS
+        type: NUMBER(38,0)
+        description: Frequency of monthly billing
+  - name: src_ams_account__salesforce_account
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+      - name: NAME
+        type: VARCHAR(16777216)
+      - name: CREATED
+        type: TIEMSTAMP
+      - name: UPDATED
+        type: TIMESTAMP
+      - name: ASOF_DATE
+        type: DATE
+  - name: src_ams_account__salesforce_asset
+    description: Salesforce asset information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: PARENT_ID
+        type: VARCHAR(16777216)
+        description: Parent indentification
+      - name: QUANTITY
+        type: NUMBER(38,0)
+        description: Quantity asset
+      - name: UNIT_PRICE_CENTS
+        type: NUMBER(38,0)
+        description: Unit price in cents
+      - name: INSTALLED_DATE
+        type: TIMESTAMP
+        description: Date of installation
+      - name: TERMINATION_DATE
+        type: TIMESTAMP
+        description: Date of termination
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__salesforce_order
+    description: Salesforce order information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: STATUS
+        type: VARCHAR(16777216)
+        description: status actiavted or draft
+      - name: EFFECTIVE_DATE
+        type: TIMESTAMP
+        description: Date effective
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: SIGNED_DATE
+        type: TIMESTAMP
+        description: Date signed
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__salesforce_order_item
+    description: Salesforce order item information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: REPLACEMENT_ORDER_ITEM_ID
+        type: VARCHAR(16777216)
+        description: indentifier replacement order
+      - name: QUANTITY
+        type: NUMBER(38,0)
+        description: Quantity ordered
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__salesforce_quote
+    description: Salesforce quote information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: SALESFORCE_QUOTE_ID
+        type: VARCHAR(16777216)
+        description: indentifier salesforce quote
+      - name: BILLING_CITY
+        type: VARCHAR(16777216)
+        description: Billed city
+      - name: BILLING_COUNTRY
+        type: VARCHAR(16777216)
+        description: Billed country
+      - name: BILLING_STATE
+        type: VARCHAR(16777216)
+        description: Billed state
+      - name: BILLING_STREET
+        type: VARCHAR(16777216)
+        description: Billed street
+      - name: BILLING_POSTAL_CODE
+        type: VARCHAR(16777216)
+        description: Billed postal code
+      - name: BILLING_METHOD
+        type: VARCHAR(16777216)
+        description: Payment method
+      - name: CONTACT_ID
+        type: VARCHAR(16777216)
+        description: Indetifier for contact
+      - name: PRICEBOOK2_ID
+        type: VARCHAR(16777216)
+        description: Pricebook id
+      - name: OPPURTINITY_ID
+        type: VARCHAR(16777216)
+        description: Oppurtinity id
+      - name: AUTO_SIGN
+        type: BOOL
+        description: Auto sign
+      - name: STATUS
+        type: VARCHAR(16777216)
+        description: Accepted or draft
+      - name: SOCIAL_MEDIA_ACCOUNTS
+        type: VARCHAR(16777216)
+        description: Social media accounts tied to business
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: TYPE
+        type: VARCHAR(16777216)
+        description: New or Amendment
+      - name: BILLING_NAME
+        type: VARCHAR(16777216)
+        description: Name for Billing
+      - name: QUOTE_TO_CITY
+        type: VARCHAR(16777216)
+        description: City for quote
+      - name: QUOTE_TO_COUNTRY
+        type: VARCHAR(16777216)
+        description: Country for quote
+      - name: QUOTE_TO_STATE
+        type: VARCHAR(16777216)
+        description: State for quote
+      - name: QUOTE_TO_STREET
+        type: VARCHAR(16777216)
+        description: Street for quote
+      - name: QUOTE_TO_POSTAL_CODE
+        type: VARCHAR(16777216)
+        description: Postal code for quote
+      - name: DESCRIPTION
+        type: VARCHAR(16777216)
+        description: Added details to quote
+      - name: QUOTE_TO_NAME
+        type: VARCHAR(16777216)
+        description: Name added to quote
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__salesforce_quote_line_item
+    description: Quote line item information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: SALESFORCE_QUOTE_UUID
+        type: VARCHAR(16777216)
+        description: indentifier for salesforce UUID
+      - name: SALESFORCE_QUOTE_LINE_ITEM_ID
+        type: VARCHAR(16777216)
+        description: salesforce quote line item id
+      - name: ASSET_ID
+        type: VARCHAR(16777216)
+        description: indentifier of salesforce asset
+      - name: REPLACEMENT_QUOTE_LINE_ID
+        type: VARCHAR(16777216)
+        description: indentifier replacement quote line
+      - name: PRODUCT2_ID
+        type: VARCHAR(16777216)
+        description: indentifier for product
+      - name: PRODUCT2_NAME
+        type: VARCHAR(16777216)
+        description: Name of product
+      - name: PRODUCT2_CODE
+        type: VARCHAR(16777216)
+        description: Product code
+      - name: PRODUCT2_FAMILY (ads,installation,hardware)
+        type: VARCHAR(16777216)
+        description: Group product belongs to (ads, platfom)
+      - name: PRODUCT_SKU
+        type: VARCHAR(16777216)
+        description: Product sku
+      - name: PRODUCT_CATEGORY
+        type: VARCHAR(16777216)
+        description: Product category
+      - name: INVOICE_NOW
+        type: BOOL
+        description: Invoice now
+      - name: BILLING_FREQUENCY_MONTHS
+        type: NUMBER(38,0)
+        description: Frequency of monthly billing
+      - name: PRICEBOOK_ENTRY_ID
+        type: VARCHAR(16777216)
+        description: indentifier for pricebook entry
+      - name: QUANTITY
+        type: NUMBER(38,0)
+        description: Quantity
+      - name: UNIT_PRICE_CENTS
+        type: NUMBER(38,0)
+        description: Unit price cents
+      - name: DISCOUNT_PERCENT
+        type: NUMBER(38,0)
+        description: Discount percent
+      - name: TOTAL_PRICE_CENTS
+        type: NUMBER(38,0)
+        description: total price cents
+      - name: START_DATE
+        type: DATE
+        description: Start date
+      - name: END_DATE
+        type: DATE
+        description: End date
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of entry
+      - name: MARGIN_PERCENT
+        type: NUMBER(38,0)
+        description: Profit margin percent
+      - name: DESCRIPTION
+        type: VARCHAR(16777216)
+        description: Added information
+      - name: INTERNAL_DESCRIPTION
+        type: VARCHAR(16777216)
+        description: Added information internal
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__subscription
+    description: Subscription information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+        description: indentifier account
+      - name: RECURLY_SUBSCRIPTION_ID
+        type: VARCHAR(16777216)
+        description: indentifier recurly subscription
+      - name: PROVIDER_TYPE
+        type: VARCHAR(16777216)
+        description: Provider description
+      - name: PRODUCT
+        type: VARCHAR(16777216)
+        description: product family (platform, ads)
+      - name: PACKAGE
+        type: VARCHAR(16777216)
+        description: ads,acquire,retain
+      - name: MANUAL_INVOICE
+        type: BOOL
+        description: is manual invoice
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__subscription_log
+    description: Salesforce log information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+        description: indentifier account
+      - name: SALESFORCE_QUOTE_LINE_ITEM_UUID
+        type: VARCHAR(16777216)
+        description: Salesforce line item id
+      - name: SUBSCRIPTION_ID
+        type: VARCHAR(16777216)
+        description: indentifier subscription
+      - name: ACTIVE
+        type: BOOL
+        description: Is subscription active
+      - name: PRODUCT
+        type: VARCHAR(16777216)
+        description: product family (platform, ads)
+      - name: PACKAGE
+        type: VARCHAR(16777216)
+        description: Provider description
+      - name: PRODUCT
+        type: VARCHAR(16777216)
+        description: product family (platform, ads)
+      - name: PACKAGE
+        type: VARCHAR(16777216)
+        description: ads,acquire,retain
+      - name: MANUAL_INVOICE
+        type: BOOL
+        description: is manual invoice
+      - name: UNIT_PRICE_CENTS
+        type: NUMBER(38,0)
+        description: unit price
+      - name: QUANTITIY
+        type: NUMBER(38,0)
+        description: Quantity
+      - name: START_DATE
+        type: TIMESTAMP
+        description: Subscription start date
+      - name: BILLING_FREQUENCY_MONTHS
+        type: NUMBER(38,0)
+        description: Frequency of monthly billing
+      - name: NOTES
+        type: VARCHAR(16777216)
+        description: Notes added
+      - name: OPERATION
+        type: VARCHAR(16777216)
+        description: Create or terminate
+      - name: ERROR
+        type: VARCHAR(16777216)
+        description: Error logged
+      - name: CREATED
+        type: TIMESTAMP
+        description: Create date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__subscription_snapshot
+    description: Subscription snapcshot
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: SUBSCRIPTION_ID
+        type: VARCHAR(16777216)
+        description: indentifier subscription
+      - name: RECURLY_SUBSCRIPTION_SNAPSHOT_ID
+        type: VARCHAR(16777216)
+        description: indentifier recurly snapshot subscription
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+        description: indentifier account
+      - name: RECURLY_SUBSCRIPTION_ID
+        type: VARCHAR(16777216)
+        description: indentifier recurly subscription
+      - name: PROVIDER_TYPE
+        type: VARCHAR(16777216)
+        description: Provider description
+      - name: PRODUCT
+        type: VARCHAR(16777216)
+        description: product family (platform, ads)
+      - name: PACKAGE
+        type: VARCHAR(16777216)
+        description: Provider description
+      - name: PRODUCT
+        type: VARCHAR(16777216)
+        description: product family (platform, ads)
+      - name: PACKAGE
+        type: VARCHAR(16777216)
+        description: ads,acquire,retain
+      - name: MANUAL_INVOICE
+        type: BOOL
+        description: is manual invoice
+      - name: CREATED
+        type: TIMESTAMP
+        description: Create date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_account__view_ads_billing_log
+    description: ads billing log
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row
+      - name: CAMPAIGN_ID
+        type: VARCHAR(16777216)
+        description: indentifier campaign
+      - name: START_DATE
+        type: DATE
+        description: Start date
+      - name: END_DATE
+        type: DATE
+        description: End date
+      - name: TOTAL_ADS_SPEND
+        type: NUMBER(38,0)
+        description: Total spent ads
+      - name: TOTAL_BILLED_CENTS
+        type: NUMBER(38,0)
+        description: Total billed
+      - name: CHARGE_ID
+        type: VARCHAR(16777216)
+        description: indentifier charge
+      - name: ERROR
+        type: VARCHAR(16777216)
+        description: Error log
+      - name: CREATED
+        type: TIMESTAMP
+        description: Create date of row entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of row entry
+      - name: TOTAL_SPEND_WITH_MARGIN_CENTS
+        type: NUMBER(38,0)
+        description: Total spent with margin
+      - name: TOTAL_SPEND_BEFORE_CAP_CENTS
+        type: NUMBER(38,0)
+        description: Total spent before
+      - name: PREVIOUS_BILLED_CENTS
+        type: NUMBER(38,0)
+        description: Previous spend
+      - name: IO_BUDGET_CENTS
+        type: NUMBER(38,0)
+        description: Budget
+      - name: BILLING_MONTH
+        type: VARCHAR(16777216)
+        description: Billing month
+      - name: STATUS
+        type: VARCHAR(16777216)
+        description: approved,manual,pending
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table

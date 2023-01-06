@@ -1,0 +1,16 @@
+select $1:_id:"$oid"::string             as message_id,
+       $1:archived::boolean      as archived,
+       $1:body::string           as body,
+       $1:business_id:"$oid"::string    as business_id,
+       {{ parse_json_date('$1:created') }}      as created,
+       $1:daily_limit::integer   as daily_limit,
+       $1:from_address::string   as from_address,
+       $1:from_name::string      as from_name,
+       $1:is_deprecated::boolean as is_deprecated,
+       $1:is_referenced::boolean as is_referenced,
+       $1:offer_id:"$oid"::string       as offer_id,
+       $1:purpose::string        as purpose,
+       $1:subject::string        as subject,
+       $1:template_id:"$oid"::string    as template_id,
+       current_date              as asof_date
+from {{ most_recent_s3_file_name('_STAGE', 'S3_MONGO_STAGE', '.*/smbsite_message.json') }}

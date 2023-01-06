@@ -1,0 +1,30 @@
+dbt run --models \
+src_crm__analytics_customer \
+stg_crm__analytics_customer \
+src_crm__portal_userprofile \
+stg_crm__portal_userprofile \
+mart_merged_presence_pos__contact_details \
+stg_crm__businessprofile_hierarchy \
+src_crm__portal_businessprofile \
+stg_crm__portal_businessprofile \
+stg_pos__merchant \
+mart_merged_presence_pos__pos_locations \
+stg_privacy__privacy_deletes \
+stg_presence__finished_sightings \
+mart_merged_presence_pos__pos_sightings \
+stg_business_profiles__d_business_geocode \
+src_crm__portal_accessdevice \
+stg_crm__portal_accessdevice \
+src_crm__portal_accessdeviceownership \
+stg_crm__portal_accessdeviceownership \
+mart_merged_presence_pos__enriched_sightings \
+stg_pos__purchase \
+stg_pos__merchant \
+stg_pos__customer \
+mart_merged_presence_pos__transactions \
+mart_merged_presence_pos__temporospatial_contact_profiles \
+mart_merged_presence_pos__local_crm_contacts \
+mart_merged_presence_pos__pos_customers \
+mart_merged_presence_pos__crm_contact_profiles \
+mart_merged_presence_pos__wifi_pos_presence \
+--full-refresh

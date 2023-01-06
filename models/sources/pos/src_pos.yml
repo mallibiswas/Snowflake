@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: POS
+    description: POS Schema
+    tables:
+      - name: CUSTOMER
+        description: POS Customer table
+      - name: MERCHANT 
+        description: POS Merchant table
+      - name: PURCHASE
+        description: POS Purchase table

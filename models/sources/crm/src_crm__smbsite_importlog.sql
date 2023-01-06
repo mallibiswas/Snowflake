@@ -1,0 +1,17 @@
+select $1:id::string              as importlog_id,
+       $1:business_id::string     as business_id,
+       $1:cioaccount_id::string   as cioaccount_id,
+       {{ parse_json_date('$1:completed') }}    as completed,
+       $1:contacts_added::integer as contacts_added,
+       $1:contacts_found::integer as contacts_found,
+       $1:emailimport_id::string  as emailimport_id,
+       $1:imported_by_id::string  as imported_by_id,
+       $1:source::string          as "source",
+       {{ parse_json_date('$1:started') }}     as started,
+       $1:success::boolean        as success,
+       $1:tags::variant           as tags,
+       {{ parse_json_date('$1:undone') }}       as undone,
+       $1:username::string        as username,
+       $1:webhook::boolean        as webhook,
+       current_date               as asof_date
+from {{ most_recent_s3_file_name('_STAGE', 'S3_MONGO_STAGE', '.*/smbsite_importlog.json') }}

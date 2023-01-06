@@ -1,0 +1,83 @@
+version: '2.0'
+name: 'zenreach'
+profile: 'zenreach'
+source-paths: ["models"]
+config-version: 2
+
+vars:
+    'dbt_date:time_zone': 'America/Los_Angeles'
+    'test_env': 'ZENDEV'
+
+quoting:
+  identifier: true
+
+models:
+    sql_header: "alter session set TIMEZONE = 'UTC';"
+    zenreach:
+        materialized: table
+        sources:
+            materialized: table
+            ads:
+                schema: raw_ads
+            ams:
+                ams_accounts:
+                    schema: raw_ams_accounts
+                ams_productlicenser:
+                    schema: raw_ams_productlicenser
+                ams_routers:
+                    schema: raw_ams_routers
+            crm:
+                schema: raw_crm
+        staging:
+            materialized: view
+            ads:
+                schema: shadow_ads
+            ams:
+                ams:
+                    schema: ams
+                    #post-hook: "{{ refresh_zenalytics_view(this) }}"
+                ams_accounts:
+                    schema: ams_accounts
+                    #post-hook: "{{ refresh_zenalytics_view(this) }}"
+                ams_productlicenser:
+                    schema: ams_productlicenser
+                ams_routers:
+                    schema: ams_routers
+            crm:
+                schema: crm
+            pos:
+                schema: shadow_pos
+            presence:
+                schema: shadow_presence
+            privacy:
+                schema: shadow_privacy
+            recurly:
+                schema: recurly
+            sfdc:
+                schema: sfdc
+                sfdc_locations:
+                    schema: sfdc_locations
+
+        marts:
+            tags: ["mart"]
+            audiences:
+                schema: mart_audiences
+            bizint:
+                schema: mart_bizint
+            down_router:
+                schema: mart_down_router
+            presence_metrics:
+                schema: mart_presence_metrics
+            revrec:
+                schema: mart_revrec
+            merged_presence_pos:
+                schema: mart_merged_presence_pos
+
+
+
+target-path: "/tmp/target"
+log-path: "/tmp/log"
+modules-path: "/tmp/modules"
+
+on-run-start:
+    - '{{create_merge_pos_presence_functions()}}'

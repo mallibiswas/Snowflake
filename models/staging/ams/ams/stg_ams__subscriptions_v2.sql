@@ -1,0 +1,2 @@
+SELECT *
+FROM {{ source('AMS', 'SUBSCRIPTIONS_V2') }}

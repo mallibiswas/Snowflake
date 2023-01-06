@@ -1,0 +1,1 @@
+SELECT * FROM {{ ref('src_ams_routers__router_assignment') }}

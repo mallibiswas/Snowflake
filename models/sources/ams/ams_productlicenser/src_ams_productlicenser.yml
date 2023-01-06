@@ -1,0 +1,267 @@
+version: 2
+
+models:    
+  - name: src_ams_productlicenser__business_entity
+    description: Business Entity information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: PARENT_ID
+        type: VARCHAR(16777216)
+        description: Parent id business hierarchy
+      - name: NAME
+        type: VARCHAR(16777216)
+        description: Business Name
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+        description: Account indentifiation 
+      - name: CRM_ID
+        type: VARCHAR(16777216)
+        description: Id in crm
+      - name: SALESFORCE_ID
+        type: VARCHAR(16777216)
+        description: Salesforce indentifiation
+      - name: TYPE
+        type: VARCHAR(16777216)
+        description: Type for tree (leaf,node,root)
+      - name: CREATED
+        type: TIEMSTAMP
+        description: Creation date of entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of entry
+      - name: ASOF_DATE
+        type: DATE
+        description: Last updated date for table 
+  - name: src_ams_productlicenser__feature
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: NAME
+        type: VARCHAR(16777216)
+        description: Name of feature
+      - name: CODE
+        type: VARCHAR(16777216)
+        description: feature code 
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of entry
+      - name: ASOF_DATE
+        type: DATE
+        description: Last updated date for table 
+  - name: src_ams_productlicenser__license
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: ACCOUNT_ID
+        type: VARCHAR(16777216)
+        description: Account indentifiation 
+      - name: PACKAGE_ID
+        type: VARCHAR(16777216)
+        description: Package indentifiation 
+      - name: TOTAL_UNITS
+        type: NUMBER(38,0)
+        description: Amount of units total
+      - name: Assigned_Unit
+        type: NUMBER(38,0)
+        description: Units assigned to account
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_productlicenser__license_assignment
+    description: License assignment information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: LICENSE_ID
+        type: VARCHAR(16777216)
+        description: Indentifier of license
+      - name: BUSINESS_ID
+        type: VARCHAR(16777216)
+        description: Bussines Indentifier 
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of entry
+      - name: DELETED
+        type: TIMESTAMP
+        description: Date of license assignment deletion if exists
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_productlicenser__package
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: LICENSE_ID
+        type: VARCHAR(16777216)
+        description: Indentifier of license 
+      - name: BUSINESS_ID
+        type: VARCHAR(16777216)
+        description: Bussines Indentifier 
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of entry
+      - name: DELETED
+        type: TIMESTAMP
+        description: Date of license assignment deletion if exists
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table
+  - name: src_ams_productlicenser__package_feature_link
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: PACKAGE_ID
+        type: VARCHAR(16777216)
+      - name: FEATURE_ID
+        type: VARCHAR(16777216)
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table entries
+  - name: src_ams_productlicenser__package_quota_link
+    description: Package to quota link information
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: PACKAGE_ID
+        type: NUMBER(38,0)
+      - name: QUOTA_ID
+        type: NUMBER(38,0)
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table 
+  - name: src_ams_productlicenser__product
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: NAME
+        type: VARCHAR(16777216)
+      - name: CODE
+        type: VARCHAR(16777216)
+        description: Product family
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of entry
+      - name: UPDATED
+        type: TIMESTAMP
+        description: Update date of entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table entries
+  - name: src_ams_productlicenser__quota
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: SOFT_LIMIT
+        type: NUMBER(38,0)
+        description: Soft limit on quota
+      - name: HARD_LIMIT
+        type: NUMBER(38,0)
+        description: Hard limit on quota
+      - name: UNIT_PENALTY_IN_CENTS
+        type: NUMBER(38,0)
+      - name: QUOTA_TYPE_ID
+        type: VARCHAR(16777216)
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table entries
+  - name: src_ams_productlicenser__quota_type
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+    columns:
+      - name: ID
+        type: VARCHAR(16777216)
+        description: Unique indentifier of row entry
+      - name: CODE
+        type: VARCHAR(16777216)
+      - name: PRODUCT_ID
+        type: VARCHAR(16777216)
+        description: Hard limit on quota
+      - name: CREATED
+        type: TIMESTAMP
+        description: Creation date of entry
+      - name: ASOF_DATE
+        type: TIMESTAMP
+        description: Last updated date for table entries
+        

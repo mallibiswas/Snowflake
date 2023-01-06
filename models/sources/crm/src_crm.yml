@@ -1,0 +1,374 @@
+version: 2
+
+models:
+  - name: src_crm__analytics_aggregatestats
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__analytics_collectionstats
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__analytics_customer
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__analytics_messagelogstats
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__analytics_traffic
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__auth_user
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__gdpr_contact_blacklist
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__mobile_deviceregistrationlog
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__mobile_engagementlog
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__mobile_notificationdevice
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__mobile_notificationdevicelogin
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__models_accounttutorialcompletion
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__models_billingandsubscriptionprefs
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__models_businessbranding
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__models_messagestats
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__models_onboardingwizardpagecompletions
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__models_usertutorialcompletion
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_accessdevice
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_accessdeviceownership
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_businessownership
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_businessprofile
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_businessrelationship
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_portaltermsprivacyconsent
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_product
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_productversion
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_router
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_routertype
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_tosconsent
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__portal_userprofile
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__repmanagement_businessrating
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__repmanagement_settings
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_activitylog
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_blacklistedemail
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_clickevent
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_clicklog
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_defaulttrigger
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_emailblast
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_emailimport
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_emailtemplate
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_emailwhitelist
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_gatekeeper
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_gatekeeperentry
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_mac_to_contact
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_merchantnotificationsetting
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_mergedblast
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_message
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_mobileappdownload
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_offer
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_offercode
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_offerlog
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_offerlogdetail
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_target
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36
+  - name: src_crm__smbsite_trigger
+    description: TODO
+    tests:
+      - dbt_utils.recency:
+          datepart: hour
+          field: ASOF_DATE
+          interval: 36

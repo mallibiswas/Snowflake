@@ -1,0 +1,670 @@
+version: 2
+
+sources:
+  - name: RECURLY
+    database: "{{ 'ZENALYTICS' if target.database == 'ZENPROD' else 'ZENDEV' }}"
+    description: This is a copy of data loaded through stitch from recurly
+    freshness:
+      error_after:
+        count: 36
+        period: hour
+    loaded_at_field: _SDC_RECEIVED_AT
+    tables:
+      - name: ACCOUNTS
+        description: TODO
+        columns:
+          - name: ADDRESS
+            data_type: VARIANT
+          - name: BILLING_INFO
+            data_type: VARIANT
+          - name: BILL_TO
+            data_type: TEXT
+          - name: CC_EMAILS
+            data_type: TEXT
+          - name: CODE
+            data_type: TEXT
+          - name: COMPANY
+            data_type: TEXT
+          - name: CREATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: DELETED_AT
+            data_type: TIMESTAMP_TZ
+          - name: EMAIL
+            data_type: TEXT
+          - name: FIRST_NAME
+            data_type: TEXT
+          - name: HOSTED_LOGIN_TOKEN
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: LAST_NAME
+            data_type: TEXT
+          - name: OBJECT
+            data_type: TEXT
+          - name: PREFERRED_LOCALE
+            data_type: TEXT
+          - name: SHIPPING_ADDRESSES
+            data_type: VARIANT
+          - name: STATE
+            data_type: TEXT
+          - name: TAX_EXEMPT
+            data_type: BOOLEAN
+          - name: UPDATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: USERNAME
+            data_type: TEXT
+          - name: VAT_NUMBER
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: CUSTOM_FIELDS
+            data_type: VARIANT
+      - name: ADJUSTMENTS
+        description: TODO
+        columns:
+          - name: ACCOUNT
+            data_type: VARIANT
+          - name: ACCOUNTING_CODE
+            data_type: TEXT
+          - name: AMOUNT
+            data_type: NUMBER(38, 0)
+          - name: CREATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: CURRENCY
+            data_type: TEXT
+          - name: DESCRIPTION
+            data_type: TEXT
+          - name: DISCOUNT
+            data_type: FLOAT
+          - name: END_DATE
+            data_type: TIMESTAMP_TZ
+          - name: ID
+            data_type: TEXT
+          - name: INVOICE_ID
+            data_type: TEXT
+          - name: INVOICE_NUMBER
+            data_type: TEXT
+          - name: LEGACY_CATEGORY
+            data_type: TEXT
+          - name: OBJECT
+            data_type: TEXT
+          - name: ORIGIN
+            data_type: TEXT
+          - name: ORIGINAL_LINE_ITEM_INVOICE_ID
+            data_type: TEXT
+          - name: PLAN_CODE
+            data_type: TEXT
+          - name: PLAN_ID
+            data_type: TEXT
+          - name: PREVIOUS_LINE_ITEM_ID
+            data_type: TEXT
+          - name: PRODUCT_CODE
+            data_type: TEXT
+          - name: QUANTITY
+            data_type: NUMBER(38, 0)
+          - name: REFUND
+            data_type: BOOLEAN
+          - name: START_DATE
+            data_type: TIMESTAMP_TZ
+          - name: STATE
+            data_type: TEXT
+          - name: SUBSCRIPTION_ID
+            data_type: TEXT
+          - name: SUBTOTAL
+            data_type: FLOAT
+          - name: TAX
+            data_type: FLOAT
+          - name: TAXABLE
+            data_type: BOOLEAN
+          - name: TAX_EXEMPT
+            data_type: BOOLEAN
+          - name: TYPE
+            data_type: TEXT
+          - name: UNIT_AMOUNT
+            data_type: FLOAT
+          - name: UPDATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: UUID
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: ADD_ON_ID
+            data_type: TEXT
+          - name: ADD_ON_CODE
+            data_type: TEXT
+          - name: CREDIT_REASON_CODE
+            data_type: TEXT
+          - name: TAX_CODE
+            data_type: TEXT
+          - name: CREDIT_APPLIED
+            data_type: FLOAT
+          - name: REFUNDED_QUANTITY
+            data_type: FLOAT
+          - name: PRORATION_RATE
+            data_type: FLOAT
+          - name: UNIT_AMOUNT__DE
+            data_type: NUMBER(38, 6)
+          - name: TAX__DE
+            data_type: NUMBER(38, 6)
+          - name: PRORATION_RATE__DE
+            data_type: NUMBER(38, 6)
+          - name: DISCOUNT__DE
+            data_type: NUMBER(38, 6)
+          - name: CREDIT_APPLIED__DE
+            data_type: NUMBER(38, 6)
+          - name: REFUNDED_QUANTITY__IT
+            data_type: NUMBER(38, 0)
+          - name: AMOUNT__DE
+            data_type: NUMBER(38, 6)
+          - name: SUBTOTAL__DE
+            data_type: NUMBER(38, 6)
+      - name: BILLING_INFO
+        description: TODO
+        columns:
+          - name: ACCOUNT_ID
+            data_type: TEXT
+          - name: ADDRESS
+            data_type: VARIANT
+          - name: COMPANY
+            data_type: TEXT
+          - name: CREATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: FIRST_NAME
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: LAST_NAME
+            data_type: TEXT
+          - name: OBJECT
+            data_type: TEXT
+          - name: PAYMENT_METHOD
+            data_type: VARIANT
+          - name: UPDATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: UPDATED_BY
+            data_type: VARIANT
+          - name: VALID
+            data_type: BOOLEAN
+          - name: VAT_NUMBER
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+      - name: COUPON_REDEMPTIONS
+        description: TODO
+        columns:
+          - name: ACCOUNT
+            data_type: VARIANT
+          - name: COUPON
+            data_type: VARIANT
+          - name: CREATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: CURRENCY
+            data_type: TEXT
+          - name: DISCOUNTED
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: OBJECT
+            data_type: TEXT
+          - name: STATE
+            data_type: TEXT
+          - name: UPDATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: REMOVED_AT
+            data_type: TIMESTAMP_TZ
+      - name: COUPONS
+        description: TODO
+        columns:
+          - name: APPLIES_TO_ALL_PLANS
+            data_type: BOOLEAN
+          - name: APPLIES_TO_NON_PLAN_CHARGES
+            data_type: BOOLEAN
+          - name: CODE
+            data_type: TEXT
+          - name: COUPON_TYPE
+            data_type: TEXT
+          - name: CREATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: DISCOUNT
+            data_type: VARIANT
+          - name: DURATION
+            data_type: TEXT
+          - name: EXPIRED_AT
+            data_type: TIMESTAMP_TZ
+          - name: HOSTED_PAGE_DESCRIPTION
+            data_type: TEXT
+          - name: ID
+            data_type: TEXT
+          - name: INVOICE_DESCRIPTION
+            data_type: TEXT
+          - name: MAX_REDEMPTIONS_PER_ACCOUNT
+            data_type: FLOAT
+          - name: NAME
+            data_type: TEXT
+          - name: OBJECT
+            data_type: TEXT
+          - name: PLANS_NAMES
+            data_type: VARIANT
+          - name: PLANS__ST
+            data_type: TEXT
+          - name: PLANS__VA
+            data_type: VARIANT
+          - name: REDEEM_BY
+            data_type: TIMESTAMP_TZ
+          - name: REDEMPTION_RESOURCE
+            data_type: TEXT
+          - name: STATE
+            data_type: TEXT
+          - name: TEMPORAL_AMOUNT
+            data_type: FLOAT
+          - name: TEMPORAL_UNIT
+            data_type: TEXT
+          - name: UNIQUE_COUPON_CODES_COUNT
+            data_type: FLOAT
+          - name: UPDATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: UNIQUE_COUPON_CODES_COUNT__IT
+            data_type: NUMBER(38, 0)
+          - name: MAX_REDEMPTIONS_PER_ACCOUNT__IT
+            data_type: NUMBER(38, 0)
+          - name: TEMPORAL_AMOUNT__IT
+            data_type: NUMBER(38, 0)
+      - name: INVOICES
+        description: TODO
+        columns:
+          - name: ACCOUNT
+            data_type: VARIANT
+          - name: ADDRESS
+            data_type: VARIANT
+          - name: BALANCE
+            data_type: FLOAT
+          - name: CLOSED_AT
+            data_type: TIMESTAMP_TZ
+          - name: COLLECTION_METHOD
+            data_type: TEXT
+          - name: CREATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: CREDIT_PAYMENTS
+            data_type: VARIANT
+          - name: CURRENCY
+            data_type: TEXT
+          - name: CUSTOMER_NOTES
+            data_type: TEXT
+          - name: DISCOUNT
+            data_type: FLOAT
+          - name: DUE_AT
+            data_type: TIMESTAMP_TZ
+          - name: ID
+            data_type: TEXT
+          - name: LINE_ITEMS
+            data_type: VARIANT
+          - name: NET_TERMS
+            data_type: FLOAT
+          - name: NUMBER
+            data_type: TEXT
+          - name: OBJECT
+            data_type: TEXT
+          - name: ORIGIN
+            data_type: TEXT
+          - name: PAID
+            data_type: FLOAT
+          - name: PO_NUMBER
+            data_type: TEXT
+          - name: PREVIOUS_INVOICE_ID
+            data_type: TEXT
+          - name: STATE
+            data_type: TEXT
+          - name: SUBSCRIPTION_IDS
+            data_type: VARIANT
+          - name: SUBTOTAL
+            data_type: FLOAT
+          - name: TAX
+            data_type: FLOAT
+          - name: TERMS_AND_CONDITIONS
+            data_type: TEXT
+          - name: TOTAL
+            data_type: FLOAT
+          - name: TRANSACTIONS
+            data_type: VARIANT
+          - name: TYPE
+            data_type: TEXT
+          - name: UPDATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: VAT_NUMBER
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: REFUNDABLE_AMOUNT
+            data_type: FLOAT
+          - name: TAX__DE
+            data_type: NUMBER(38, 6)
+          - name: DISCOUNT__DE
+            data_type: NUMBER(38, 6)
+          - name: REFUNDABLE_AMOUNT__DE
+            data_type: NUMBER(38, 6)
+          - name: BALANCE__DE
+            data_type: NUMBER(38, 6)
+          - name: PAID__DE
+            data_type: NUMBER(38, 6)
+          - name: TOTAL__DE
+            data_type: NUMBER(38, 6)
+          - name: SUBTOTAL__DE
+            data_type: NUMBER(38, 6)
+      - name: PLANS
+        description: TODO
+        columns:
+          - name: ACCOUNTING_CODE
+            data_type: TEXT
+          - name: AUTO_RENEW
+            data_type: BOOLEAN
+          - name: CODE
+            data_type: TEXT
+          - name: CREATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: CURRENCIES
+            data_type: VARIANT
+          - name: DELETED_AT
+            data_type: TIMESTAMP_TZ
+          - name: DESCRIPTION
+            data_type: TEXT
+          - name: HOSTED_PAGES
+            data_type: VARIANT
+          - name: ID
+            data_type: TEXT
+          - name: INTERVAL_LENGTH
+            data_type: FLOAT
+          - name: INTERVAL_UNIT
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: OBJECT
+            data_type: TEXT
+          - name: SETUP_FEE_ACCOUNTING_CODE
+            data_type: TEXT
+          - name: STATE
+            data_type: TEXT
+          - name: TAX_EXEMPT
+            data_type: BOOLEAN
+          - name: TOTAL_BILLING_CYCLES
+            data_type: FLOAT
+          - name: TRIAL_LENGTH
+            data_type: FLOAT
+          - name: TRIAL_UNIT
+            data_type: TEXT
+          - name: UPDATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: INTERVAL_LENGTH__IT
+            data_type: NUMBER(38, 0)
+          - name: TRIAL_LENGTH__IT
+            data_type: NUMBER(38, 0)
+          - name: TOTAL_BILLING_CYCLES__IT
+            data_type: NUMBER(38, 0)
+      - name: PLANS_ADD_ONS
+        description: TODO
+        columns:
+          - name: CODE
+            data_type: TEXT
+          - name: CREATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: CURRENCIES
+            data_type: VARIANT
+          - name: DEFAULT_QUANTITY
+            data_type: FLOAT
+          - name: DISPLAY_QUANTITY
+            data_type: BOOLEAN
+          - name: ID
+            data_type: TEXT
+          - name: NAME
+            data_type: TEXT
+          - name: OBJECT
+            data_type: TEXT
+          - name: PLAN_ID
+            data_type: TEXT
+          - name: STATE
+            data_type: TEXT
+          - name: UPDATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: DEFAULT_QUANTITY__IT
+            data_type: NUMBER(38, 0)
+      - name: SUBSCRIPTIONS
+        description: TODO
+        columns:
+          - name: ACCOUNT
+            data_type: VARIANT
+          - name: ACTIVATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: ADD_ONS
+            data_type: VARIANT
+          - name: ADD_ONS_TOTAL
+            data_type: FLOAT
+          - name: AUTO_RENEW
+            data_type: BOOLEAN
+          - name: BANK_ACCOUNT_AUTHORIZED_AT
+            data_type: TIMESTAMP_TZ
+          - name: CANCELED_AT
+            data_type: TIMESTAMP_TZ
+          - name: COLLECTION_METHOD
+            data_type: TEXT
+          - name: COUPON_REDEMPTIONS
+            data_type: VARIANT
+          - name: CREATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: CURRENCY
+            data_type: TEXT
+          - name: CURRENT_PERIOD_ENDS_AT
+            data_type: TIMESTAMP_TZ
+          - name: CURRENT_PERIOD_STARTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: CURRENT_TERM_ENDS_AT
+            data_type: TIMESTAMP_TZ
+          - name: CUSTOMER_NOTES
+            data_type: TEXT
+          - name: CUSTOM_FIELDS
+            data_type: VARIANT
+          - name: EXPIRATION_REASON
+            data_type: TEXT
+          - name: EXPIRES_AT
+            data_type: TIMESTAMP_TZ
+          - name: ID
+            data_type: TEXT
+          - name: NET_TERMS
+            data_type: FLOAT
+          - name: OBJECT
+            data_type: TEXT
+          - name: PENDING_CHANGE
+            data_type: VARIANT
+          - name: PLAN
+            data_type: VARIANT
+          - name: PO_NUMBER
+            data_type: TEXT
+          - name: QUANTITY
+            data_type: FLOAT
+          - name: REMAINING_BILLING_CYCLES
+            data_type: FLOAT
+          - name: RENEWAL_BILLING_CYCLES
+            data_type: FLOAT
+          - name: STATE
+            data_type: TEXT
+          - name: SUBTOTAL
+            data_type: FLOAT
+          - name: TERMS_AND_CONDITIONS
+            data_type: TEXT
+          - name: TOTAL_BILLING_CYCLES
+            data_type: FLOAT
+          - name: TRIAL_ENDS_AT
+            data_type: TIMESTAMP_TZ
+          - name: TRIAL_STARTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: UNIT_AMOUNT
+            data_type: FLOAT
+          - name: UPDATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: UUID
+            data_type: TEXT
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: NET_TERMS__IT
+            data_type: NUMBER(38, 0)
+          - name: UNIT_AMOUNT__DE
+            data_type: NUMBER(38, 6)
+          - name: ADD_ONS_TOTAL__DE
+            data_type: NUMBER(38, 6)
+          - name: QUANTITY__IT
+            data_type: NUMBER(38, 0)
+          - name: SUBTOTAL__DE
+            data_type: NUMBER(38, 6)
+          - name: RENEWAL_BILLING_CYCLES__IT
+            data_type: NUMBER(38, 0)
+          - name: REMAINING_BILLING_CYCLES__IT
+            data_type: NUMBER(38, 0)
+          - name: TOTAL_BILLING_CYCLES__IT
+            data_type: NUMBER(38, 0)
+          - name: CURRENT_TERM_STARTED_AT
+            data_type: TIMESTAMP_TZ
+      - name: TRANSACTIONS
+        description: TODO
+        columns:
+          - name: ACCOUNT
+            data_type: VARIANT
+          - name: AMOUNT
+            data_type: FLOAT
+          - name: AVS_CHECK
+            data_type: TEXT
+          - name: BILLING_ADDRESS
+            data_type: VARIANT
+          - name: COLLECTED_AT
+            data_type: TIMESTAMP_TZ
+          - name: COLLECTION_METHOD
+            data_type: TEXT
+          - name: CREATED_AT
+            data_type: TIMESTAMP_TZ
+          - name: CURRENCY
+            data_type: TEXT
+          - name: CUSTOMER_MESSAGE
+            data_type: TEXT
+          - name: CUSTOMER_MESSAGE_LOCALE
+            data_type: TEXT
+          - name: CVV_CHECK
+            data_type: TEXT
+          - name: GATEWAY_MESSAGE
+            data_type: TEXT
+          - name: GATEWAY_REFERENCE
+            data_type: TEXT
+          - name: GATEWAY_RESPONSE_CODE
+            data_type: TEXT
+          - name: GATEWAY_RESPONSE_TIME
+            data_type: FLOAT
+          - name: GATEWAY_RESPONSE_VALUES
+            data_type: VARIANT
+          - name: ID
+            data_type: TEXT
+          - name: INVOICE
+            data_type: VARIANT
+          - name: IP_ADDRESS_COUNTRY
+            data_type: TEXT
+          - name: IP_ADDRESS_V4
+            data_type: TEXT
+          - name: OBJECT
+            data_type: TEXT
+          - name: ORIGIN
+            data_type: TEXT
+          - name: ORIGINAL_TRANSACTION_ID
+            data_type: TEXT
+          - name: PAYMENT_GATEWAY
+            data_type: VARIANT
+          - name: PAYMENT_METHOD
+            data_type: VARIANT
+          - name: REFUNDED
+            data_type: BOOLEAN
+          - name: STATUS
+            data_type: TEXT
+          - name: STATUS_CODE
+            data_type: TEXT
+          - name: STATUS_MESSAGE
+            data_type: TEXT
+          - name: SUBSCRIPTION_IDS
+            data_type: VARIANT
+          - name: SUCCESS
+            data_type: BOOLEAN
+          - name: TYPE
+            data_type: TEXT
+          - name: UUID
+            data_type: TEXT
+          - name: VOIDED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_BATCHED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_RECEIVED_AT
+            data_type: TIMESTAMP_TZ
+          - name: _SDC_SEQUENCE
+            data_type: NUMBER(38, 0)
+          - name: _SDC_TABLE_VERSION
+            data_type: NUMBER(38, 0)
+          - name: AMOUNT__DE
+            data_type: NUMBER(38, 6)
+          - name: GATEWAY_APPROVAL_CODE
+            data_type: TEXT
+          - name: VOIDED_BY_INVOICE
+            data_type: VARIANT

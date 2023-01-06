@@ -1,0 +1,13 @@
+SELECT ID AS BILLING_INFO_ID,
+       ADDRESS,
+       COMPANY,
+       CREATED_AT,
+       FIRST_NAME,
+       LAST_NAME,
+       OBJECT,
+       PAYMENT_METHOD,
+       UPDATED_AT,
+       UPDATED_BY,
+       VALID,
+       VAT_NUMBER
+FROM {{ source('RECURLY', 'BILLING_INFO') }}

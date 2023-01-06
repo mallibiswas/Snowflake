@@ -1,0 +1,18 @@
+SELECT $1:_id:"$oid"::STRING                     AS USERPROFILE_ID,
+       $1:credits::INTEGER                       AS CREDITS,
+       $1:date_added:"$date"::DATETIME           AS DATE_ADDED,
+       $1:demographicprofile_id:"$oid"::STRING   AS DEMOGRAPHICPROFILE_ID,
+       $1:email::STRING                         AS EMAIL,
+       $1:email_corrected_by::STRING             AS EMAIL_CORRECTED_BY,
+       $1:email_is_valid::BOOLEAN                AS EMAIL_IS_VALID,
+       $1:email_last_validated:"$date"::DATETIME AS EMAIL_LAST_VALIDATED,
+       $1:email_reason::STRING                   AS EMAIL_REASON,
+       $1:email_score::NUMBER(5, 2)              AS EMAIL_SCORE,
+       $1:facebookprofile_id:"$oid"::STRING      AS FACEBOOKPROFILE_ID,
+       $1:importer_id:"$oid"::STRING             AS IMPORTER_ID,
+       $1:information_source::STRING             AS INFORMATION_SOURCE,
+--              $1:nt_password::string as nt_password,
+--              $1:twitterprofile_id:"$oid"::string as twitterprofile_id,
+       $1:user_id:"$oid"::STRING                 AS USER_ID,
+       current_date                      AS ASOF_DATE
+FROM {{ most_recent_s3_file_name('_STAGE', 'S3_MONGO_STAGE', '.*/portal_userprofile.json') }}

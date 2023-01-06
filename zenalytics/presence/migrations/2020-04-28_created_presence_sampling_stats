@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+--- Create presence_sampling_stats
+--- Metrics: walkins and walkbys for zenreach, merchant and network
+--- Key: BUSINESS_ID
+--- Attribute: Report_Datetime which is the hourly summary
+-------------------------------------------------------------------
+
+--- STEP 1: create table from latest presence pipeline
+create or replace transient table _staging.presence_sampling_stats_current
+as
+select
+    business_id
+    , date_trunc(hour, start_time) as report_datetime
+    , SUM(iff(classification = 'WALKIN' AND known_to_zenreach AND NOT(known_to_merchant_account) AND NOT(known_to_merchant_location), 1, 0)) as walkin_network
+    , SUM(iff(classification = 'WALKIN' AND (known_to_merchant_account OR known_to_merchant_location), 1, 0)) as walkin_merchant
+    , SUM(iff(classification = 'WALKIN' AND not(known_to_zenreach), 1, 0)) as walkin_unidentified
+    , SUM(iff(classification = 'WALKBY' AND known_to_zenreach AND NOT(known_to_merchant_account) AND NOT(known_to_merchant_location), 1, 0)) as walkby_network
+    , SUM(iff(classification = 'WALKBY' AND (known_to_merchant_account OR known_to_merchant_location), 1, 0)) as walkby_merchant
+    , SUM(iff(classification = 'WALKBY' AND NOT(known_to_zenreach), 1, 0)) as walkby_unidentified
+    , SUM(iff(classification = 'NOTHUMAN', 1, 0)) as not_human -- New Classification since presence_sampling_stats was created
+    , MIN(start_time) as created
+    , MAX(end_time) as updated
+    , current_date as asof_date
+from zenalytics.presence.finished_sightings
+where end_time >= '2019-12-01'
+group by 1,2;
+
+--- STEP 2(a): Create walkin list from Enriched Sightings with Finished Status
+create or replace transient table zenalytics._staging.walkins_pre_20191201
+as
+select business_id,
+client_mac_anonymized,
+MD5(business_id||client_mac_anonymized||start_time) as sightings_pk,
+'WALKIN' as classification,
+date_trunc(hour, to_timestamp_ntz(start_time/1000)) as report_datetime,
+CASE WHEN contact_id IS NOT NULL THEN TRUE ELSE FALSE END AS known_to_zenreach,
+False AS known_to_merchant_account,
+NVL(in_business_network,False) AS known_to_merchant_location,
+start_time,
+end_time
+FROM zenprod.presence.enriched_sightings
+where start_date < 18231 -- 2019-12-01
+and status = 'FINISHED' and is_walk_in = True;
+
+--- STEP 2(b): Create walkby list from Raw Status, at this stage this table will also contain all the RAW records before converting to FINISHED (Walkin)
+--- Create key from business_id, client mac client_mac_anonymized and start time to define a session
+--- A session will end in a RAW status for Walkbys but with FInished Status for Walkins
+create or replace temporary table zenalytics._staging._walkbys_pre_20191201
+as
+select business_id,
+client_mac_anonymized,
+MD5(business_id||client_mac_anonymized||start_time) as sightings_pk,
+'WALKBY' as classification,
+date_trunc(hour, to_timestamp_ntz(start_time/1000)) as report_datetime,
+CASE WHEN contact_id IS NOT NULL THEN TRUE ELSE FALSE END AS known_to_zenreach,
+False AS known_to_merchant_account,
+NVL(in_business_network,False) AS known_to_merchant_location,
+start_time,
+end_time
+FROM zenprod.presence.enriched_sightings
+where start_date < 18231 -- 2019-12-01
+and status = 'RAW' and NVL(is_walk_in,False) = False;
+
+--- STEP 2(c): Exclude the Raw Records that eventually become Walkins, from walkby list, based on sightings_pk / Sessions Id
+create or replace transient table zenalytics._staging.walkbys_pre_20191201
+as
+select * from zenalytics._staging._walkbys_pre_20191201 wb
+where not exists (select 'x' from zenalytics._staging.walkins_pre_20191201 wi where wi.sightings_pk = wb.sightings_pk);
+
+--- create raw sightings table with only Walkins and Walkbys from before 12/1/2019
+create or replace transient table zenalytics._staging.presence_sightings_pre_20191201
+as
+select
+*
+from zenalytics._staging.walkbys_pre_20191201
+UNION ALL
+select
+*
+from zenalytics._staging.walkins_pre_20191201;
+
+--- summarize raw sightings to legacy sampling stats table
+create or replace transient table _staging.presence_sampling_stats_legacy
+as
+select
+    business_id
+    , report_datetime
+    , SUM(iff(classification = 'WALKIN' AND known_to_zenreach AND NOT(known_to_merchant_account) AND NOT(known_to_merchant_location), 1, 0)) as walkin_network
+    , SUM(iff(classification = 'WALKIN' AND (known_to_merchant_account OR known_to_merchant_location), 1, 0)) as walkin_merchant
+    , SUM(iff(classification = 'WALKIN' AND not(known_to_zenreach), 1, 0)) as walkin_unidentified
+    , SUM(iff(classification = 'WALKBY' AND known_to_zenreach AND NOT(known_to_merchant_account) AND NOT(known_to_merchant_location), 1, 0)) as walkby_network
+    , SUM(iff(classification = 'WALKBY' AND (known_to_merchant_account OR known_to_merchant_location), 1, 0)) as walkby_merchant
+    , SUM(iff(classification = 'WALKBY' AND NOT(known_to_zenreach), 1, 0)) as walkby_unidentified
+    , SUM(iff(classification = 'NOTHUMAN', 1, 0)) as not_human -- New Classification since presence_sampling_stats was created
+    , to_timestamp_ntz(MIN(start_time)/1000) as created
+    , to_timestamp_ntz(MAX(end_time)/1000) as updated
+    , current_date as asof_date
+from zenalytics._staging.presence_sightings_pre_20191201
+group by 1,2
+order by 2;
+
+
+--- append the legacy table (before 12/1/2019) and current table (after 12/1/2019) in the correct order
+insert into _staging.presence_sampling_stats_legacy
+select * from _staging.presence_sampling_stats_current
+;
+
+-- replace table in presence
+create or replace transient table presence.presence_sampling_stats clone _staging.presence_sampling_stats_legacy;

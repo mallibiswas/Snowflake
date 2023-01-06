@@ -1,0 +1,61 @@
+# ignore logs
+#**/log
+*.log
+*.log_bootstrap
+**.err
+error_*
+*/*/log/*
+logs
+# ignore archive
+**/archive
+# ignore data files
+*.json
+*.csv
+# ignore swap files
+*.swp
+# ignore pycache
+**/__pycache__
+# ignore certain shell scripts
+# ignore OSx folder attribute files
+*.DS_Store
+
+# ignore Jetbrains IDEs
+*.idea
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+### DBT ###
+dbt-env
+dbt_modules
+target

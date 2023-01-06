@@ -1,0 +1,117 @@
+WITH ARRAY_VALUES_SUB AS (
+    SELECT SFDC_A.NAME                              AS ADJUSTMENT_SUB_SFDC_NAME
+         , SUBSCRIPTION.ACCOUNT_ID AS AMS__ACCOUNT_ID
+         , SUBSCRIPTIONS.EXPIRES_AT
+         , D_INVOICE_ADJUSTMENTS.*
+    FROM {{ ref('mart_revrec__d_invoice_adjustments') }} D_INVOICE_ADJUSTMENTS
+             LEFT JOIN {{ ref('stg_recurly__subscriptions') }} SUBSCRIPTIONS
+                           ON SUBSCRIPTIONS.SUBSCRIPTION_ID =
+			                                 D_INVOICE_ADJUSTMENTS.ADJUSTMENT__SUBSCRIPTION_ID
+    LEFT JOIN {{ ref('stg_ams_account__recurly_subscription') }} RECURLY_SUBSCRIPTION
+                           ON RECURLY_SUBSCRIPTION.RECURLY_SUBSCRIPTION_ID =
+                              SUBSCRIPTIONS.RECURLY_SUBSCRIPTION_ID
+    LEFT JOIN {{ ref('stg_ams_account__subscription') }} SUBSCRIPTION
+                           ON SUBSCRIPTION.RECURLY_SUBSCRIPTION_ID =
+                              RECURLY_SUBSCRIPTION.ID
+    LEFT JOIN {{ ref('stg_ams_account__account') }} ACCOUNT
+                           ON ACCOUNT.ID = SUBSCRIPTION.ACCOUNT_ID
+    LEFT JOIN {{ ref('stg_ams_account__salesforce_account') }} SALESFORCE_ACCOUNT
+                           ON SALESFORCE_ACCOUNT.ID =
+                              ACCOUNT.SALESFORCE_ACCOUNT
+    LEFT JOIN {{ ref('stg_sfdc__account') }} SFDC_A
+                           ON SFDC_A.ID = SALESFORCE_ACCOUNT.ID
+    WHERE D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'DemoAccounts'
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '3886456c-040d-4c4f-a8ba-dbfb20b45d12'           -- Kai' Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'b2459657-8d7f-4e85-be25-625d808981b1'           -- Kai' Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'cefd9e86-a9d1-463f-8a7e-2f59fc76ef62'           -- Kai' Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'd30656a2-dd7c-433c-a822-f07f5310f9b0'           -- Kai' Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '2d774e9d-adce-44e3-b228-43f80fed2454'           -- JW OpenMesh
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'ef4bac1e-b964-44cf-8dd8-ecb6f1ebd35a'           -- JW OpenMesh
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '97459100-3e09-4a8c-809a-1520c6e287d8'           -- JW OpenMesh
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '796f3e27-df92-4396-b154-59df238a9250'           -- Ali Demo
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '08f7eddf-faba-43bb-9680-7763d43fcb6b'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '5762dd83-250a-4cb5-b25c-9792f42e8f4b'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'd78958de-ae08-44e1-9333-630054953d39'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '4a04f75c-9c22-4d1f-987a-e826036f0fa0'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'f7059c2c-6320-4273-a897-307490928d89'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'c3a689b1-c9fa-493e-80e4-3be4a2d6ccd1'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '6b9a185b-650b-451a-824a-ac146ae2bc45'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'd19393d9-c4e0-42e9-abfd-7de15e851b38'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'eeaf0d2f-818c-44cd-ad90-0b043427401b'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'aae05666-3153-4d4a-ad32-294b3fb66781'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'cc0b436f-d05c-46b3-9a4a-2a17f7d4af71'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '93119157-953a-4017-bf08-7e094845ce87'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '86164f6d-c0e1-4e26-abd1-d8a6b1b067ce'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '05249b65-3a64-4b7b-9786-512647764e54'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '588d3ac4-c638-41e8-9bf6-0f53f9f57cb8'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != 'f5013195-6dea-47ee-a15f-ffb781a8b084'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '342d995a-4d52-413e-b08c-dabe0281c760'           -- AP Install Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '8536e94b-5263-4669-9621-c57dbf564be0'           -- Adams Test
+      AND D_INVOICE_ADJUSTMENTS.ACCOUNT__CODE != '4c75e992-bf2e-48df-abe7-91d0cb0f718f'           -- Test Onboarding Flow
+
+      AND SUBSCRIPTION.ACCOUNT_ID != '2088c938-ab21-41eb-9689-8d1ae0a21e97'
+      AND SUBSCRIPTION.ACCOUNT_ID != '35d05f17-7d51-48ab-94f1-d7e2c95eea49' -- Adam's Test
+      AND SUBSCRIPTION.ACCOUNT_ID != 'e550ce5c-d621-472b-b4b8-ff9309861095'
+      AND SUBSCRIPTION.ACCOUNT_ID != '76510a51-5e6a-4484-aa35-228aa42301d6'
+      AND SUBSCRIPTION.ACCOUNT_ID != 'a7968ad1-8a19-402c-831b-2232bec1b34b'
+      AND SUBSCRIPTION.ACCOUNT_ID != '86f00eb2-ad4a-4921-8da9-35e91f7120b8'
+
+      AND SUBSCRIPTION.ACCOUNT_ID != 'd9f377cd-b53b-44f8-8c7a-dfb5d6055bfa'
+      AND SUBSCRIPTION.ACCOUNT_ID != '3cad86c9-4870-4997-bb63-4e862f1c1c06'
+      AND SUBSCRIPTION.ACCOUNT_ID != '39b47001-9080-4e33-a15c-20c3aeb0e84e'
+      AND SUBSCRIPTION.ACCOUNT_ID != '7167267b-eabc-496f-91f6-52daf327e2fc'
+
+      AND SUBSCRIPTION.ACCOUNT_ID != '38f408a0-b292-4b15-8961-a8cc678ddecc'
+      AND SUBSCRIPTION.ACCOUNT_ID != '4888b013-10a1-41dd-8527-b430ad75c3c8' -- AP Install Test
+
+      AND SUBSCRIPTION.ACCOUNT_ID != '4da57537-acc1-43f6-9052-b32035c6f3bb'
+      AND SUBSCRIPTION.ACCOUNT_ID != '0cd6544e-aa63-42fc-aefd-a947ebc85bfd'
+      AND SUBSCRIPTION.ACCOUNT_ID != '9a5baf6e-b609-4e35-a390-f6026a53b0de'
+      AND SUBSCRIPTION.ACCOUNT_ID != '9926ccff-12e1-4160-b30a-a3c1d1b640fd' -- Kai' Test
+      AND SUBSCRIPTION.ACCOUNT_ID != 'ca738b6b-cf07-4e67-b807-6409d0a12f27' -- JW OpenMesh Test
+    ),
+
+    BILLING_PROVIDER AS (
+        SELECT RECURLY_PROVIDER.EMAIL
+                , RECURLY_PROVIDER.NAME RECURLY_PROVIDER__NAME
+                , RECURLY_PROVIDER.ID AS PROVIDER_ID
+                , RECURLY_PROVIDER.RECURLY_ID
+                , RECURLY_PROVIDER.URL
+                , PAYMENT_INFO.ID AS PAYMENT_ID
+                , PAYMENT_INFO.PROVIDER_TYPE
+                , PAYMENT_INFO.RECURLY_PROVIDER_ID
+                , PAYMENT_INFO.TYPE PAYMENT_INFO_TYPE
+                , ACCOUNT_PAYMENT_INFOS.ACCOUNT_ID PAYMENT_INFOS__ACCOUNT_ID
+                , ACCOUNT_PAYMENT_INFOS.ID ACCOUNT_PAYMENT_INFOS_KEY
+                , ACCOUNT_PAYMENT_INFOS.PAYMENT_INFO_ID PAYMENT_INFOS__PAYMENT_INFO_ID
+                , ACCOUNT.ID BILLING_ACCOUNT_ID
+                , ACCOUNT.ACCOUNT_TYPE BILLING_ACCOUNT_TYPE
+                , ACCOUNT.ACTIVE BILLING_ACTIVE
+                , ACCOUNT.PAYMENT_INFO_ID
+                , ACCOUNT.SALESFORCE_ACCOUNT AS SALESFORCE_ACCOUNT_ID
+                , SALESFORCE_ACCOUNT.NAME
+FROM {{ ref('stg_ams_account__recurly_provider') }} RECURLY_PROVIDER
+    LEFT JOIN {{ ref('stg_ams_account__payment_info') }} PAYMENT_INFO
+                                 ON PAYMENT_INFO.RECURLY_PROVIDER_ID =
+                                    RECURLY_PROVIDER.ID
+    LEFT JOIN {{ ref('stg_ams_account__account_payment_infos') }} ACCOUNT_PAYMENT_INFOS
+                                 ON ACCOUNT_PAYMENT_INFOS.PAYMENT_INFO_ID =
+                                    PAYMENT_INFO.ID
+    LEFT JOIN {{ ref('stg_ams_account__account') }} ACCOUNT
+                                 ON ACCOUNT.ID =
+                                    ACCOUNT_PAYMENT_INFOS.ACCOUNT_ID
+    LEFT JOIN {{ ref('stg_ams_account__salesforce_account') }} SALESFORCE_ACCOUNT
+                                 ON SALESFORCE_ACCOUNT.ID =
+                                    ACCOUNT.SALESFORCE_ACCOUNT
+    )
+SELECT ARRAY_VALUES_SUB.*
+     , BILLING_PROVIDER.RECURLY_PROVIDER__NAME
+     , BILLING_PROVIDER.BILLING_ACCOUNT_ID
+     , BILLING_PROVIDER.RECURLY_ID
+     , NVL(ARRAY_VALUES_SUB.AMS__ACCOUNT_ID, BILLING_PROVIDER.BILLING_ACCOUNT_ID) AMS_ACCOUNT_ID
+     , NVL(ARRAY_VALUES_SUB.ADJUSTMENT_SUB_SFDC_NAME, BILLING_PROVIDER.NAME)     ACCOUNT_NAME
+FROM ARRAY_VALUES_SUB
+         LEFT JOIN BILLING_PROVIDER
+                   ON (BILLING_PROVIDER.RECURLY_ID = ARRAY_VALUES_SUB.ACCOUNT__CODE AND
+                       ARRAY_VALUES_SUB.ADJUSTMENT__SUBSCRIPTION_ID IS NULL)
+WHERE ARRAY_VALUES_SUB.ADJUSTMENT__PRODUCT_CATEGORY = 'Engage'
